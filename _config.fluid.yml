@@ -87,7 +87,7 @@ fun_features:
 
     # 打印速度，数字越大越慢
     # Typing speed, the larger the number, the slower
-    typeSpeed: 70
+    typeSpeed: 60
 
     # 游标字符
     # Cursor character
@@ -145,8 +145,8 @@ color:
 
   # 顶部菜单背景色
   # Color of navigation bar background
-  navbar_bg_color: "#2f4154"
-  navbar_bg_color_dark: "#1f3144"
+  navbar_bg_color: "#545454"
+  navbar_bg_color_dark: "#1E242D"
 
   # 顶部菜单字体色
   # Color of navigation bar text

@@ -576,7 +576,7 @@ post:
     # 浏览量计数
     # Number of visits
     views:
-      enable: false
+      enable: true
       # 统计数据来源
       # Data Source
       # Options: busuanzi | leancloud
@@ -702,7 +702,7 @@ post:
 
     # 开启后，只有在文章 Front-matter 里指定 `math: true` 才会在文章页启动公式转换，以便在页面不包含公式时提高加载速度
     # If true, only set `math: true` in Front-matter will enable math, to load faster when the page does not contain math
-    specific: false
+    specific: true
 
     # Options: mathjax | katex
     engine: mathjax
@@ -716,7 +716,7 @@ post:
 
     # 开启后，只有在文章 Front-matter 里指定 `mermaid: true` 才会在文章页启动公式转换，以便在页面不包含公式时提高加载速度
     # If true, only set `mermaid: true` in Front-matter will enable mermaid, to load faster when the page does not contain mermaid
-    specific: false
+    specific: true
 
     # See: http://mermaid-js.github.io/mermaid/
     options: { theme: 'default' }
@@ -947,15 +947,15 @@ about:
   banner_img_height: 60
   banner_mask_alpha: 0.3
   avatar: /img/avatar1.png
-  name: "Fluid"
-  intro: "An elegant theme for Hexo"
+  name: "Konrad Locas"
+  intro: "We only live so long, we just skip that proof."
   # 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
   # More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, The icon is no longer a link, but a hovering QR code
   icons:
-    - { class: "iconfont icon-github-fill", link: "https://github.com", tip: "GitHub" }
-    - { class: "iconfont icon-qq-fill", qrcode: "", tip: "QQ" }
-    - { class: "iconfont icon-bilibili-fill", link: "https://bilibili.com", tip: "BiliBili" }
-    - { class: "iconfont icon-zhihu-fill", link: "https://zhihu.com", tip: "知乎"}
+    - { class: "iconfont icon-github-fill", link: "https://github.com/MegaSuite", tip: "GitHub" }
+    - { class: "iconfont icon-qq-fill", tip: "QQ：3395872981" }
+    - { class: "iconfont icon-bilibili-fill", link: "https://space.bilibili.com/321198240?spm_id_from=..0.0", tip: "BiliBili" }
+    - { class: "iconfont icon-zhihu-fill", link: "https://www.zhihu.com/people/megasuite", tip: "知乎"}
 
 
 #---------------------------

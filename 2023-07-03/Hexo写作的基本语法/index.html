@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/MegaSuite/BlogPicStorage/img/202307031929239.png">
 <meta property="article:published_time" content="2023-07-03T02:04:09.000Z">
-<meta property="article:modified_time" content="2023-07-03T12:17:03.650Z">
+<meta property="article:modified_time" content="2023-07-03T12:35:56.366Z">
 <meta property="article:author" content="Konrad Locas">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary_large_image">
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.2k 字
+          4.1k 字
         
       </span>
     
@@ -250,7 +250,7 @@
         
         
         
-          52 分钟
+          34 分钟
         
       </span>
     
@@ -309,13 +309,10 @@
 <p>现在，你已经拥有第一篇博客文章（的模板）了！</p>
 <h1 id="Hexo本身支持的特色语法-1"><a href="#Hexo本身支持的特色语法-1" class="headerlink" title="Hexo本身支持的特色语法[1]"></a>Hexo本身支持的特色语法<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[Hexo](https://hexo.io/zh-cn/docs/writing)">[1]</span></a></sup></h1><h2 id="便签"><a href="#便签" class="headerlink" title="便签"></a>便签</h2><p class="note note-success">Hexo 默认安装了 hexo-renderer-marked 和 hexo-renderer-ejs ，因此你不仅可以用 Markdown 写作，你还可以用 EJS 写作。如果你安装了 hexo-renderer-pug ，你甚至可以用 Pug 模板语言书写文章。只需要将文章的扩展名从  md  改成  ejs ，Hexo 就会使用 hexo-renderer-ejs 渲染这个文件，其他格式同理。</p>
 
-<p><code>以上使用了Fluid主题的便签特性。</code></p>
-<p>在 markdown 中加入如下的代码来使用便签：</p>
-<div class="code-wrapper"><pre><code class="hljs markdown">&#123;% note success %&#125;
-文字 或者 markdown 均可
-&#123;% endnote %&#125;</code></pre></div>
+<span id="more"></span>
 
-<p>或者使用 HTML 形式：</p>
+<p><code>以上使用了Fluid主题的便签特性。</code></p>
+<p>使用 HTML 形式：</p>
 <p><code>&lt;p class=&quot;note note-primary&quot;&gt;标签&lt;/p&gt;</code></p>
 <p><img src="https://cdn.jsdelivr.net/gh/MegaSuite/BlogPicStorage/img/202307031816602.png" srcset="/img/loading.gif" lazyload alt="便签种类"></p>
 <h2 id="引用块Quote"><a href="#引用块Quote" class="headerlink" title="引用块Quote:"></a>引用块Quote:</h2><p>在文章中插入引言，可包含作者、来源和标题。</p>
@@ -366,134 +363,23 @@ Every interaction is both precious and an opportunity to delight.
 
 <div class="code-wrapper"><pre><code class="hljs c">code</code></pre></div>
 
-<p>通过css方式在文章中插入代码:</p>
-<div class="code-wrapper"><pre><code class="hljs css">&#123;% codeblock <span class="hljs-selector-attr">[title]</span> <span class="hljs-selector-attr">[lang:language]</span> <span class="hljs-selector-attr">[url]</span> <span class="hljs-selector-attr">[link text]</span> <span class="hljs-selector-attr">[additional options]</span> %&#125;
-<span class="hljs-selector-tag">code</span> snippet
-&#123;% endcodeblock %&#125;</code></pre></div>
-
-<p>以 <code>option:value</code> 的格式指定额外选项，例如：<code>line_number:false first_line:5</code>。</p>
-<table>
-<thead>
-<tr>
-<th align="left">额外选项</th>
-<th align="left">描述</th>
-<th align="left">默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>line_number</code></td>
-<td align="left">显示行号</td>
-<td align="left"><code>true</code></td>
-</tr>
-<tr>
-<td align="left"><code>line_threshold</code></td>
-<td align="left">只有代码块的行数超过该阈值，才显示行数</td>
-<td align="left"><code>0</code></td>
-</tr>
-<tr>
-<td align="left"><code>highlight</code></td>
-<td align="left">启用代码高亮</td>
-<td align="left"><code>true</code></td>
-</tr>
-<tr>
-<td align="left"><code>first_line</code></td>
-<td align="left">指定第一个行号</td>
-<td align="left"><code>1</code></td>
-</tr>
-<tr>
-<td align="left"><code>mark</code></td>
-<td align="left">突出显示特定的行，每个值用逗号分隔。 使用破折号指定数字范围 例如： <code>mark:1,4-7,10</code> 将标记第1、4至7和10行</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>wrap</code></td>
-<td align="left">用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">table</a> 包裹代码块 | <code>true</code></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><p><strong>普通的代码块</strong></p>
-<div class="code-wrapper"><pre><code class="hljs css">&#123;% codeblock %&#125;
-alert(&#x27;Hello World!&#x27;);
-&#123;% endcodeblock %&#125;
-alert(&#x27;Hello World!&#x27;);</code></pre></div>
-
-<p><strong>指定语言</strong></p>
-<div class="code-wrapper"><pre><code class="hljs css">&#123;% codeblock lang:objc %&#125;
-<span class="hljs-selector-attr">[rectangle setX: 10 y: 10 width: 20 height: 20]</span>;
-&#123;% endcodeblock %&#125;
-<span class="hljs-selector-attr">[rectangle setX: 10 y: 10 width: 20 height: 20]</span>;</code></pre></div>
-
 <h2 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h2><p>在文章中嵌入 Gist。</p>
-<div class="code-wrapper"><pre><code class="hljs css">&#123;% gist gist_id <span class="hljs-selector-attr">[filename]</span> %&#125;</code></pre></div>
+<div class="code-wrapper"><pre><code class="hljs css">&lt;script <span class="hljs-attribute">src</span>=&quot;https://gist.github.com/MegaSuite/aaa482f9062bc94ec61f1eecef329d1d.js<span class="hljs-string">&quot;&gt;&lt;/script&gt;</span></code></pre></div>
 
-<script src="//gist.github.com/aaa482f9062bc94ec61f1eecef329d1d.js?file=instance"></script>
+<script src="https://gist.github.com/MegaSuite/aaa482f9062bc94ec61f1eecef329d1d.js"></script>
 
 <h2 id="iframe-2"><a href="#iframe-2" class="headerlink" title="iframe[2]"></a>iframe<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="[Hexo Theme Fluid](https://fluid-dev.com/posts/fluid-write/)">[2]</span></a></sup></h2><p>在文章中插入 iframe。</p>
 <div class="code-wrapper"><pre><code class="hljs text">&lt;iframe src=&quot;https://hexo.fluid-dev.com/&quot; width=&quot;100%&quot; height=&quot;500&quot; name=&quot;topFrame&quot; scrolling=&quot;yes&quot;  noresize=&quot;noresize&quot; frameborder=&quot;0&quot; id=&quot;topFrame&quot;&gt;&lt;/iframe&gt;</code></pre></div>
 
-<h2 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h2><p>在文章中插入指定大小的图片。</p>
-<div class="code-wrapper"><pre><code class="hljs css">&#123;% <span class="hljs-selector-tag">img</span> <span class="hljs-selector-attr">[class names]</span> /path/<span class="hljs-selector-tag">to</span>/image <span class="hljs-selector-attr">[width]</span> <span class="hljs-selector-attr">[height]</span> &#x27;&quot;title text&quot; &quot;alt text&quot;&#x27; %&#125;</code></pre></div>
+<iframe src="https://hexo.fluid-dev.com/" width="100%" height="500" name="topFrame" scrolling="yes"  noresize="noresize" frameborder="0" id="topFrame"></iframe>
 
-<h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><p>在文章中插入链接，并自动给外部链接添加 <code>target=&quot;_blank&quot;</code> (外部标签页打开）属性。</p>
-<div class="code-wrapper"><pre><code class="hljs css">&#123;% link text url <span class="hljs-selector-attr">[external]</span> <span class="hljs-selector-attr">[title]</span> %&#125;</code></pre></div>
 
-<h2 id="Include-Code"><a href="#Include-Code" class="headerlink" title="Include Code"></a>Include Code</h2><p>插入 <code>source/downloads/code</code> 文件夹内的代码文件。<code>source/downloads/code</code> 不是固定的，取决于你在配置文件中 <code>code_dir</code> 的配置。</p>
-<div class="code-wrapper"><pre><code class="hljs vim">&#123;% include_code [title] [<span class="hljs-keyword">lan</span><span class="hljs-variable">g:language</span>] [from:<span class="hljs-built_in">line</span>] [<span class="hljs-keyword">to</span>:<span class="hljs-built_in">line</span>] path/<span class="hljs-keyword">to</span>/<span class="hljs-keyword">file</span> %&#125;</code></pre></div>
 
-<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><p><strong>嵌入 test.js 文件全文</strong></p>
-<div class="code-wrapper"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">include_code</span> lang:javascript test.js %&#125;</span></code></pre></div>
+<h2 id="Bilibili"><a href="#Bilibili" class="headerlink" title="Bilibili"></a>Bilibili</h2><p>以B站为例，去相应播放页面复制代码即可</p>
+<div class="code-wrapper"><pre><code class="hljs abnf">&lt;iframe src<span class="hljs-operator">=</span><span class="hljs-string">&quot;//player.bilibili.com/player.html?aid=53851218&amp;bvid=BV1j4411W7F7&amp;cid=94198756&amp;page=1&quot;</span> scrolling<span class="hljs-operator">=</span><span class="hljs-string">&quot;no&quot;</span> border<span class="hljs-operator">=</span><span class="hljs-string">&quot;0&quot;</span> frameborder<span class="hljs-operator">=</span><span class="hljs-string">&quot;no&quot;</span> framespacing<span class="hljs-operator">=</span><span class="hljs-string">&quot;0&quot;</span> allowfullscreen<span class="hljs-operator">=</span><span class="hljs-string">&quot;true&quot;</span>&gt; &lt;/iframe&gt;</code></pre></div>
 
-<p><strong>只嵌入第 3 行</strong></p>
-<div class="code-wrapper"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">include</span>_code lang:javascript from:<span class="hljs-number">3</span> to:<span class="hljs-number">3</span> test.js <span class="hljs-template-tag">%&#125;</span></code></pre></div>
+<iframe src="//player.bilibili.com/player.html?aid=53851218&bvid=BV1j4411W7F7&cid=94198756&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
-<p><strong>嵌入第 5 行至第 8 行</strong></p>
-<div class="code-wrapper"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">include</span>_code lang:javascript from:<span class="hljs-number">5</span> to:<span class="hljs-number">8</span> test.js <span class="hljs-template-tag">%&#125;</span></code></pre></div>
-
-<p><strong>嵌入第 5 行至文件结束</strong></p>
-<div class="code-wrapper"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">include</span>_code lang:javascript from:<span class="hljs-number">5</span> test.js <span class="hljs-template-tag">%&#125;</span></code></pre></div>
-
-<p><strong>嵌入第 1 行至第 8 行</strong></p>
-<div class="code-wrapper"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">include</span>_code lang:javascript to:<span class="hljs-number">8</span> test.js <span class="hljs-template-tag">%&#125;</span></code></pre></div>
-
-<h2 id="Youtube"><a href="#Youtube" class="headerlink" title="Youtube"></a>Youtube</h2><p>在文章中插入 Youtube 视频。</p>
-<div class="code-wrapper"><pre><code class="hljs crystal"><span class="hljs-template-variable">&#123;% youtube video_id [<span class="hljs-keyword">type</span>] [cookie] %&#125;</span></code></pre></div>
-
-<h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h3><p><strong>视频</strong></p>
-<div class="code-wrapper"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">youtube</span> lJIrF4YjHfQ %&#125;</span></code></pre></div>
-
-<p><strong>播放列表</strong></p>
-<div class="code-wrapper"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">youtube</span> PL<span class="hljs-number">9</span>hW<span class="hljs-number">1</span>uS<span class="hljs-number">6</span>HUfscJ<span class="hljs-number">9</span>DHkOSoOX<span class="hljs-number">45</span>MjXduUxo <span class="hljs-string">&#x27;playlist&#x27;</span> <span class="hljs-template-tag">%&#125;</span></code></pre></div>
-
-<p><strong>隐私模式</strong></p>
-<p>在这种模式下，禁用 YouTube cookie</p>
-<div class="code-wrapper"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">youtube</span> lJIrF<span class="hljs-number">4</span>YjHfQ false <span class="hljs-template-tag">%&#125;</span><span class="language-xml"></span>
-<span class="language-xml"></span><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">youtube</span> PL<span class="hljs-number">9</span>hW<span class="hljs-number">1</span>uS<span class="hljs-number">6</span>HUfscJ<span class="hljs-number">9</span>DHkOSoOX<span class="hljs-number">45</span>MjXduUxo <span class="hljs-string">&#x27;playlist&#x27;</span> false <span class="hljs-template-tag">%&#125;</span></code></pre></div>
-
-<h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><p>引用其他文章的链接。</p>
-<div class="code-wrapper"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">post_path</span> filename %&#125;</span><span class="language-xml"></span>
-<span class="language-xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name">post_link</span> filename [title] [escape] %&#125;</span></code></pre></div>
-
-<p>在使用此标签时可以忽略文章文件所在的路径或者文章的永久链接信息、如语言、日期。</p>
-<p>例如，在文章中使用 <code>&#123;% post_link how-to-bake-a-cake %&#125;</code> 时，只需有一个名为 <code>how-to-bake-a-cake.md</code> 的文章文件即可。即使这个文件位于站点文件夹的 <code>source/posts/2015-02-my-family-holiday</code> 目录下、或者文章的永久链接是 <code>2018/en/how-to-bake-a-cake</code>，都没有影响。</p>
-<p>默认链接文字是文章的标题，你也可以自定义要显示的文本。</p>
-<p>默认对文章的标题和自定义标题里的特殊字符进行转义。可以使用 <code>escape</code> 选项，禁止对特殊字符进行转义。</p>
-<p>例如：</p>
-<p><strong>链接使用文章的标题</strong></p>
-<div class="code-wrapper"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">post_link</span> hexo-<span class="hljs-number">3</span>-<span class="hljs-number">8</span>-released <span class="hljs-template-tag">%&#125;</span></code></pre></div>
-
-<p><a target="_blank" rel="noopener" href="https://hexo.io/news/2018/10/19/hexo-3-8-released/">Hexo 3.8.0 Released</a></p>
-<p><strong>链接使用自定义文字</strong></p>
-<div class="code-wrapper"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">post_link</span> hexo-<span class="hljs-number">3</span>-<span class="hljs-number">8</span>-released <span class="hljs-string">&#x27;通往文章的链接&#x27;</span> <span class="hljs-template-tag">%&#125;</span></code></pre></div>
-
-<p><a target="_blank" rel="noopener" href="https://hexo.io/news/2018/10/19/hexo-3-8-released/">通往文章的链接</a></p>
-<p><strong>对标题的特殊字符进行转义</strong></p>
-<div class="code-wrapper"><pre><code class="hljs crmsh">&#123;% post_link hexo-<span class="hljs-number">4</span>-released &#x27;How to use <span class="hljs-tag">&lt;b&gt;</span> <span class="hljs-keyword">tag</span> <span class="hljs-title">in</span> title&#x27; %&#125;</code></pre></div>
-
-<p><a target="_blank" rel="noopener" href="https://hexo.io/news/2019/10/14/hexo-4-released/">How to use  tag in title</a></p>
-<p><strong>禁止对标题的特殊字符进行转义</strong></p>
-<div class="code-wrapper"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">post_link</span> hexo-<span class="hljs-number">4</span>-released <span class="hljs-string">&#x27;&lt;b&gt;bold&lt;/b&gt; custom title&#x27;</span> false <span class="hljs-template-tag">%&#125;</span></code></pre></div>
-
-<p><a target="_blank" rel="noopener" href="https://hexo.io/news/2019/10/14/hexo-4-released/"><strong>bold</strong> custom title</a></p>
 <h2 id="文章摘要和截断"><a href="#文章摘要和截断" class="headerlink" title="文章摘要和截断"></a>文章摘要和截断</h2><p>在文章中使用 <code>&lt;!-- more --&gt;</code>，那么 <code>&lt;!-- more --&gt;</code> 之前的文字将会被视为摘要。首页中将只出现这部分文字，同时这部分文字也会出现在正文之中。</p>
 <p>例如：</p>
 <div class="code-wrapper"><pre><code class="hljs css">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/MegaSuite/BlogPicStorage/img/202307031929239.png">
 <meta property="article:published_time" content="2023-07-03T02:04:09.000Z">
-<meta property="article:modified_time" content="2023-07-03T12:53:32.142Z">
+<meta property="article:modified_time" content="2023-07-03T13:07:28.386Z">
 <meta property="article:author" content="Konrad Locas">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary_large_image">
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k 字
+          3.2k 字
         
       </span>
     
@@ -250,7 +250,7 @@
         
         
         
-          31 分钟
+          27 分钟
         
       </span>
     
@@ -363,7 +363,9 @@ Every interaction is both precious and an opportunity to delight.
 
 <h2 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h2><p>在文章中嵌入 Gist。</p>
 <div class="code-wrapper"><pre><code class="hljs css">&lt;script <span class="hljs-attribute">src</span>=&quot;https://gist.github.com/MegaSuite/aaa482f9062bc94ec61f1eecef329d1d.js<span class="hljs-string">&quot;&gt;&lt;/script&gt;</span></code></pre></div>
-<div class="code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://gist.github.com/MegaSuite/aaa482f9062bc94ec61f1eecef329d1d.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre></div>
+
+<script src="https://gist.github.com/MegaSuite/aaa482f9062bc94ec61f1eecef329d1d.js"></script>
+
 
 <h2 id="iframe-2"><a href="#iframe-2" class="headerlink" title="iframe[2]"></a>iframe<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="[Hexo Theme Fluid](https://fluid-dev.com/posts/fluid-write/)">[2]</span></a></sup></h2><p>在文章中插入 iframe。</p>
 <div class="code-wrapper"><pre><code class="hljs text">&lt;iframe src=&quot;https://hexo.fluid-dev.com/&quot; width=&quot;100%&quot; height=&quot;500&quot; name=&quot;topFrame&quot; scrolling=&quot;yes&quot;  noresize=&quot;noresize&quot; frameborder=&quot;0&quot; id=&quot;topFrame&quot;&gt;&lt;/iframe&gt;</code></pre></div>
@@ -375,7 +377,8 @@ Every interaction is both precious and an opportunity to delight.
 <h2 id="Bilibili"><a href="#Bilibili" class="headerlink" title="Bilibili"></a>Bilibili</h2><p>以B站为例，去相应播放页面复制代码即可</p>
 <div class="code-wrapper"><pre><code class="hljs abnf">&lt;iframe src<span class="hljs-operator">=</span><span class="hljs-string">&quot;//player.bilibili.com/player.html?aid=53851218&amp;bvid=BV1j4411W7F7&amp;cid=94198756&amp;page=1&quot;</span> scrolling<span class="hljs-operator">=</span><span class="hljs-string">&quot;no&quot;</span> border<span class="hljs-operator">=</span><span class="hljs-string">&quot;0&quot;</span> frameborder<span class="hljs-operator">=</span><span class="hljs-string">&quot;no&quot;</span> framespacing<span class="hljs-operator">=</span><span class="hljs-string">&quot;0&quot;</span> allowfullscreen<span class="hljs-operator">=</span><span class="hljs-string">&quot;true&quot;</span>&gt; &lt;/iframe&gt;</code></pre></div>
 
-<div class="code-wrapper"><pre><code class="hljs abnf">&lt;iframe src<span class="hljs-operator">=</span><span class="hljs-string">&quot;//player.bilibili.com/player.html?aid=53851218&amp;bvid=BV1j4411W7F7&amp;cid=94198756&amp;page=1&quot;</span> scrolling<span class="hljs-operator">=</span><span class="hljs-string">&quot;no&quot;</span> border<span class="hljs-operator">=</span><span class="hljs-string">&quot;0&quot;</span> frameborder<span class="hljs-operator">=</span><span class="hljs-string">&quot;no&quot;</span> framespacing<span class="hljs-operator">=</span><span class="hljs-string">&quot;0&quot;</span> allowfullscreen<span class="hljs-operator">=</span><span class="hljs-string">&quot;true&quot;</span>&gt; &lt;/iframe&gt;</code></pre></div>
+<iframe src="//player.bilibili.com/player.html?aid=53851218&bvid=BV1j4411W7F7&cid=94198756&page=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 
 <h2 id="文章摘要和截断"><a href="#文章摘要和截断" class="headerlink" title="文章摘要和截断"></a>文章摘要和截断</h2><p>在文章中使用 <code>&lt;!-- more --&gt;</code>，那么 <code>&lt;!-- more --&gt;</code> 之前的文字将会被视为摘要。首页中将只出现这部分文字，同时这部分文字也会出现在正文之中。</p>
 <p class="note note-success">注意，摘要可能会被 Front Matter 中的 excerpt 覆盖。</p>

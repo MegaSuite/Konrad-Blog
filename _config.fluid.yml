@@ -1041,6 +1041,13 @@ links:
     type: disqus
 
 
+#sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+
+  
 #---------------------------
 # 以下是配置 JS CSS 等静态资源的 URL 前缀，可以自定义成 CDN 地址，
 # 如果需要修改，最好使用与默认配置相同的版本，以避免潜在的问题，

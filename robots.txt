@@ -1,0 +1,16 @@
+# konradlocas.top robots.txt
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
+Allow: /about/
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+
+Sitemap: https://konradlocas.top/sitemap.xml
+Sitemap: https://konradlocas.top/baidusitemap.xml

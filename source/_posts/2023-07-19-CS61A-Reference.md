@@ -6,6 +6,7 @@ categories:
 - Major
 - CS61A
 index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307091514452.png
+excerpt: Composing Programs by John DeNero, based on the textbook Structure and Interpretation of Computer Programs by Harold Abelson and Gerald Jay Sussman.
 ---
 
 {% note success %}

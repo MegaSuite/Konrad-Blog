@@ -9,7 +9,7 @@ index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/20230709151
 ---
 
 {% note success %}
-Composing Programs by [John DeNero](http://www.denero.org/), based on the textbook [Structure and Interpretation of Computer Programs](http://mitpress.mit.edu/sicp/) by Harold Abelson and Gerald Jay Sussman, is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
+Composing Programs by <u>[John DeNero](http://www.denero.org/)</u>, based on the textbook <u>[Structure and Interpretation of Computer Programs](http://mitpress.mit.edu/sicp/)</u> by Harold Abelson and Gerald Jay Sussman, is licensed under a <u>[Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/)</u>.
 
 {% endnote %}
 

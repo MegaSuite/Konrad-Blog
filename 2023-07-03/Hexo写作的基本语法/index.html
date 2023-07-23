@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307031929239.png">
 <meta property="article:published_time" content="2023-07-03T02:04:09.000Z">
-<meta property="article:modified_time" content="2023-07-19T11:41:19.042Z">
+<meta property="article:modified_time" content="2023-07-23T11:44:40.194Z">
 <meta property="article:author" content="Konrad Locas">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary_large_image">
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.4k 字
+          4.1k 字
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          29 分钟
+          35 分钟
         
       </span>
     
@@ -361,7 +361,32 @@ Every interaction is both precious and an opportunity <span class="hljs-selector
 <blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
 <footer><strong>Seth Godin</strong><cite><a target="_blank" rel="noopener" href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html">Welcome to Island Marketing</a></cite></footer></blockquote>
 
-<p class='note note-success'>语法相对来说繁杂，不是很建议使用</p>
+<h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><p>引用其他文章的链接。</p>
+<div class="code-wrapper"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">post_path</span> filename %&#125;</span><span class="language-xml"></span>
+<span class="language-xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name">post_link</span> filename [title] [escape] %&#125;</span></code></pre></div>
+
+<p>在使用此标签时可以忽略文章文件所在的路径或者文章的永久链接信息、如语言、日期。</p>
+<p>例如，在文章中使用 <code>&#123;% post_link how-to-bake-a-cake %&#125;</code> 时，只需有一个名为 <code>how-to-bake-a-cake.md</code> 的文章文件即可。即使这个文件位于站点文件夹的 <code>source/posts/2015-02-my-family-holiday</code> 目录下、或者文章的永久链接是 <code>2018/en/how-to-bake-a-cake</code>，都没有影响。</p>
+<p>默认链接文字是文章的标题，你也可以自定义要显示的文本。</p>
+<p>默认对文章的标题和自定义标题里的特殊字符进行转义。可以使用 <code>escape</code> 选项，禁止对特殊字符进行转义。</p>
+<p>例如：</p>
+<p><strong>链接使用文章的标题</strong></p>
+<div class="code-wrapper"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">post_link</span> hexo-<span class="hljs-number">3</span>-<span class="hljs-number">8</span>-released <span class="hljs-template-tag">%&#125;</span></code></pre></div>
+
+<p><a target="_blank" rel="noopener" href="https://hexo.io/news/2018/10/19/hexo-3-8-released/">Hexo 3.8.0 Released</a></p>
+<p><strong>链接使用自定义文字</strong></p>
+<div class="code-wrapper"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">post_link</span> hexo-<span class="hljs-number">3</span>-<span class="hljs-number">8</span>-released <span class="hljs-string">&#x27;通往文章的链接&#x27;</span> <span class="hljs-template-tag">%&#125;</span></code></pre></div>
+
+<p><a target="_blank" rel="noopener" href="https://hexo.io/news/2018/10/19/hexo-3-8-released/">通往文章的链接</a></p>
+<p><strong>对标题的特殊字符进行转义</strong></p>
+<div class="code-wrapper"><pre><code class="hljs crmsh">&#123;% post_link hexo-<span class="hljs-number">4</span>-released &#x27;How to use <span class="hljs-tag">&lt;b&gt;</span> <span class="hljs-keyword">tag</span> <span class="hljs-title">in</span> title&#x27; %&#125;</code></pre></div>
+
+<p><a target="_blank" rel="noopener" href="https://hexo.io/news/2019/10/14/hexo-4-released/">How to use  tag in title</a></p>
+<p><strong>禁止对标题的特殊字符进行转义</strong></p>
+<div class="code-wrapper"><pre><code class="hljs twig"><span class="hljs-template-tag">&#123;%</span> <span class="hljs-name">post_link</span> hexo-<span class="hljs-number">4</span>-released <span class="hljs-string">&#x27;&lt;b&gt;bold&lt;/b&gt; custom title&#x27;</span> false <span class="hljs-template-tag">%&#125;</span></code></pre></div>
+
+<p><a target="_blank" rel="noopener" href="https://hexo.io/news/2019/10/14/hexo-4-released/"><strong>bold</strong> custom title</a></p>
+<p class='note note-success'>语法相对来说繁杂，非必要不建议使用</p>
 
 
 <h2 id="代码块Code："><a href="#代码块Code：" class="headerlink" title="代码块Code："></a>代码块Code：</h2><p>最常用的是Markdown方法插入代码：</p>

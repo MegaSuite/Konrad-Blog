@@ -1,5 +1,5 @@
 ---
-title: CS61A-lab03-div_by_primes_under-analysis
+title: CS61A-lab03_Analysis_Q5
 date: 2023-07-26 15:51:39
 tags: CS61A
 categories:
@@ -9,11 +9,7 @@ index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/20230709151
 excerpt: Short analysis about div_by_primes_under in lab03
 ---
 
-{% note success %}
-
 ## Q5: It's Always a Good Prime
-
-{% endnote %}
 
 > Implement `div_by_primes_under`, which takes  in an integer `n` and returns an n-divisibility checker. An *n-divisibility-checker* is a function that takes in an integer k and returns whether `k` is divisible by any integers between 2 and `n`, inclusive. Equivalently, it returns whether `k` is divisible by any primes less than or equal to `n`.
 >
@@ -23,7 +19,7 @@ excerpt: Short analysis about div_by_primes_under in lab03
 
 ## Solution:
 
-```py
+```python
 def div_by_primes_under(n):
     """
     >>> div_by_primes_under(10)(11)
@@ -100,7 +96,7 @@ def div_by_primes_under_no_lambda(n):
 
 理解此种一般做法之后，再来对官网给出的答案进行分析：
 
-```py
+```python
 def div_by_primes_under_no_lambda(n):
     """
     >>> div_by_primes_under_no_lambda(10)(11)

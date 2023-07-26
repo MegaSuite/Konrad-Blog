@@ -22,14 +22,14 @@
   
     <meta name="description" content="Short analysis about div_by_primes_under in lab03">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CS61A-lab03-div_by_primes_under-analysis">
-<meta property="og:url" content="https://konradlocas.top/2023-07-26/CS61A-lab03-div-by-primes-under-analysis/index.html">
+<meta property="og:title" content="CS61A-lab03_Analysis_Q5">
+<meta property="og:url" content="https://konradlocas.top/2023-07-26/CS61A-lab03_Analysis_Q5/index.html">
 <meta property="og:site_name" content="Konrad&#39;s Blog">
 <meta property="og:description" content="Short analysis about div_by_primes_under in lab03">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307091514452.png">
 <meta property="article:published_time" content="2023-07-26T07:51:39.000Z">
-<meta property="article:modified_time" content="2023-07-26T10:05:07.787Z">
+<meta property="article:modified_time" content="2023-07-26T10:12:19.928Z">
 <meta property="article:author" content="Konrad Locas">
 <meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,7 +39,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>CS61A-lab03-div_by_primes_under-analysis - Konrad&#39;s Blog</title>
+  <title>CS61A-lab03_Analysis_Q5 - Konrad&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -220,7 +220,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CS61A-lab03-div_by_primes_under-analysis"></span>
+            <span id="subtitle" data-typed-text="CS61A-lab03_Analysis_Q5"></span>
           
         </div>
 
@@ -300,21 +300,17 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">CS61A-lab03-div_by_primes_under-analysis</h1>
+            <h1 style="display: none">CS61A-lab03_Analysis_Q5</h1>
             
             
               <div class="markdown-body">
                 
-                <div class="note note-success">
-            <h2 id="Q5-It’s-Always-a-Good-Prime"><a href="#Q5-It’s-Always-a-Good-Prime" class="headerlink" title="Q5: It’s Always a Good Prime"></a>Q5: It’s Always a Good Prime</h2>
-          </div>
-
-<blockquote>
+                <h2 id="Q5-It’s-Always-a-Good-Prime"><a href="#Q5-It’s-Always-a-Good-Prime" class="headerlink" title="Q5: It’s Always a Good Prime"></a>Q5: It’s Always a Good Prime</h2><blockquote>
 <p>Implement <code>div_by_primes_under</code>, which takes  in an integer <code>n</code> and returns an n-divisibility checker. An <em>n-divisibility-checker</em> is a function that takes in an integer k and returns whether <code>k</code> is divisible by any integers between 2 and <code>n</code>, inclusive. Equivalently, it returns whether <code>k</code> is divisible by any primes less than or equal to <code>n</code>.</p>
 <p>Review the Disc 01 <code>is_prime</code> problem for a reminder about prime numbers.</p>
 <p>You can also choose to do the no lambda version, which is the same problem, just with defining functions with def instead of lambda.</p>
 </blockquote>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">div_by_primes_under</span>(<span class="hljs-params">n</span>):
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">div_by_primes_under</span>(<span class="hljs-params">n</span>):
     <span class="hljs-string">&quot;&quot;&quot;</span>
 <span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under(10)(11)</span>
 <span class="hljs-string">    False</span>
@@ -383,7 +379,7 @@
     <span class="hljs-keyword">return</span> normal_checker</code></pre></div>
 
 <p>理解此种一般做法之后，再来对官网给出的答案进行分析：</p>
-<div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">div_by_primes_under_no_lambda</span>(<span class="hljs-params">n</span>):
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">div_by_primes_under_no_lambda</span>(<span class="hljs-params">n</span>):
     <span class="hljs-string">&quot;&quot;&quot;</span>
 <span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(10)(11)</span>
 <span class="hljs-string">    False</span>
@@ -465,8 +461,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CS61A-lab03-div_by_primes_under-analysis</div>
-      <div>https://konradlocas.top/2023-07-26/CS61A-lab03-div-by-primes-under-analysis/</div>
+      <div>CS61A-lab03_Analysis_Q5</div>
+      <div>https://konradlocas.top/2023-07-26/CS61A-lab03_Analysis_Q5/</div>
     </div>
     <div class="license-meta">
       

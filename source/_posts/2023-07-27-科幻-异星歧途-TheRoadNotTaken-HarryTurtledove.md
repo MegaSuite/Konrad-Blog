@@ -5,6 +5,7 @@ tags: Daily
 categories:
 - Daily
 excerpt: ⌈八十亿疯狗冲出地球⌋的灵感起源，转载自互联网
+index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307272039046.jpg
 ---
 
 <h2 align='center'>异星歧途(The Road Not Taken) </h2>
@@ -13,7 +14,7 @@ excerpt: ⌈八十亿疯狗冲出地球⌋的灵感起源，转载自互联网
 
 <p align='center'>姚人杰 译 </p>
 
-### 入侵 
+### 入侵
 
 当“不摧号”凭借超空间引擎而凭空出现时，托格兰姆队长正在如厕。像经常发生的那样，这位罗克索兰人军官感到一阵反胃。他拿起便桶，对着它猛然呕吐起来。 
 

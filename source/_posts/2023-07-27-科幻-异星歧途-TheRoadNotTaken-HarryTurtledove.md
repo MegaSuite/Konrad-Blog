@@ -1,10 +1,10 @@
 ---
-title: 科幻-异星歧途(TheRoadNotTaken)-HarryTurtledove
+title: 科幻-异星歧途(TheRoadNotTaken)
 date: 2023-07-27 20:07:40
 tags: Daily
 categories:
 - Daily
-excerpt: ⌈八十亿疯狗冲出地球⌋的灵感起源，转载自互联网
+excerpt: -HarryTurtledove
 index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307272039046.jpg
 ---
 
@@ -13,6 +13,8 @@ index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/20230727203
 <p align='center'>哈利·托特达夫 Harry Turtledove </p>
 
 <p align='center'>姚人杰 译 </p>
+
+<p class='note note-success'>⌈八十亿疯狗冲出地球⌋的灵感起源，转载自互联网</p>
 
 ### 入侵
 

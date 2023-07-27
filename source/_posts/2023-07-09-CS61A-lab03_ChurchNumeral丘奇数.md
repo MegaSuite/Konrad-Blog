@@ -1,14 +1,15 @@
 ---
-title: CS61A-ChurchNumeral丘奇数
+title: CS61A-lab03-Q6_ChurchNumeral丘奇数
 date: 2023-07-09 15:09:34
 tags: CS61A
 categories:
 - Major
 - CS61A
 index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307091514452.png
+excerpt: CS61A-lab03-Q6-ChurchNumerals
 ---
 
-## Q6: Church numerals
+## Q6: Church Numerals
 
 > The logician Alonzo Church invented a system of representing non-negative integers entirely using functions. The purpose was to show that functions are sufficient to describe all of number theory: if we have functions, we do not need to assume that numbers exist, but instead we can invent them.
 >

@@ -4,7 +4,7 @@ date: 2023-07-27 20:07:40
 tags: Daily
 categories:
 - Daily
-excerpt: -HarryTurtledove
+excerpt: ——Harry Turtledove
 index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307272039046.jpg
 ---
 

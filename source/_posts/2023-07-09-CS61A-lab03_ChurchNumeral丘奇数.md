@@ -144,7 +144,7 @@ def n(f):
 
 
 
-**接下来考虑 `church_to_int` 的实现。**
+### `church_to_int` 
 
  `church_to_int` 本质上就是计数嵌套的 `f`有多少个。每走一层就给计数变量加一。
 
@@ -194,7 +194,7 @@ def pow_church(m, n):
 
 
 
-**考虑`add_church`**
+### `add_church`
 
 我们把`m`和`n`各自看成整体。`m`是`m`个`f`函数嵌套的整体，可以看成是关于函数`f`的函数，`n`是`n`个`f`函数嵌套的整体.
 
@@ -215,7 +215,7 @@ def add_church(m, n):
 
 
 
-**接下来考虑实现 `mul_church` **
+### `mul_church` 
 
 计算 `n×m`也就是 `m` 个` n` 相加，我们需要先把函数`f`嵌套`n`次，再把嵌套之后得到的`n`函数值嵌套`m`次。
 
@@ -228,30 +228,32 @@ def add_church(m, n):
 ```python
 def mul_church(m, n):
 	return lambda f: m(n(f))
-	'''
+	'''or
     return lambda f: lambda x: m(n(f))(x)
     '''
 ```
 
 
 
-最后考虑 `pow_church` ，`m(f)` 的功用是将 `m`个` f` 嵌套起来，那么 `n(m(f))`的功用也就是将 `n`个`m(f)`嵌套起来，即
+### `pow_church` 
 
-<img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307281702055.png" style="zoom:50%;" />
+`m(f)` 的功用是将 `m`个` f` 嵌套起来，那么 `n(m(f))`的功用也就是将 `n`个`m(f)`嵌套起来，即
 
-这正是乘方的定义。
+<p align='center'><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307281702055.png" style="zoom:50%;" /></p>
 
 ```python
 def pow_church(m, n):
     return n(m)
-    '''
+    '''or
     return lambda f: n(m)(f)
     '''
 ```
 
 
 
-**`m x n`写成：`lambda f: m(n(f))`， `m^n`写成：`lambda f: n(m)(f)`。这两者看起来非常非常相似，为什么结果相差这么大呢？**
+### FAQ
+
+`m x n`写成：`lambda f: m(n(f))`， `m^n`写成：`lambda f: n(m)(f)`。这两者看起来非常非常相似，为什么结果相差这么大呢？
 
 
 
@@ -266,12 +268,6 @@ def pow_church(m, n):
 > `n(f)`是`n`函数作用于`f`上的结果，这个结果不再具备将函数嵌套`n`层的能力。所以外层再套上`m`函数，得到的也只是这个结果本身嵌套`m`次。
 >
 > 而`n(m)`不同，传入的参数是`m`本身，而非`m`作用之后的结果，`m`函数的功能就是将输入的函数嵌套`m`次，所以当它经过`n`函数作用于自身的时候，**总层数会不停地乘上`m`**。
-
-
-
-***
-
-
 
 ## Reference
 

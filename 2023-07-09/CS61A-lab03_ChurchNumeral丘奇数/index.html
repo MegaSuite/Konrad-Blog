@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307091514452.png">
 <meta property="article:published_time" content="2023-07-09T07:09:34.000Z">
-<meta property="article:modified_time" content="2023-07-28T11:13:30.196Z">
+<meta property="article:modified_time" content="2023-07-28T11:19:50.178Z">
 <meta property="article:author" content="Konrad Locas">
 <meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary_large_image">
@@ -413,8 +413,7 @@ two = successor(one) = successor(successor(zero))</code></pre></div>
 
 
 
-<p><strong>接下来考虑 <code>church_to_int</code> 的实现。</strong></p>
-<p> <code>church_to_int</code> 本质上就是计数嵌套的 <code>f</code>有多少个。每走一层就给计数变量加一。</p>
+<h3 id="church-to-int"><a href="#church-to-int" class="headerlink" title="church_to_int"></a><code>church_to_int</code></h3><p> <code>church_to_int</code> 本质上就是计数嵌套的 <code>f</code>有多少个。每走一层就给计数变量加一。</p>
 <p>考虑将<code> f</code> 设置为自增函数 <code>increment</code> 。这样，传入的参数值就是计数变量的初值，函数的返回值就是终值了。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">two</span>(<span class="hljs-params">f</span>):
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> x: f(f(x))
@@ -452,8 +451,7 @@ increment = <span class="hljs-keyword">lambda</span> x: x + <span class="hljs-nu
 
 
 <p><strong>显然，这不会也不应该是最佳答案</strong></p>
-<p><strong>考虑<code>add_church</code></strong></p>
-<p>我们把<code>m</code>和<code>n</code>各自看成整体。<code>m</code>是<code>m</code>个<code>f</code>函数嵌套的整体，可以看成是关于函数<code>f</code>的函数，<code>n</code>是<code>n</code>个<code>f</code>函数嵌套的整体.</p>
+<h3 id="add-church"><a href="#add-church" class="headerlink" title="add_church"></a><code>add_church</code></h3><p>我们把<code>m</code>和<code>n</code>各自看成整体。<code>m</code>是<code>m</code>个<code>f</code>函数嵌套的整体，可以看成是关于函数<code>f</code>的函数，<code>n</code>是<code>n</code>个<code>f</code>函数嵌套的整体.</p>
 <p>当<code>m</code>和<code>n</code>传入的参数<code>f</code>相同时，我们要求<code>m+n</code>，即想办法获得一个<code>m+n</code>层的高阶函数.</p>
 <p>用数学表达式为：<code>f(f(f(.....[f(f(f(x)))].....)))</code>，内部的括号为<code>n</code>层f嵌套，外层为<code>m</code>层括号嵌套。</p>
 <p>考虑计算 <code>m+n</code>，也就是把 <code>m+n</code>个<code> f</code> 套在一起。而我们知道<code>m(f)</code>可以实现 <code>m</code>次嵌套,<code>n(f)</code>可以实现 <code>n</code> 次嵌套。</p>
@@ -463,31 +461,29 @@ increment = <span class="hljs-keyword">lambda</span> x: x + <span class="hljs-nu
 
 
 
-<p>**接下来考虑实现 <code>mul_church</code> **</p>
-<p>计算 <code>n×m</code>也就是 <code>m</code> 个<code> n</code> 相加，我们需要先把函数<code>f</code>嵌套<code>n</code>次，再把嵌套之后得到的<code>n</code>函数值嵌套<code>m</code>次。</p>
+<h3 id="mul-church"><a href="#mul-church" class="headerlink" title="mul_church"></a><code>mul_church</code></h3><p>计算 <code>n×m</code>也就是 <code>m</code> 个<code> n</code> 相加，我们需要先把函数<code>f</code>嵌套<code>n</code>次，再把嵌套之后得到的<code>n</code>函数值嵌套<code>m</code>次。</p>
 <p>这一次对于<code>m</code>函数而言，它的参数不再是函数<code>f</code>，而是嵌套之后的函数值<code>n</code>。</p>
 <p>换言之，即 <code>n(f)</code> 自己套自己套上 <code>m</code>次：</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">mul_church</span>(<span class="hljs-params">m, n</span>):
 	<span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> f: m(n(f))
-	<span class="hljs-string">&#x27;&#x27;&#x27;</span>
+	<span class="hljs-string">&#x27;&#x27;&#x27;or</span>
 <span class="hljs-string">    return lambda f: lambda x: m(n(f))(x)</span>
 <span class="hljs-string">    &#x27;&#x27;&#x27;</span></code></pre></div>
 
 
 
-<p>最后考虑 <code>pow_church</code> ，<code>m(f)</code> 的功用是将 <code>m</code>个<code> f</code> 嵌套起来，那么 <code>n(m(f))</code>的功用也就是将 <code>n</code>个<code>m(f)</code>嵌套起来，即</p>
-<img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307281702055.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
+<h3 id="pow-church"><a href="#pow-church" class="headerlink" title="pow_church"></a><code>pow_church</code></h3><p><code>m(f)</code> 的功用是将 <code>m</code>个<code> f</code> 嵌套起来，那么 <code>n(m(f))</code>的功用也就是将 <code>n</code>个<code>m(f)</code>嵌套起来，即</p>
+<p align='center'><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307281702055.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
 
-<p>这正是乘方的定义。</p>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">pow_church</span>(<span class="hljs-params">m, n</span>):
     <span class="hljs-keyword">return</span> n(m)
-    <span class="hljs-string">&#x27;&#x27;&#x27;</span>
+    <span class="hljs-string">&#x27;&#x27;&#x27;or</span>
 <span class="hljs-string">    return lambda f: n(m)(f)</span>
 <span class="hljs-string">    &#x27;&#x27;&#x27;</span></code></pre></div>
 
 
 
-<p><strong><code>m x n</code>写成：<code>lambda f: m(n(f))</code>， <code>m^n</code>写成：<code>lambda f: n(m)(f)</code>。这两者看起来非常非常相似，为什么结果相差这么大呢？</strong></p>
+<h3 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h3><p><code>m x n</code>写成：<code>lambda f: m(n(f))</code>， <code>m^n</code>写成：<code>lambda f: n(m)(f)</code>。这两者看起来非常非常相似，为什么结果相差这么大呢？</p>
 <blockquote>
 <p>最简单的解释就是<strong>作用对象不同</strong>。</p>
 <p>先来看第一条：<code>lambda f: m(n(f))</code>。把<code>m</code>和<code>n</code>分别看成是一个整体，在这行代码当中，<code>n</code>接收了一个参数<code>f</code>。而<code>m</code>接收的参数是<code>n(f)</code>。我们可以做一个换元，我们假设<code>g = n(f)</code>，那么<code>m</code>函数的入参就是<code>g</code>。</p>
@@ -496,7 +492,6 @@ increment = <span class="hljs-keyword">lambda</span> x: x + <span class="hljs-nu
 <p><code>n(f)</code>是<code>n</code>函数作用于<code>f</code>上的结果，这个结果不再具备将函数嵌套<code>n</code>层的能力。所以外层再套上<code>m</code>函数，得到的也只是这个结果本身嵌套<code>m</code>次。</p>
 <p>而<code>n(m)</code>不同，传入的参数是<code>m</code>本身，而非<code>m</code>作用之后的结果，<code>m</code>函数的功能就是将输入的函数嵌套<code>m</code>次，所以当它经过<code>n</code>函数作用于自身的时候，**总层数会不停地乘上<code>m</code>**。</p>
 </blockquote>
-<hr>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/505962536">日拱一卒，伯克利CS61A，作业3</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Shimarin/p/13823520.html">CS61A Homework: Church Numerals</a>
 <a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/267917164">记录一道颇有意思的CS61A python作业题Church numerals</a>

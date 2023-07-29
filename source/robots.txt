@@ -1,4 +1,4 @@
-# konradlocas.top robots.txt
+# updating.top robots.txt
 User-agent: *
 Allow: /
 Allow: /archives/
@@ -12,5 +12,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: https://konradlocas.top/sitemap.xml
-Sitemap: https://konradlocas.top/baidusitemap.xml
+Sitemap: https://updating.top/sitemap.xml
+Sitemap: https://updating.top/baidusitemap.xml

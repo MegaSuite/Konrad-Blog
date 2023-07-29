@@ -2,6 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://updating.top/CS61A-Reference/</loc>
+    
+    <lastmod>2023-07-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://updating.top/CS61A-lab03_Analysis_Q5/</loc>
+    
+    <lastmod>2023-07-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://updating.top/%E7%A7%91%E5%B9%BB-%E5%BC%82%E6%98%9F%E6%AD%A7%E9%80%94-TheRoadNotTaken-HarryTurtledove/</loc>
+    
+    <lastmod>2023-07-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://updating.top/about/index.html</loc>
+    
+    <lastmod>2023-07-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://updating.top/Hexo%E5%86%99%E4%BD%9C%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</loc>
     
     <lastmod>2023-07-29</lastmod>
@@ -57,42 +93,6 @@
   
   <url>
     <loc>https://updating.top/%E8%99%9A%E6%8B%9F%E7%9A%84%E5%B1%B1%E6%B2%B3%E5%A4%A7%E5%AD%A6%E4%B8%8E%E7%9C%9F%E5%AE%9E%E7%9A%84%E6%95%99%E8%82%B2%E5%9B%B0%E5%A2%83/</loc>
-    
-    <lastmod>2023-07-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://updating.top/CS61A-Reference/</loc>
-    
-    <lastmod>2023-07-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://updating.top/CS61A-lab03_Analysis_Q5/</loc>
-    
-    <lastmod>2023-07-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://updating.top/%E7%A7%91%E5%B9%BB-%E5%BC%82%E6%98%9F%E6%AD%A7%E9%80%94-TheRoadNotTaken-HarryTurtledove/</loc>
-    
-    <lastmod>2023-07-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://updating.top/about/index.html</loc>
     
     <lastmod>2023-07-29</lastmod>
     

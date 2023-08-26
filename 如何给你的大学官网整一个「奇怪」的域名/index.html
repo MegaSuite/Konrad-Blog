@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202308172325448.png">
 <meta property="article:published_time" content="2023-08-17T15:21:25.000Z">
-<meta property="article:modified_time" content="2023-08-26T13:24:14.664Z">
+<meta property="article:modified_time" content="2023-08-26T13:31:19.874Z">
 <meta property="article:author" content="Konrad Locas">
 <meta property="article:tag" content="Tricks">
 <meta name="twitter:card" content="summary_large_image">
@@ -313,17 +313,17 @@
 <li><a target="_blank" rel="noopener" href="https://www.west.cn/">西部数码</a>（不是那个卖硬盘的</li>
 </ul>
 </blockquote>
-<p>这三家的域名我都持有，腾讯云的免费解析套餐<code>A</code>类型解析条数限制两条（虽有些抠门，但也够用了），腾讯云也是续费优惠做得比较好的一家。西部数码的官网很有互联网初期的气息（多少年没打扮打扮了，乍一看像个盗版下载站），但功能是三家里最贴心的，新用户1元购也十分具有吸引力，域名<code>push</code>等独创功能也很增强使用体验。阿里云是三者里的老大，目前域名保有数量最多的注册商，虽然优惠力度没有那么大，但贵在较为稳定，相关一条龙服务也很成熟。</p>
+<p>这三家的域名我都持有，腾讯云的免费解析套餐<code>A</code>类型解析条数限制两条（虽有些抠门，但也够用了），腾讯云也是续费优惠做得比较好的一家。西部数码的官网很有互联网初期的气息（多少年没打扮打扮了，乍一看像个盗版下载站），但功能是三家里最贴心的，新用户1元购很有吸引力，域名<code>push</code>等独创功能也很增强使用体验。阿里云是三者里的老大，目前域名保有数量最多的注册商，虽然优惠力度没有那么大，但贵在较为稳定，相关一条龙服务也很成熟。</p>
 <h2 id="配置域名的指向"><a href="#配置域名的指向" class="headerlink" title="配置域名的指向"></a>配置域名的指向</h2><p>作为一个整活折腾爱好者，你可能已经通过教程，借助<code>Github Pages</code>搭建了自己的静态博客，其中域名的配置就采用了<code>CNAME</code>直接指向的方法，那就这样做！ ？？？</p>
-<img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202308262035105.png" srcset="/img/loading.gif" lazyload alt="一般的CNAME指向" style="zoom:50%;" />
-
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202308262035105.png" srcset="/img/loading.gif" lazyload alt="CNAME"></p>
 <p>戳啦！</p>
 <p><code>Github Pages</code>可以用<code>CNAME</code>指向，是因为<code>Github</code>本身就想让你指向，但各大学校的官网建立的时候应该不会想被<code>中国原神大学.love</code>这种指向，由此，如果你直接使用<code>CNAME</code>指向，访问的时候只能得到<code>Access Denied</code>，很不幸，你想指，人家不让你指。</p>
 <p>万幸，我们可以曲线救国，用一个瞬间访问的静态网页进行跳转，只需几行代码，如此，就算你不让我指，你也拿我没办法，总不能拒绝外来访问吧（好贱啊）。</p>
-<blockquote>
 <p>（广告时间到</p>
+<blockquote>
 <a href="/%E4%BB%8Ehexo%E5%BC%80%E5%90%AF%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" title="从hexo开启第一篇博客">从hexo开启第一篇博客</a>
-
+</blockquote>
+<blockquote>
 <a href="/Hexo%E5%86%99%E4%BD%9C%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" title="Hexo写作的基本语法">Hexo写作的基本语法</a>
 </blockquote>
 <h2 id="搭建方法"><a href="#搭建方法" class="headerlink" title="搭建方法"></a>搭建方法</h2><p class='note note-success'>正片开始</p>
@@ -331,13 +331,13 @@
 <p>搭建方法跟搭建静态博客类似，不过这个博客只有一个<code>index.html</code>文件，里面只有几行代码，起到无延迟自动跳转的效果。</p>
 <img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202308262050263.png" srcset="/img/loading.gif" lazyload alt="文件结构" style="zoom:50%;" />
 
+<p>此为文件内的代码，<code>content</code>后的<code>0</code>代表<code>0</code>延时跳转，<code>url</code>后当然就是某大学官网的链接（坏笑），将此代码粘贴保存即可。</p>
+<p>之后就是配置静态<code>Pages</code>，把域名指向此静态页面，然后此页面再进行页面跳转。</p>
 <div class="code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
 <span class="hljs-comment">&lt;!--定时转到其他页面 --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;refresh&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;0;url=https://www.hust.edu.cn/&quot;</span>&gt;</span> 
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></code></pre></div>
 
-<p>此为文件内的代码，<code>content</code>后的<code>0</code>代表<code>0</code>延时跳转，<code>url</code>后当然就是某大学官网的链接（坏笑），将此代码粘贴保存即可。</p>
-<p>之后就是配置静态<code>Pages</code>，把域名指向此静态页面，然后此页面再进行页面跳转。</p>
 <p>你当然可以用<code>Github Pages</code>配置静态页面 ，像你之前所做的那样（请看上面广告，参考第一篇文章中的域名配置相关内容，不再赘述），但我更建议使用<code>Vercel</code>，功能更强大的静态页面托管服务（个人版免费）。</p>
 <h2 id="Vercel的使用"><a href="#Vercel的使用" class="headerlink" title="Vercel的使用"></a>Vercel的使用</h2><p>接下来，着重介绍<code>Vercel</code>的使用，</p>
 <h2 id="注意！！"><a href="#注意！！" class="headerlink" title="注意！！"></a>注意！！</h2><p>中文域名不可直接填入</p>

@@ -62,7 +62,7 @@ netsh interface Teredo show state
 
 ## 开始
 
-按照上文方式，打开“本地组策略编辑器“，找到计算机配置——管理模版——网络——`TCP/IP`设置——`IPv6`转换技术。
+按照上文方式，打开“本地组策略编辑器“，找到计算机配置——管理模版——网络——`TCPIP`设置——`IPv6`转换技术。
 将所有配置设置为“未配置”。
 
 ![组策略编辑器](https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191622804.png)
@@ -94,7 +94,7 @@ netsh interface teredo set state server=win1901.ipv6.microsoft.com
 # or
 netsh interface teredo set state server=win10.ipv6.microsoft.com
 
-# 其他可尝试的服务器
+# 可尝试的服务器
 
 teredo2.remlab.net
 teredo.iks-jena.de

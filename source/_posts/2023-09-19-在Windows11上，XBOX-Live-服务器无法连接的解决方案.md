@@ -36,7 +36,7 @@ netsh interface Teredo show state
 
 - 新建一个文本文档，比如`a.txt`，将下面的代码粘贴进去。
 
-- ```bash
+```bash
   @echo off
   
   pushd "%~dp0"
@@ -48,7 +48,7 @@ netsh interface Teredo show state
   for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-package:"C:\Windows\servicing\Packages\%%i"
   
   pause
-  ```
+```
 
 - 保存文档，修改文件名为`a.cmd`，右键`->`以管理员身份运行
 

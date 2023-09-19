@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191601314.png">
 <meta property="article:published_time" content="2023-09-19T07:58:44.000Z">
-<meta property="article:modified_time" content="2023-09-19T09:05:26.460Z">
+<meta property="article:modified_time" content="2023-09-19T09:10:04.352Z">
 <meta property="article:author" content="Konrad Locas">
 <meta property="article:tag" content="Game">
 <meta property="article:tag" content="XBOX">
@@ -244,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          2.3k 字
         
       </span>
     
@@ -255,7 +255,7 @@
         
         
         
-          21 分钟
+          20 分钟
         
       </span>
     
@@ -321,58 +321,51 @@
 <p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191612414.png" srcset="/img/loading.gif" lazyload alt="打开terminal"></p>
 <p>3、检查自己的<code>Windows</code>版本，如果是家庭版（笔记本基本都是)，需要通过运行脚本获取“组策略”选项。</p>
 <ul>
-<li><p>新建一个文本文档，比如<code>a.txt</code>，将下面的代码粘贴进去。</p>
+<li>新建一个文本文档，比如<code>a.txt</code>，将下面的代码粘贴进去。</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs bash">@<span class="hljs-built_in">echo</span> off
+
+<span class="hljs-built_in">pushd</span> <span class="hljs-string">&quot;%~dp0&quot;</span>
+
+<span class="hljs-built_in">dir</span> /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txt
+
+<span class="hljs-built_in">dir</span> /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txt
+
+<span class="hljs-keyword">for</span> /f %%i <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;findstr /i . List.txt 2^&gt;nul&#x27;</span>) <span class="hljs-keyword">do</span> dism /online /norestart /add-package:<span class="hljs-string">&quot;C:\Windows\servicing\Packages\%%i&quot;</span>
+
+pause</code></pre></div>
+
+<ul>
+<li><p>保存文档，修改文件名为<code>a.cmd</code>，右键<code>-&gt;</code>以管理员身份运行</p>
+<blockquote>
+<p>如果无法更改后缀，可用<code>VS Code</code>打开，或者<a target="_blank" rel="noopener" href="https://www.php.cn/faq/569056.html">查看此文章</a></p>
+</blockquote>
 </li>
-<li><div class="code-wrapper"><pre><code class="bash">@echo off
-
-pushd &quot;%~dp0&quot;
-
-dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txt
-
-dir /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txt
-
-for /f %%i in (&#39;findstr /i . List.txt 2^&gt;nul&#39;) do dism /online /norestart /add-package:&quot;C:\Windows\servicing\Packages\%%i&quot;
-
-pause
-<pre><code class="hljs pf">
-- 保存文档，修改文件名为`a.cmd`，右键`-&gt;`以管理员身份运行
-
-  &gt; 如果无法更改后缀，可用`VS Code`打开，或者[查看此文章](https://www.php.cn/faq/<span class="hljs-number">569056</span>.html)
-
-- 按`win`+`R`组合键，输入`gpedit.msc`，回车，若出现组策略编辑窗口则成功。
-
-<span class="hljs-number">4</span>、检测本地`ipv6`是否开启，有的加速器会把`ipv6`关掉，比如小黑盒加速器
-
-&gt; `ipv6`的配置方式可以问度娘，或者[查看此文章](https://www.sohu.com/a/<span class="hljs-number">322875365</span>_594016)
-
-<span class="hljs-comment">## 开始</span>
-
-按照上文方式，打开“本地组策略编辑器“，找到计算机配置——管理模版——网络——`TCP/IP`设置——`IPv6`转换技术。
-将所有配置设置为“未配置”。
-
-![组策略编辑器](https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/<span class="hljs-number">202309191622804</span>.png)
-
-管理员权限运行终端，在其中运行以下命令：
-
-【建议一条一条来】
-
-```bash
-<span class="hljs-comment"># 启用windows防火墙</span>
-netsh advfirewall <span class="hljs-built_in">set</span> allprofiles <span class="hljs-keyword">state</span> <span class="hljs-keyword">on</span>
-<span class="hljs-comment"># 修复注册表：</span>
-reg add HKLMSystemCurrentControlSetServicesTcpip6Parameters /v DisabledComponents /t REG_DWORD /d <span class="hljs-number">0</span>x0
-<span class="hljs-comment"># 禁用Teredo功能：</span>
-netsh interface Teredo <span class="hljs-built_in">set</span> <span class="hljs-keyword">state</span> disable
-<span class="hljs-comment"># 还原teredo状态：</span>
-netsh interface Teredo <span class="hljs-built_in">set</span> <span class="hljs-keyword">state</span> servername=<span class="hljs-keyword">default</span>
-<span class="hljs-comment"># 检测teredo状态：</span>
-netsh interface Teredo show <span class="hljs-keyword">state</span>
-<span class="hljs-comment"># 设置客户端类型：</span>
-netsh interface Teredo <span class="hljs-built_in">set</span> <span class="hljs-keyword">state</span> type=enterpriseclient
-<span class="hljs-comment"># 查看teredo情况，状态异常为disable，正常为dormant / qualified</span></code></pre></div>
-</code></pre>
+<li><p>按<code>win</code>+<code>R</code>组合键，输入<code>gpedit.msc</code>，回车，若出现组策略编辑窗口则成功。</p>
 </li>
 </ul>
+<p>4、检测本地<code>ipv6</code>是否开启，有的加速器会把<code>ipv6</code>关掉，比如小黑盒加速器</p>
+<blockquote>
+<p><code>ipv6</code>的配置方式可以问度娘，或者<a target="_blank" rel="noopener" href="https://www.sohu.com/a/322875365_594016">查看此文章</a></p>
+</blockquote>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>按照上文方式，打开“本地组策略编辑器“，找到计算机配置——管理模版——网络——<code>TCP/IP</code>设置——<code>IPv6</code>转换技术。<br>将所有配置设置为“未配置”。</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191622804.png" srcset="/img/loading.gif" lazyload alt="组策略编辑器"></p>
+<p>管理员权限运行终端，在其中运行以下命令：</p>
+<p>【建议一条一条来】</p>
+<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 启用windows防火墙</span>
+netsh advfirewall <span class="hljs-built_in">set</span> allprofiles state on
+<span class="hljs-comment"># 修复注册表：</span>
+reg add HKLMSystemCurrentControlSetServicesTcpip6Parameters /v DisabledComponents /t REG_DWORD /d 0x0
+<span class="hljs-comment"># 禁用Teredo功能：</span>
+netsh interface Teredo <span class="hljs-built_in">set</span> state <span class="hljs-built_in">disable</span>
+<span class="hljs-comment"># 还原teredo状态：</span>
+netsh interface Teredo <span class="hljs-built_in">set</span> state servername=default
+<span class="hljs-comment"># 检测teredo状态：</span>
+netsh interface Teredo show state
+<span class="hljs-comment"># 设置客户端类型：</span>
+netsh interface Teredo <span class="hljs-built_in">set</span> state <span class="hljs-built_in">type</span>=enterpriseclient
+<span class="hljs-comment"># 查看teredo情况，状态异常为disable，正常为dormant / qualified</span></code></pre></div>
+
 <p>如果服务器无法连接，可以命令行运行下列任意一条命令更改<code>Teredo</code>服务器，之后运行<code>netsh interface Teredo show state</code>检测，多尝试几次</p>
 <div class="code-wrapper"><pre><code class="hljs bash">netsh interface teredo <span class="hljs-built_in">set</span> state server=win1901.ipv6.microsoft.com
 <span class="hljs-comment"># or</span>

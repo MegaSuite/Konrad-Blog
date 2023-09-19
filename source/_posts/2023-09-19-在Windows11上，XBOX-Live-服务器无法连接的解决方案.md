@@ -119,7 +119,7 @@ teredo.trex.fi
 
 ![fail](https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191629279.png)
 
-<img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191630104.png" alt="success！" style="zoom: 67%;" />
+![Success!](https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191630104.png)
 
 > 上述成功图片所示并不能算是最完美的结果，但开个加速器就可以用了，具体最后的结果与所处网络环境有关，毕竟巨硬的服务器一向比较玄学。。。
 

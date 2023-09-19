@@ -1,5 +1,5 @@
 ---
-title: 在Windows11上，XBOX Live 服务器无法连接的解决方案
+title: 在Win11上，XBOX Live无法连接的解决方案
 date: 2023-09-19 15:58:44
 tags:
 - Game
@@ -8,13 +8,14 @@ categories:
 - Daily
 - Games
 index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191601314.png
+excerpt: 在Windows11上，XBOX Live 服务器无法连接的解决方案
 ---
 
 # 在Windows11上，XBOX Live 服务器无法连接的解决方案
 
-> 在玩地平线4的时候，多人模式总是无法连接，网上的教程又都是基于Windows10的，折腾到凌晨两点也没有成功。
+> 在玩地平线4的时候，多人模式总是无法连接，网上的教程又都是基于`Windows10`的，折腾到凌晨两点也没有成功。
 >
-> 第二天早上突发奇想，跟随一篇教程检查了ipv6状态，从而解决了这个问题
+> 第二天早上突发奇想，跟随一篇教程检查了`ipv6`状态，从而解决了这个问题
 
 ## 首先
 
@@ -26,7 +27,7 @@ index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/20230919160
 netsh interface Teredo show state
 ```
 
-2、学会使用管理员模式运行命令行工具，这里使用Windows11自带的终端。开始菜单中搜索得到终端之后，右键`用管理员身份运行`。
+2、学会使用管理员模式运行命令行工具，这里使用`Windows11`自带的终端。开始菜单中搜索得到终端之后，右键`用管理员身份运行`。
 
 我们将在这里进行命令行输入。
 
@@ -95,7 +96,6 @@ netsh interface teredo set state server=win1901.ipv6.microsoft.com
 netsh interface teredo set state server=win10.ipv6.microsoft.com
 
 # 可尝试的服务器
-
 teredo2.remlab.net
 teredo.iks-jena.de
 win10.ipv6.microsoft.com
@@ -119,13 +119,15 @@ teredo.trex.fi
 
 ![fail](https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191629279.png)
 
-![success！](https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191630104.png)
+<img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191630104.png" alt="success！" style="zoom: 67%;" />
 
 > 上述成功图片所示并不能算是最完美的结果，但开个加速器就可以用了，具体最后的结果与所处网络环境有关，毕竟巨硬的服务器一向比较玄学。。。
 
-如果上述仍然失效，可以尝试使用“奇游加速器”的修复功能。（非广告，笔者修复过程中确实使用过此功能，与上述步骤结合，从而无法确定其是否发挥作用，大家可以尝试一下）
+如果上述仍然失效，可以尝试使用`奇游加速器`的修复功能。（非广告，笔者修复过程中确实使用过此功能，与上述步骤结合，从而无法确定其是否发挥作用，大家可以尝试一下）
 
 > 环境：湖北某大学校园网，`Windows 11`，地平线4
+
+**地平线，启动！**
 
 ## 参考
 

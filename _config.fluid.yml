@@ -426,7 +426,7 @@ footer:
   content: '
     Build by <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
     with <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid Theme</span></a>
-    <br/> © 2023 Konrad Locas
+    <br/> © 2023 Konrad Gerrens
     <div style="font-size: 0.85rem">
     <span id="timeDate">载入天数...</span>
     <span id="times">载入时分秒...</span>
@@ -952,13 +952,13 @@ about:
   banner_img_height: 60
   banner_mask_alpha: 0.3
   avatar: /img/avatar1.png
-  name: "Konrad Locas"
+  name: "Konrad Gerrens"
   intro: "We only live so long, we just skip that proof."
   # 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
   # More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, The icon is no longer a link, but a hovering QR code
   icons:
     - { class: "iconfont icon-github-fill", link: "https://github.com/MegaSuite", tip: "GitHub" }
-    - { class: "iconfont icon-telegram-fill", link: "https://t.me/Konrad_Locas", tip: "Telegram" }
+    - { class: "iconfont icon-telegram-fill", link: "https://t.me/Konrad_Gerrens", tip: "Telegram" }
     - { class: "iconfont icon-bilibili-fill", link: "https://space.bilibili.com/321198240?spm_id_from=..0.0", tip: "BiliBili" }
     - { class: "iconfont icon-zhihu-fill", link: "https://www.zhihu.com/people/megasuite", tip: "Zhihu"}
 

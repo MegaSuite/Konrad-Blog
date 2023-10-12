@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307091514452.png">
 <meta property="article:published_time" content="2023-07-19T09:18:41.000Z">
-<meta property="article:modified_time" content="2023-10-08T12:53:00.785Z">
+<meta property="article:modified_time" content="2023-10-12T03:37:50.701Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary_large_image">
@@ -400,10 +400,10 @@
 42</code></pre></div>
 
 <p>Expressions representing numbers may be combined with mathematical operators to form a compound expression, which the interpreter will evaluate:</p>
-<div class="code-wrapper"><pre><code class="hljs awk">&gt;&gt;&gt; -<span class="hljs-number">1</span> - -<span class="hljs-number">1</span>
-<span class="hljs-number">0</span>
-&gt;&gt;&gt; <span class="hljs-number">1</span><span class="hljs-regexp">/2 + 1/</span><span class="hljs-number">4</span> + <span class="hljs-number">1</span><span class="hljs-regexp">/8 + 1/</span><span class="hljs-number">16</span> + <span class="hljs-number">1</span><span class="hljs-regexp">/32 + 1/</span><span class="hljs-number">64</span> + <span class="hljs-number">1</span>/<span class="hljs-number">128</span>
-<span class="hljs-number">0.9921875</span></code></pre></div>
+<div class="code-wrapper"><pre><code class="hljs python-repl"><span class="hljs-meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">-<span class="hljs-number">1</span> - -<span class="hljs-number">1</span></span>
+0
+<span class="hljs-meta prompt_">&gt;&gt;&gt;</span> <span class="language-python"><span class="hljs-number">1</span>/<span class="hljs-number">2</span> + <span class="hljs-number">1</span>/<span class="hljs-number">4</span> + <span class="hljs-number">1</span>/<span class="hljs-number">8</span> + <span class="hljs-number">1</span>/<span class="hljs-number">16</span> + <span class="hljs-number">1</span>/<span class="hljs-number">32</span> + <span class="hljs-number">1</span>/<span class="hljs-number">64</span> + <span class="hljs-number">1</span>/<span class="hljs-number">128</span></span>
+0.9921875</code></pre></div>
 
 <p>These mathematical expressions use <em>infix</em> notation, where the <em>operator</em> (e.g., <code>+</code>, <code>-</code>, <code>*</code>, or <code>/</code>) appears in between the <em>operands</em> (numbers). Python includes many ways to form compound expressions. Rather than attempt to enumerate them all immediately, we will introduce new expression forms as we go, along with the language features that they support.</p>
 <h3 id="1-2-2-Call-Expressions"><a href="#1-2-2-Call-Expressions" class="headerlink" title="1.2.2  Call Expressions"></a>1.2.2  Call Expressions</h3><p>The most important kind of compound expression is a <em>call expression</em>, which applies a function to some arguments. Recall from algebra that the mathematical notion of a function is a mapping from some input arguments to an output value. For instance, the <code>max</code> function maps its inputs to a single output, which is the largest of the inputs. The way in which Python expresses function application is the same as in conventional mathematics.</p>
@@ -737,10 +737,10 @@ operator     operand 0     operand 1</code></pre></div>
 2.0</code></pre></div>
 
 <p>The <code>//</code> operator, on the other hand, rounds the result down to an integer:</p>
-<div class="code-wrapper"><pre><code class="hljs awk">&gt;&gt;&gt; <span class="hljs-number">5</span> <span class="hljs-regexp">//</span> <span class="hljs-number">4</span>
-<span class="hljs-number">1</span>
-&gt;&gt;&gt; -<span class="hljs-number">5</span> <span class="hljs-regexp">//</span> <span class="hljs-number">4</span>
--<span class="hljs-number">2</span></code></pre></div>
+<div class="code-wrapper"><pre><code class="hljs python-repl"><span class="hljs-meta prompt_">&gt;&gt;&gt;</span> <span class="language-python"><span class="hljs-number">5</span> // <span class="hljs-number">4</span></span>
+1
+<span class="hljs-meta prompt_">&gt;&gt;&gt;</span> <span class="language-python">-<span class="hljs-number">5</span> // <span class="hljs-number">4</span></span>
+-2</code></pre></div>
 
 <p>These two operators are shorthand for the <code>truediv</code> and <code>floordiv</code> functions.</p>
 <div class="code-wrapper"><pre><code class="hljs python-repl"><span class="hljs-meta prompt_">&gt;&gt;&gt;</span> <span class="language-python"><span class="hljs-keyword">from</span> operator <span class="hljs-keyword">import</span> truediv, floordiv</span>
@@ -1161,10 +1161,10 @@ ok</code></pre></div>
         <span class="hljs-keyword">return</span> update</code></pre></div>
 
 <p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307191843782.png" srcset="/img/loading.gif" lazyload></p>
-<div class="code-wrapper"><pre><code class="hljs reasonml">&gt;&gt;&gt; def find<span class="hljs-constructor">_zero(<span class="hljs-params">f</span>, <span class="hljs-params">df</span>)</span>:
-        def near<span class="hljs-constructor">_zero(<span class="hljs-params">x</span>)</span>:
-            return approx<span class="hljs-constructor">_eq(<span class="hljs-params">f</span>(<span class="hljs-params">x</span>)</span>, <span class="hljs-number">0</span>)
-        return improve(newton<span class="hljs-constructor">_update(<span class="hljs-params">f</span>, <span class="hljs-params">df</span>)</span>, near_zero)</code></pre></div>
+<div class="code-wrapper"><pre><code class="hljs perl">&gt;&gt;&gt; def find_zero(f, df):
+        def near_zero(<span class="hljs-keyword">x</span>):
+            <span class="hljs-keyword">return</span> approx_e<span class="hljs-string">q(f(x)</span>, <span class="hljs-number">0</span>)
+        <span class="hljs-keyword">return</span> improve(newton_update(f, df), near_zero)</code></pre></div>
 
 <p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307191842997.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307191822805.png" srcset="/img/loading.gif" lazyload></p>

@@ -2,24 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://updating.top/f0cf1809de5e/</loc>
-    
-    <lastmod>2023-10-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://updating.top/a0f53eaa756e/</loc>
-    
-    <lastmod>2023-10-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://updating.top/85e7182bef8a/</loc>
     
     <lastmod>2023-10-23</lastmod>
@@ -174,6 +156,24 @@
   
   <url>
     <loc>https://updating.top/069cd3d8367c/</loc>
+    
+    <lastmod>2023-10-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://updating.top/f0cf1809de5e/</loc>
+    
+    <lastmod>2023-10-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://updating.top/a0f53eaa756e/</loc>
     
     <lastmod>2023-10-23</lastmod>
     
@@ -355,13 +355,6 @@
   
   <url>
     <loc>https://updating.top/categories/Docker/</loc>
-    <lastmod>2023-10-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://updating.top/categories/Daily/Games/</loc>
     <lastmod>2023-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

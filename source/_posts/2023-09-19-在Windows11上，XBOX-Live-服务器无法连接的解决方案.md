@@ -6,7 +6,6 @@ tags:
 - XBOX
 categories:
 - Daily
-- Games
 index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191601314.png
 excerpt: 在Windows11上，XBOX Live 服务器无法连接的解决方案
 ---

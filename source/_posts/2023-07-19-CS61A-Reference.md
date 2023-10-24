@@ -1,7 +1,8 @@
 ---
 title: CS61A-Reference
 date: 2023-07-19 17:18:41
-tags: CS61A
+tags: 
+- CS61A
 categories:
 - Major
 - CS61A

@@ -1,7 +1,8 @@
 ---
 title: CS61A-lab03-Q6_ChurchNumeral丘奇数
 date: 2023-07-09 15:09:34
-tags: CS61A
+tags: 
+- CS61A
 categories:
 - Major
 - CS61A

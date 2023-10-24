@@ -7,7 +7,7 @@ tags:
 categories:
 - Daily
 index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191601314.png
-excerpt: 在Windows11上，XBOX Live 服务器无法连接的解决方案
+excerpt: 畅玩地平线4的解决方案（bushi
 ---
 
 # 在Windows11上，XBOX Live 服务器无法连接的解决方案

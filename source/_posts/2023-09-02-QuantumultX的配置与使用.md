@@ -1,7 +1,8 @@
 ---
 title: QuantumultX的配置与使用
 date: 2023-09-02 23:23:49
-tags: QuantumultX
+tags: 
+- QuantumultX
 categories:
 - Major
 - Proxies

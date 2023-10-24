@@ -22,14 +22,14 @@
   
     <meta name="description" content="欧拉筛法的实际应用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【数论】欧拉筛法">
-<meta property="og:url" content="https://updating.top/9c30e0147818/">
+<meta property="og:title" content="【数论】欧拉筛法-埃拉托斯特尼筛法">
+<meta property="og:url" content="https://updating.top/a3ff88c52c5c/">
 <meta property="og:site_name" content="Ethereal State">
 <meta property="og:description" content="欧拉筛法的实际应用">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309192017040.png">
 <meta property="article:published_time" content="2023-09-19T12:13:08.000Z">
-<meta property="article:modified_time" content="2023-10-24T12:06:36.832Z">
+<meta property="article:modified_time" content="2023-10-24T14:58:07.003Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,7 +39,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>【数论】欧拉筛法 - Ethereal State</title>
+  <title>【数论】欧拉筛法-埃拉托斯特尼筛法 - Ethereal State</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -220,7 +220,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【数论】欧拉筛法"></span>
+            <span id="subtitle" data-typed-text="【数论】欧拉筛法-埃拉托斯特尼筛法"></span>
           
         </div>
 
@@ -300,87 +300,60 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">【数论】欧拉筛法</h1>
+            <h1 style="display: none">【数论】欧拉筛法-埃拉托斯特尼筛法</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="第2关：输出指定范围内的素数"><a href="#第2关：输出指定范围内的素数" class="headerlink" title="第2关：输出指定范围内的素数"></a>第2关：输出指定范围内的素数</h3><ul>
-<li>编写一个能输出指定范围内的素数的小程序。</li>
-</ul>
-<h3 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h3><ul>
-<li>为了完成本关任务，你需要掌握：如何判断一个正整数是否是素数。</li>
-</ul>
-<p><strong>如何判断一个正整数是否是素数</strong></p>
-<ul>
-<li>素数（Prime Number），又称质数，一个大于1的自然数，除了1和它自身外，不能整除其他自然数的数叫做质数；否则，称为合数（Composite Number）。1既不是素数，也不是合数。</li>
-<li>如<code>2、3、5、7、11都是素数</code>，<code>因为找不到除了1和其本身之外的约数</code>；而<code>4、6、8都是合数</code>，<code>因为4可以整除2，6可以整除2和3，8可以整除2和4</code>。</li>
-<li>根据上述定义，我们很容易写出判断一个素数是否是素数的代码：</li>
-</ul>
-<div class="code-wrapper"><pre><code class="hljs python"> <span class="hljs-keyword">def</span> <span class="hljs-title function_">is_prime_1</span>(<span class="hljs-params">x</span>):
-        <span class="hljs-keyword">if</span> x == <span class="hljs-number">1</span>:
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, x):
-            <span class="hljs-keyword">if</span> x % i == <span class="hljs-number">0</span>:
-                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
-<span class="hljs-number">1234567</span></code></pre></div>
+                <h1 id="欧拉筛法"><a href="#欧拉筛法" class="headerlink" title="欧拉筛法"></a>欧拉筛法</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote>
+<p>筛法就是求出小于等于<code>n</code>的所有素数的方法，找到一个素数后，就将它的倍数标记为合数，也就是把它的倍数“筛掉”。如果一个数没有被比它小的素数“筛掉”，那它就是素数。</p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><div class="code-wrapper"><pre><code class="hljs c"><span class="hljs-type">bool</span> isprime[MAXN]; <span class="hljs-comment">// isprime[i]标记`i`是否是素数的数组</span>
+<span class="hljs-type">int</span> prime[MAXN]; <span class="hljs-comment">// 目前的素数列表</span>
+<span class="hljs-type">int</span> n; <span class="hljs-comment">// 筛选上限</span>
+<span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>; <span class="hljs-comment">// 已经筛出的素数数量</span>
 
+<span class="hljs-type">void</span> <span class="hljs-title function_">euler</span><span class="hljs-params">()</span>
+&#123;
+    <span class="hljs-built_in">memset</span>(isprime, <span class="hljs-literal">true</span>, <span class="hljs-keyword">sizeof</span>(isprime)); <span class="hljs-comment">//先全部标记为素数</span>
+    isprime[<span class="hljs-number">1</span>] = <span class="hljs-literal">false</span>; <span class="hljs-comment">//已知，1不是素数</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) <span class="hljs-comment">// i从2循环到n（外层循环）</span>
+    &#123;
+        <span class="hljs-keyword">if</span>(isprime[i])<span class="hljs-comment">//isprime[i] == 1</span>
+            prime[++cnt] = i;
+        <span class="hljs-comment">// 如果i没有被前面的数筛掉，则i是素数，此处prime[0]元素并未被使用，符合直觉</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= cnt &amp;&amp; i * prime[j] &lt;= n; j++)
+        <span class="hljs-comment">// 使用j循环枚举现在已经筛出的素数,以筛掉i的素数倍，即i的prime[j]倍</span>
+        &#123;
+            isprime[i * prime[j]] = <span class="hljs-literal">false</span>;
+            <span class="hljs-comment">// 倍数标记为合数，也就是i用prime[j]把i * prime[j]筛掉了</span>
+            <span class="hljs-keyword">if</span>(i % prime[j] == <span class="hljs-number">0</span>) 
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-comment">// 如果i整除prime[j]，退出循环，这样可以保证线性的时间复杂度</span>
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+
+<p>假设要筛出<code>n</code>以内的素数。我们先把所有数标记为素数。枚举<code>i</code>从<code>2</code>到<code>n</code>，所以因为<code>i</code>是从小到大的，如果<code>i</code>没有被比它小的数标记为合数，那<code>i</code>就是素数（任意合数的因数一定比它本身小，若<code>i</code>没有被前面的数筛掉，那么它就没有比自己小的因数，当然它就是素数），加入素数列表。</p>
+<p>现在用<code>i</code>来筛后面的数，枚举已经筛出来的素数<code>prime[j]</code>（<code>j∈[1,cnt]</code>），标记<code>i * prime[j]</code>为合数（<code>i ≥ 2，prime[j] ≥ 2</code>，它们的乘积一定为合数），当<code>i</code>是<code>prime[j]</code>的倍数时退出循环，<code>i++</code>。</p>
+<h2 id="正确性证明"><a href="#正确性证明" class="headerlink" title="正确性证明"></a>正确性证明</h2><p>假设我们要筛掉合数<code>a</code>，且<code>a</code>的最小质因数为<code>P1</code>，令<code>a = P1 * b</code> ,那么显然<code>b &lt; a</code>，<code>b</code>先被外层循环碰到。现在<code>b</code>要筛掉它的倍数。</p>
+<p>因为<code>P1</code>是<code>a</code>的最小质因数，所以<code>b</code>的最小质因数必不小于<code>P1</code>，这样就保证<code>b</code>筛掉<code>a</code>前不会在<code>if(i % prime[j] == 0) break;</code>处跳出循环。</p>
+<p>即使<code>b</code>的最小质因数等于<code>P1</code>，也会先筛掉<code>a</code>后再退出循环。这样就保证了每个合数都会被筛掉。</p>
+<h2 id="时间复杂度证明"><a href="#时间复杂度证明" class="headerlink" title="时间复杂度证明"></a>时间复杂度证明</h2><p>欧拉筛法的时间、空间复杂度为<code>Θ(n)</code>。</p>
+<p>空间复杂度是显然的，下面证明时间复杂度为线性。</p>
+<p>我们的核心就是要证明一个合数只会被筛掉一次，即标记<code>isprime[n]=1</code>一次。首先，对于<code>a = P1 * b</code>，<code>b</code>当然只会筛掉<code>a</code>一次，因为我们从小到大枚举<code>prime[j]</code>，也就是说<code>b * prime[j]</code>递增，因此不可能遇到<code>a</code>两次。会不会有其他的数筛掉<code>a</code>呢？假设<code>a</code>又被<code>c</code>筛掉了，其中<code>a = Px * c</code>，<code>Px</code>就是<code>c</code>用来筛掉<code>a</code>的<code>prime[j]</code>。</p>
 <ul>
-<li>假设一个正整数a，则其可以被写成任意两个正整数之积，即<code>a = p * q</code>，假设<code>p &lt; q</code>，那么正整数<code>p</code>和<code>q</code>都是<code>a</code>的约数，注意到，如果我们知道<code>p</code>是<code>a</code>的约数，那么可以通过<code>q = a / p</code>快速求得另外一个约数<code>q</code>。所以，我们在判断质数的时候，只需要枚举2到不大于<code>sqrt(a)</code>的正整数即可。</li>
-<li>虽然通过上述方法，已经能让我们在根号级别的复杂度内，判断一个正整数是否是素数，但如果我们要判断很多个数是否为素数呢？是否每次都需要枚举<code>int(sqrt(a)+1)</code>个数呢？回到我们最初的起点，我们之所以要枚举这些数，就是想找出原数的约数。然后除1外，任何一个正整数都能写成多个素数的乘积的形式，那么我们枚举特定范围内的所有素数，也能达到相同的效果，而且在判断多个正整数是否是素数的时候，我们只需要枚举更少的质因数与其比较。大家可以看下面不同区间内的素数统计结果：</li>
+<li>若<code>c &gt; b</code>，则<code>Px &lt; P1</code>，与<code>P1</code>是<code>a</code>最小的质因数矛盾，假设不成立；</li>
+<li>若<code>c &lt; b</code>，则<code>Px &gt; P1</code>，这意味着<code>P1</code>是<code>c</code>的质因数。那么<code>c</code>从小到大筛掉它的素数倍，在筛到<code>P1 * c</code>时就<code>break</code>了，所以根本轮不到<code>a</code>。</li>
 </ul>
-<blockquote>
-<p>从上图的统计结果我们可以发现，当区间越来越大，里面的素数个数和区间内所有数字的个数差距也越来越大。所以，我们用区间内的素数，去判断一个整数是不是素数，比较的次数将更少。</p>
-</blockquote>
-<ul>
-<li>而求不超过某个正整数x内的所有素数，有一个著名的算法——埃拉托斯特尼筛法。其算法描述为：</li>
-</ul>
-<blockquote>
-<ol>
-<li>先用一个数组vis，把不大于该正整数x的所有正整数标记为0，表示没有访问；</li>
-<li>然后从第一个素数2开始遍历整个区间，如果当前访问的数没有访问过，则可以认为它是一个素数，那么就将它在该区间内所有的倍数全部标记为已访问，这样就保证外部的循环发现的没有访问过的数都是素数。</li>
-</ol>
-</blockquote>
-<ul>
-<li>其具体实现如下述代码所示：</li>
-</ul>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">sieve</span>(<span class="hljs-params">x</span>):
-    vis = [<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(x+<span class="hljs-number">1</span>)]
-    prime_table = []
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, x+<span class="hljs-number">1</span>):
-        <span class="hljs-keyword">if</span> vis[i] == <span class="hljs-number">0</span>:
-            prime_table.append(i)
-            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i*<span class="hljs-number">2</span>, x+<span class="hljs-number">1</span>, i):
-                vis[j] = <span class="hljs-number">1</span>
-    <span class="hljs-keyword">return</span> prime_table
-<span class="hljs-number">123456789</span></code></pre></div>
+<p>综上所述，每个数都只会被筛掉一次，再加上外层的<code>i</code>的循环是线性复杂度，总的时间复杂度是线性的。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><div class="note note-success">
+            <p>来自：头歌-Python大数据与人工智能实践</p>
+          </div>
 
 <blockquote>
-<p><strong>然而，除了上述筛法，还有其他高效的筛法，比如欧拉筛法，这里只给出其代码实现，希望大家能仔细去体会。</strong></p>
-</blockquote>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">ouler</span>(<span class="hljs-params">x</span>):
-    vis = [<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(x+<span class="hljs-number">1</span>)]
-    prime_table = []
-    ln = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, x+<span class="hljs-number">1</span>):
-        <span class="hljs-keyword">if</span> vis[num] == <span class="hljs-number">0</span>:
-            prime_table.append(num)
-            ln += <span class="hljs-number">1</span>
-        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(ln):
-            <span class="hljs-keyword">if</span> num * prime_table[j] &gt; x:
-                <span class="hljs-keyword">break</span>
-            vis[num * prime_table[j]] = <span class="hljs-number">1</span>
-            <span class="hljs-keyword">if</span> num % prime_table[j] == <span class="hljs-number">0</span>:
-                <span class="hljs-keyword">break</span>
-    <span class="hljs-keyword">return</span> prime_table
-<span class="hljs-number">123456789101112131415</span></code></pre></div>
-
-<h3 id="编程要求"><a href="#编程要求" class="headerlink" title="编程要求"></a>编程要求</h3><ul>
-<li>计算并输出指定范围内的所有素数</li>
-</ul>
-<blockquote>
-<p>第一行输入正整数n，表示测试样例组数，接下来输入n行，每行输入两个正整数a和b，要求输出a和b之间（包括a和b）所有的素数，保证a&lt;b，且b不超过10^7</p>
+<p> 计算并输出指定范围内的所有素数。</p>
+<p>第一行输入正整数<code>n</code>，表示测试样例组数，接下来输入<code>n</code>行，每行输入两个正整数<code>a</code>和<code>b</code>，要求输出<code>a</code>和<code>b</code>之间（包括<code>a</code>和<code>b</code>）所有的素数，保证<code>a&lt;b</code>，且<code>b</code>不超过<code>10^7</code></p>
 </blockquote>
 <blockquote>
 <p>测试输入：</p>
@@ -397,7 +370,9 @@
 [<span class="hljs-number">999671</span>, <span class="hljs-number">999683</span>, <span class="hljs-number">999721</span>, <span class="hljs-number">999727</span>, <span class="hljs-number">999749</span>, <span class="hljs-number">999763</span>, <span class="hljs-number">999769</span>, <span class="hljs-number">999773</span>, <span class="hljs-number">999809</span>, <span class="hljs-number">999853</span>, <span class="hljs-number">999863</span>, <span class="hljs-number">999883</span>, <span class="hljs-number">999907</span>, <span class="hljs-number">999917</span>, <span class="hljs-number">999931</span>, <span class="hljs-number">999953</span>, <span class="hljs-number">999959</span>, <span class="hljs-number">999961</span>, <span class="hljs-number">999979</span>, <span class="hljs-number">999983</span>]
 <span class="hljs-number">12</span></code></pre></div>
 
-<p>上代码：</p>
+<blockquote>
+<p>CODE:</p>
+</blockquote>
 <div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>():
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">solve</span>(<span class="hljs-params">self, l, r</span>):
         <span class="hljs-string">&#x27;&#x27;&#x27;</span>
@@ -440,6 +415,7 @@
         <span class="hljs-keyword">return</span> ans
         <span class="hljs-comment">#********** End *********#</span></code></pre></div>
 
+<h1 id="埃拉托斯特尼筛法"><a href="#埃拉托斯特尼筛法" class="headerlink" title="埃拉托斯特尼筛法"></a>埃拉托斯特尼筛法</h1>
                 
               </div>
             
@@ -491,8 +467,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【数论】欧拉筛法</div>
-      <div>https://updating.top/9c30e0147818/</div>
+      <div>【数论】欧拉筛法-埃拉托斯特尼筛法</div>
+      <div>https://updating.top/a3ff88c52c5c/</div>
     </div>
     <div class="license-meta">
       

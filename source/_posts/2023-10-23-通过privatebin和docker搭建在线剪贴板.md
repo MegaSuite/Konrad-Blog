@@ -5,5 +5,5 @@ tags:
 - Docker
 categories:
 - Docker
-index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310231416101.png
+index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310241955323.png
 ---

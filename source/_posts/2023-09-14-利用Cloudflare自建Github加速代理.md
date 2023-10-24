@@ -245,7 +245,7 @@ async function proxy(urlObj, reqInit) {
 
 进入托管成功的域名管理页，在`DNS`->`Records`->`Add record`添加一条`A`类型解析记录，选择一个你喜欢的前缀（如`ghproxy`）填入`Name`项，`Content`项随便填一个合法的ip地址即可，然后打开橙色小云朵，点击保存。
 
-![dns recs](https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310241932536.png)
+![dns records](https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310241932536.png)
 
 然后来到下方添加路由，`Workers Routes`->`Add route`
 

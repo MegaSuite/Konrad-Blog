@@ -7,5 +7,5 @@ tags:
 categories:
 - Major
 - Proxies
-index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310231417034.png
+index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310261058310.png
 ---

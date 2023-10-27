@@ -27,27 +27,34 @@ excerpt: 搭建属于你自己的在线剪贴板
 
 ```bash
 docker run -d --restart="always" \
---name=privatebin \
---read-only \
--p 34321:8080 \
--v /home/konrad/privatebin/config/conf.php:/srv/cfg/conf.php:ro \
--v /home/konrad/privatebin/data/:/srv/data \
-privatebin/nginx-fpm-alpine:1.3.5 
-
-#-p 外部映射端口任意选择，不冲突即可，内部暴露端口不建议改，有的镜像会出问题
-#-v 配置data 和 config所在目录，根据自己服务器环境更改
-#--name 根据需要更改
+	--name=privatebin \
+	--read-only \
+	-p 34321:8080 \
+	-v /home/konrad/privatebin/config/conf.php:/srv/cfg/conf.php:ro \
+	-v /home/konrad/privatebin/data/:/srv/data \
+	privatebin/nginx-fpm-alpine:1.3.5 
 ```
 
-> 注意在**服务商控制台**安全组里放行相应端口，不要用宝塔放行，大部分不生效。
+> #-p 外部映射端口任意选择，**不冲突**即可，内部暴露端口不建议改，根据镜像作者的说明来，有的镜像更改会出问题。
+>
+> 由于Docker的内部端口是独立的，所以内部暴露端口不需要考虑冲突问题，也就是冒号后面的端口可以在不同容器间重复，比如有很多容器的暴露端口都是`8080`。
+>
+> 外部映射端口，也就是冒号前面的端口是不能重复的，因为这是宿主机的端口，每个端口都是唯一的，不能复用。
+>
+> #-v 配置data 和 config所在目录，根据自己服务器环境更改
+>
+> #--name 根据需要更改
+
+
+> 注意在**服务商控制台**安全组里放行相应端口，**不要**用宝塔放行，大部分不生效。
 
 > 访问相应`ip:port`网址访问页面，如`123.123.122.111:34321`
 
 ## 配置域名
 
-![error](https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310270930335.png)
-
 直接使用`ip`访问会出现错误，要求我们使用`https`协议，所以我们要配置域名和反向代理。
+
+![error](https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310270930335.png)
 
 当然，添加网站和`SSL`证书申请是必要的前期工作。
 

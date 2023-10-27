@@ -6,6 +6,7 @@ tags:
 categories:
 - Docker
 index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310241955323.png
+excerpt: 搭建属于你自己的在线剪贴板
 ---
 
 # 通过privatebin和docker搭建在线剪贴板
@@ -38,7 +39,7 @@ privatebin/nginx-fpm-alpine:1.3.5
 #--name 根据需要更改
 ```
 
-> 注意在安全组里放行相应端口，不要用宝塔放行，大部分不生效。
+> 注意在**服务商控制台**安全组里放行相应端口，不要用宝塔放行，大部分不生效。
 
 > 访问相应`ip:port`网址访问页面，如`123.123.122.111:34321`
 

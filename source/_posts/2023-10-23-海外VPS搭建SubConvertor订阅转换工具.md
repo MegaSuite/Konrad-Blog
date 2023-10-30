@@ -35,6 +35,12 @@ docker run -d \
 #-p 外部映射端口自选，与下方同步即可
 ```
 
+{% note success %}
+
+记得放行端口
+
+{% endnote %}
+
 使用`docker ps`查看运行中的容器。
 
 ![container](https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310271931496.png)

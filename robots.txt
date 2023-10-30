@@ -1,4 +1,4 @@
-# updating.top robots.txt
+# www.updating.top robots.txt
 User-agent: *
 Allow: /
 Allow: /archives/
@@ -12,5 +12,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: https://updating.top/sitemap.xml
-Sitemap: https://updating.top/baidusitemap.xml
+Sitemap: https://www.updating.top/sitemap.xml
+Sitemap: https://www.updating.top/baidusitemap.xml

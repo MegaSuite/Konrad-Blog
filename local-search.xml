@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>基于LskyPro和阿里云对象存储搭建私有图床</title>
+    <link href="/Pichost-aliyunoss-lskypro"/>
+    <url>/Pichost-aliyunoss-lskypro</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>Docker</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Docker</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>使用Twikoo和LskyPro搭建完善的私有评论系统</title>
     <link href="/Comment-Twikoo-LskyPro/"/>
     <url>/Comment-Twikoo-LskyPro/</url>

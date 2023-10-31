@@ -27,7 +27,8 @@ excerpt: 搭建属于你自己的在线剪贴板
 **正片开始**
 
 ```bash
-docker run -d --restart="always" \
+docker run -d \
+	--restart="always" \
 	--name=privatebin \
 	--read-only \
 	-p 34321:8080 \
@@ -36,9 +37,9 @@ docker run -d --restart="always" \
 	privatebin/nginx-fpm-alpine:1.3.5 
 ```
 
-{% note primary %}
+{% note success %}
 
-记得放行端口
+注意在**服务商控制台**安全组里放行相应端口，**不要**用宝塔放行，大部分不生效。
 
 {% endnote %}
 
@@ -52,9 +53,6 @@ docker run -d --restart="always" \
 >
 > #--name 根据需要更改
 
-
-> 注意在**服务商控制台**安全组里放行相应端口，**不要**用宝塔放行，大部分不生效。
-
 > 访问相应`ip:port`网址访问页面，如`123.123.122.111:34321`
 
 ## 配置域名
@@ -63,7 +61,7 @@ docker run -d --restart="always" \
 
 ![error](https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310270930335.png)
 
-当然，添加网站和`SSL`证书申请是必要的前期工作。
+去域名注册商或DNS提供商处添加`A`型解析，解析到当前服务器，添加网站和`SSL`证书申请也是必要的前期工作。
 
 ![添加网站](https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310270938114.png)
 

@@ -34,7 +34,7 @@ docker run -d \
 	-p 34321:8080 \
 	-v /home/konrad/privatebin/config/conf.php:/srv/cfg/conf.php:ro \
 	-v /home/konrad/privatebin/data/:/srv/data \
-	privatebin/nginx-fpm-alpine:1.3.5 
+	privatebin/nginx-fpm-alpine
 ```
 
 {% note success %}

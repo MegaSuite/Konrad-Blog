@@ -1,7 +1,7 @@
 ---
 title: 利用Cloudflare自建Github加速代理
 date: 2023-09-14 20:09:13
-permalink: Cloudflare-Github-Proxy
+permalink: Cloudflare-Github-Proxy/
 tags:
 - Github
 - Cloudflare

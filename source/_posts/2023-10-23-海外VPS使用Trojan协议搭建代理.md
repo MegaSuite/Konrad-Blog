@@ -1,7 +1,7 @@
 ---
 title: 海外VPS使用Trojan协议搭建代理
 date: 2023-10-23 14:09:29
-permalink: Trojan-Proxy
+permalink: Trojan-Proxy/
 tags:
 - Trojan
 - VPS

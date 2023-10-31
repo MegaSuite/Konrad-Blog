@@ -1,7 +1,7 @@
 ---
 title: 科幻-异星歧途(TheRoadNotTaken)
 date: 2023-07-27 20:07:40
-permalink: TheRoadNotTaken
+permalink: TheRoadNotTaken/
 tags: 
 - Daily
 categories:

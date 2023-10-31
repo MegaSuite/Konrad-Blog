@@ -1,7 +1,7 @@
 ---
 title: CS61A-lab03_Analysis_Q5
 date: 2023-07-26 15:51:39
-permalink: CS61A-lab03-Q5
+permalink: CS61A-lab03-Q5/
 tags: 
 - CS61A
 categories:

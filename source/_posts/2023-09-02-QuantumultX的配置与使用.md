@@ -1,7 +1,7 @@
 ---
 title: QuantumultX的配置与使用
 date: 2023-09-02 23:23:49
-permalink: QuantumultX-Config-and-Usage
+permalink: QuantumultX-Config-and-Usage/
 tags: 
 - QuantumultX
 categories:

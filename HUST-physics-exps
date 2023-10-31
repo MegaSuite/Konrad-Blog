@@ -23,13 +23,13 @@
     <meta name="description" content="跟烦人的物理实验Say Bye！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="华中科技大学物理实验报告">
-<meta property="og:url" content="https://www.updating.top/898c47b018cb/">
+<meta property="og:url" content="https://www.updating.top/HUST-physics-exps">
 <meta property="og:site_name" content="Ethereal State">
 <meta property="og:description" content="跟烦人的物理实验Say Bye！">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307061036639.jpg">
 <meta property="article:published_time" content="2023-07-06T02:24:21.000Z">
-<meta property="article:modified_time" content="2023-10-31T02:39:20.117Z">
+<meta property="article:modified_time" content="2023-10-31T02:58:50.151Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="Answer">
 <meta name="twitter:card" content="summary_large_image">
@@ -302,6 +302,14 @@
             <!-- SEO header -->
             <h1 style="display: none">华中科技大学物理实验报告</h1>
             
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2023年10月31日 上午
+                  
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
@@ -378,7 +386,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>华中科技大学物理实验报告</div>
-      <div>https://www.updating.top/898c47b018cb/</div>
+      <div>https://www.updating.top/HUST-physics-exps</div>
     </div>
     <div class="license-meta">
       
@@ -422,7 +430,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/37172163c189/" title="CS61A-lab03-Q6_ChurchNumeral丘奇数">
+                      <a href="/CS61A-lab03-ChurchNumeral" title="CS61A-lab03-Q6_ChurchNumeral丘奇数">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">CS61A-lab03-Q6_ChurchNumeral丘奇数</span>
                         <span class="visible-mobile">上一篇</span>
@@ -432,7 +440,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/7b8416c9c86f/" title="华中科技大学军事理论线上作业">
+                      <a href="/HUST-military-theory" title="华中科技大学军事理论线上作业">
                         <span class="hidden-mobile">华中科技大学军事理论线上作业</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>

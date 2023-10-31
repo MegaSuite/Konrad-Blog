@@ -20,16 +20,16 @@
   <meta name="author" content="Konrad Gerrens">
   <meta name="keywords" content="">
   
-    <meta name="description" content="The CS 61 series is an introduction to computer science, with particular emphasis on software and on machines from a programmer&#39;s point of view.">
+    <meta name="description" content="how to use &#39;yield&#39; keyword in Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="怎样系统地学习CS61A——以CS61A（Fa22）为例">
-<meta property="og:url" content="https://www.updating.top/105803162ef3/">
+<meta property="og:title" content="CS61A-hw05_Yield关键词的应用">
+<meta property="og:url" content="https://www.updating.top/CS61A-hw05-Yield">
 <meta property="og:site_name" content="Ethereal State">
-<meta property="og:description" content="The CS 61 series is an introduction to computer science, with particular emphasis on software and on machines from a programmer&#39;s point of view.">
+<meta property="og:description" content="how to use &#39;yield&#39; keyword in Python">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307091514452.png">
-<meta property="article:published_time" content="2023-07-14T09:11:53.000Z">
-<meta property="article:modified_time" content="2023-10-31T02:39:20.117Z">
+<meta property="article:published_time" content="2023-08-01T09:48:36.000Z">
+<meta property="article:modified_time" content="2023-10-31T02:58:50.151Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary_large_image">
@@ -39,7 +39,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>怎样系统地学习CS61A——以CS61A（Fa22）为例 - Ethereal State</title>
+  <title>CS61A-hw05_Yield关键词的应用 - Ethereal State</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -220,7 +220,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="怎样系统地学习CS61A——以CS61A（Fa22）为例"></span>
+            <span id="subtitle" data-typed-text="CS61A-hw05_Yield关键词的应用"></span>
           
         </div>
 
@@ -231,8 +231,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-14 17:11" pubdate>
-          2023年7月14日 下午
+        <time datetime="2023-08-01 17:48" pubdate>
+          2023年8月1日 下午
         </time>
       </span>
     
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          3.1k 字
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          21 分钟
+          26 分钟
         
       </span>
     
@@ -300,62 +300,108 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">怎样系统地学习CS61A——以CS61A（Fa22）为例</h1>
+            <h1 style="display: none">CS61A-hw05_Yield关键词的应用</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2023年10月31日 上午
+                  
+                
+              </p>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Overview-1"><a href="#Overview-1" class="headerlink" title="Overview[1]"></a>Overview<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[Syllabus & Course Policies | CS 61A Fall 2022 (berkeley.edu)](https://inst.eecs.berkeley.edu/~cs61a/fa22/articles/about/)">[1]</span></a></sup></h2><p>The <code>CS 61</code> series is an introduction to computer science, with particular emphasis on software and on machines from a programmer’s point of view.</p>
-<ol>
-<li><code>CS 61A</code> concentrates on the idea of abstraction, allowing the programmer to think in terms appropriate to the problem rather than in low-level operations dictated by the computer hardware.</li>
-<li><code>CS 61B</code> deals with the more advanced engineering aspects of software, such as constructing and analyzing large programs.</li>
-<li><code>CS 61C </code>focuses on machines and how they execute programs.</li>
-</ol>
-<p>In <code>CS 61A</code>, we are interested in teaching you about programming, not about how to use one particular programming language. We consider a series of techniques for managing program complexity, such as functional programming and object-oriented programming.</p>
-<p><code>CS 61A</code> primarily uses the <code>Python 3</code> programming language. <code>Python</code> is a popular language in both industry and academia. It is also particularly well-suited to the task of exploring the topics taught in this course. It is an open-source language developed by a large volunteer community that prides itself on the diversity of its contributors.</p>
-<p>Mastery of a particular programming language is a very useful side effect of <code>CS 61A</code>. However, our goal is not to dictate what language you use in your future endeavors. Instead, our hope is that once you have learned the concepts involved in programming, you will find that picking up a new programming language is but a few days’ work. In fact, you will be asked to learn at least two other languages, <code>Scheme</code> and <code>SQL</code>, during the course.</p>
-<blockquote>
-<p><code>CS 61</code> 系列是计算机科学的入门读物，尤其侧重于从程序员的角度介绍软件和机器。</p>
-<ol>
-<li><code>CS 61A</code>侧重于抽象概念，让程序员以适合问题的术语进行思考，而不是以计算机硬件规定的低级操作进行思考。</li>
-<li><code>CS 61B </code>涉及软件更高级的工程方面，如构建和分析大型程序。</li>
-<li><code>CS 61C</code> 侧重于机器及其如何执行程序。</li>
-</ol>
-<p>在 <code>CS 61A</code>中，我们感兴趣的是教你如何编程，而不是如何使用一种特定的编程语言。我们会考虑一系列管理程序复杂性的技术，如函数式编程和面向对象编程。</p>
-<p><code>CS 61A</code>主要使用 <code>Python 3</code>编程语言。<code>Python</code>在工业界和学术界都很流行。它也特别适合探索本课程所教授的主题。它是一种开源语言，由一个庞大的志愿者社区开发，该社区以其贡献者的多样性而自豪。</p>
-<p>掌握一门特定的编程语言是学习 <code>CS 61A</code>的一个非常有用的“副作用”。但是，我们的目标并不是规定您在未来的工作中使用哪种语言。相反，我们希望您一旦掌握了编程所涉及的概念，就会发现学习一门新的编程语言不过是几天的事情。事实上，在本课程中，您将被要求至少学习另外两种语言:<code>Scheme</code>和 <code>SQL</code>。</p>
+                <h1 id="CS61A-hw05-Yield关键词的应用"><a href="#CS61A-hw05-Yield关键词的应用" class="headerlink" title="CS61A-hw05_Yield关键词的应用"></a>CS61A-hw05_Yield关键词的应用</h1><blockquote>
+<p> 为了理解<code>yield</code>的原理，我们必须首先理解生成器和迭代器的原理。</p>
 </blockquote>
-<h2 id="How-to-Learn"><a href="#How-to-Learn" class="headerlink" title="How to Learn"></a>How to Learn</h2><p>这是官方网站：</p>
-<blockquote>
-<p> <a target="_blank" rel="noopener" href="https://inst.eecs.berkeley.edu/~cs61a/fa22/">CS 61A Fall 2022 (berkeley.edu)</a></p>
-</blockquote>
-<p>官方网站包含有录课视频链接，电子课本参考，以及课后练习（分为<code>homework</code>，<code>lab</code>，<code>project</code>，<code>discussion</code>【要求本校学生】四类），建议独立完成再结合他人答案思考，部分优秀大佬的答案真的能使人豁然开朗，下面是本人的答案，仅供参考：</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://github.com/MegaSuite/CS61A-Fall22">CS61A-FA22</a></p>
-</blockquote>
-<p>其中，官网中的电子课本链接可能由于DNS解析问题无法访问，在原有的链接前添加<code>www.</code>即可，或者参照我此篇文章：</p>
-<blockquote>
-<a href="/8170d74bed80/" title="CS61A-Reference">CS61A-Reference</a>
-</blockquote>
-<p>教学视频中提到的<code>python-tutor</code>可以通过以下链接访问:</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://pythontutor.com/cp/composingprograms.html#mode=edit">Online Python Tutor - Composing Programs - Python 3</a></p>
-</blockquote>
-<p>对于某些造成我个人困扰的问题，我也在博客中进行了单独的文章分析，包括但不限于以下篇目：</p>
-<blockquote>
-<a href="/069cd3d8367c/" title="CS61A-lab03_Analysis_Q5">CS61A-lab03_Analysis_Q5</a>
-</blockquote>
-<blockquote>
-<a href="/37172163c189/" title="CS61A-lab03-Q6_ChurchNumeral丘奇数">CS61A-lab03-Q6_ChurchNumeral丘奇数</a>
-</blockquote>
-<p><del>观看教学视频需要<em>科学上网</em>，都学这专业了，大概没人不会吧（</del></p>
-<p>解决了这些问题，你就可以开始在知识的海洋里遨游了，相信我，<code>CS61A</code>不会让你失望，无论是课程的深度还是相关配套设施的用心程度，都不是某些只把升职放在心上的所谓国内讲师可以比的（我也不想这么说，但现实就是这样）。其他的相关问题，网上也有许多大佬进行了解答，这里就不做赘述了</p>
-<div class="note note-primary">
-            <p>欢迎来到Ethereal State，祝你能愉悦地获得知识！</p>
-          </div>
+<h2 id="迭代器（Iterables）"><a href="#迭代器（Iterables）" class="headerlink" title="迭代器（Iterables）"></a>迭代器（Iterables）</h2><p>创建一个列表，我们可以依次读取列表中的元素，这种依次读取输出元素的行为称为迭代，被读取的对象称为迭代器。</p>
+<div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-meta">&gt;&gt;&gt; </span>lst = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> lst:
+<span class="hljs-meta">... </span>   <span class="hljs-built_in">print</span>(i)
+<span class="hljs-number">1</span>
+<span class="hljs-number">2</span>
+<span class="hljs-number">3</span></code></pre></div>
 
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://inst.eecs.berkeley.edu/~cs61a/fa22/articles/about/">Syllabus &amp; Course Policies | CS 61A Fall 2022 (berkeley.edu)</a>
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+<p>也可以通过列表推导式创建列表（迭代器）。</p>
+<div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-meta">&gt;&gt;&gt; </span>lst = [x*x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>)]<span class="hljs-comment">#········@1</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> lst:
+<span class="hljs-meta">... </span>   <span class="hljs-built_in">print</span>(i)
+<span class="hljs-number">0</span>
+<span class="hljs-number">1</span>
+<span class="hljs-number">4</span></code></pre></div>
+
+<p>一切可以通过<code>for...in...</code>进行迭代的对象都可以成为迭代器。迭代器的特征是将所需元素储存起来，以供读取，但当数据量很大时，使用迭代器产生数据则不是一个明智的选择，比如将上述代码<code>@1</code>行中<code>range(3)</code>里的数字改为极其庞大的数字，在<code>@1</code>行代码运行之后，程序便生成一个极占内存的大列表<code>lst</code>，但我们只是想输出一些数，没有必要使一个如此简单的行为消耗那么多资源，由此，我们就需要生成器的帮助。</p>
+<h2 id="生成器（Generators）"><a href="#生成器（Generators）" class="headerlink" title="生成器（Generators）"></a>生成器（Generators）</h2><p>生成器可以认为是迭代器的一种，不过只能依次迭代使用一次，不能重复迭代。生成器的特点是不储存生成值，即用即产，动态生成。</p>
+<div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-meta">&gt;&gt;&gt; </span>gen = (x*x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>))<span class="hljs-comment">#yield_atom</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> gen:
+<span class="hljs-meta">... </span>   <span class="hljs-built_in">print</span>(i)
+<span class="hljs-number">0</span>
+<span class="hljs-number">1</span>
+<span class="hljs-number">4</span></code></pre></div>
+
+<p>可见，生成器推导式与列表推导式的差距只在<code>()</code>和<code>[]</code>上，而且生成器对象只能迭代一次（继续迭代会抛出<code>StopIteration</code>错误）。</p>
+<h2 id="Yield"><a href="#Yield" class="headerlink" title="Yield"></a>Yield</h2><p><code>yield</code> 表达式的使用类似于<code>return</code>（详细用法参见<strong>Official Definition</strong>章节），区别在<code>yield</code>会使函数变为生成器函数。</p>
+<div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">def</span> <span class="hljs-title function_">create_gen</span>():
+<span class="hljs-meta">... </span>   lst = <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>)
+<span class="hljs-meta">... </span>   <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> lst:
+<span class="hljs-meta">... </span>       <span class="hljs-keyword">yield</span> i*i
+...
+<span class="hljs-meta">&gt;&gt;&gt; </span>gen = create_gen() <span class="hljs-comment"># 创建生成器</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(gen) <span class="hljs-comment"># gen是一个生成器对象</span>
+&lt;generator <span class="hljs-built_in">object</span> create_gen at <span class="hljs-number">0xb7555c34</span>&gt;
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> gen:
+<span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)
+<span class="hljs-number">0</span>
+<span class="hljs-number">1</span>
+<span class="hljs-number">4</span></code></pre></div>
+
+<p>生成器在产生只需要生成一次的输出序列时有很大的优势。迭代（比如<code>for</code>)第一次调用从函数创建的生成器对象时，它将从开头运行函数中的代码，直到到达<code>yield</code>，然后返回循环的第一个值。之后，每个后续调用都将运行在函数中编写的循环的另一次迭代，并返回下一个值，生成器函数体内的代码以<code>yield</code>语句所在处分界，某次循环开始时，函数会从上一次<code>yield</code>停止处开始运行（即运行<code>yield</code>的下一行），直到生成器被判定为空（<code>StopIteration</code>)。</p>
+<h2 id="Official-Definition-1"><a href="#Official-Definition-1" class="headerlink" title="Official Definition[1]"></a>Official Definition<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[6. Expressions — Python 3.12.0 documentation](https://docs.python.org/3/reference/expressions.html#grammar-token-python-grammar-yield_expression)">[1]</span></a></sup></h2><p><em><strong>6.2.9. Yield expressions</strong></em></p>
+<div class="code-wrapper"><pre><code class="hljs python">yield_atom       ::=  <span class="hljs-string">&quot;(&quot;</span> yield_expression <span class="hljs-string">&quot;)&quot;</span><span class="hljs-comment">#使用&quot;()&quot;包裹生成器推导式,产生生成器</span>
+yield_expression ::=  <span class="hljs-string">&quot;yield&quot;</span> [expression_list | <span class="hljs-string">&quot;from&quot;</span> expression]<span class="hljs-comment">#作为表达式在函数体中使用</span></code></pre></div>
+
+<p>yield 表达式在定义 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/glossary.html#term-generator">generator</a> 函数或 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/glossary.html#term-asynchronous-generator">asynchronous generator</a> 函数时才会用到因此只能在函数定义的内部使用。 在一个函数体内使用 yield 表达式会使这个函数变成一个生成器函数，而在一个 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#async-def"><code>async def</code></a> 函数的内部使用它则会让这个协程函数变成一个异步生成器函数。 例如:</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">gen</span>():  <span class="hljs-comment"># defines a generator function</span>
+    <span class="hljs-keyword">yield</span> <span class="hljs-number">123</span>
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">agen</span>(): <span class="hljs-comment"># defines an asynchronous generator function</span>
+    <span class="hljs-keyword">yield</span> <span class="hljs-number">123</span></code></pre></div>
+
+<p>由于它们会对外层作用域造成附带影响，<code>yield</code> 表达式不被允许作为用于实现推导式和生成器表达式的隐式定义作用域的一部分。</p>
+<blockquote>
+<p><em>在 3.8 版更改:</em> 禁止在实现推导式和生成器表达式的隐式嵌套作用域中使用 yield 表达式。</p>
+</blockquote>
+<p>下面是对生成器函数的描述，异步生成器函数会在 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#asynchronous-generator-functions">异步生成器函数</a> 一节中单独介绍。</p>
+<p>当一个生成器函数被调用时，它返回一个名为生成器的迭代器。 然后这个生成器将控制生成器函数的执行。 执行过程会在这个生成器的某个方法被调用时开始。 这时，函数会执行到第一个 yield 表达式，在这里它将再次被挂起，向生成器的调用方返回 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#grammar-token-python-grammar-expression_list"><code>expression_list</code></a> 的值，或者如果 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#grammar-token-python-grammar-expression_list"><code>expression_list</code></a> 被省略则返回 <code>None</code>。 这里所谓的挂起，就是说所有局部状态都会被保留下来，包括局部变量的当前绑定、指令指针、内部求值栈和任何异常处理等等。 当通过调用生成器的某个方法恢复执行时，这个函数的运行就与 yield 表达式只是一个外部调用的情况完全一样。 恢复之后 yield 表达式的值取决于恢复执行所调用的方法。 如果是用 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.__next__"><code>__next__()</code></a> (通常是通过 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#for"><code>for</code></a> 或 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/functions.html#next"><code>next()</code></a> 内置函数) 则结果为 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/constants.html#None"><code>None</code></a>。 在其他情况下，如果是用 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.send"><code>send()</code></a>，则结果将为传给该方法的值。</p>
+<p>所有这些使生成器函数与协程非常相似；它们 yield 多次，它们具有多个入口点，并且它们的执行可以被挂起。唯一的区别是生成器函数不能控制在它在 yield 后交给哪里继续执行；控制权总是转移到生成器的调用者。</p>
+<p>在 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#try"><code>try</code></a> 结构中的任何位置都允许yield表达式。如果生成器在(因为引用计数到零或是因为被垃圾回收)销毁之前没有恢复执行，将调用生成器-迭代器的 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.close"><code>close()</code></a> 方法. close 方法允许任何挂起的 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#finally"><code>finally</code></a> 子句执行。</p>
+<p>当使用 <code>yield from &lt;expr&gt;</code> 时，所提供的表达式必须是一个可迭代对象。 迭代该可迭代对象所产生的值会被直接传递给当前生成器方法的调用者。 任何通过 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.send"><code>send()</code></a> 传入的值以及任何通过 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.throw"><code>throw()</code></a> 传入的异常如果有适当的方法则会被传给下层迭代器。 如果不是这种情况，那么 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.send"><code>send()</code></a> 将引发 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/exceptions.html#AttributeError"><code>AttributeError</code></a> 或 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/exceptions.html#TypeError"><code>TypeError</code></a>，而 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.throw"><code>throw()</code></a> 将立即引发所转入的异常。</p>
+<p>当下层迭代器完成时，被引发的 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/exceptions.html#StopIteration"><code>StopIteration</code></a> 实例的 <code>value</code> 属性会成为 yield 表达式的值。 它可以在引发 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/exceptions.html#StopIteration"><code>StopIteration</code></a> 时被显式地设置，也可以在子迭代器是一个生成器时自动地设置（通过从子生成器返回一个值）。</p>
+<blockquote>
+<p><em>在 3.3 版更改:</em> 添加 <code>yield from &lt;expr&gt;</code> 以委托控制流给一个子迭代器。</p>
+</blockquote>
+<p>当yield表达式是赋值语句右侧的唯一表达式时，括号可以省略。</p>
+<p>参见</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://peps.python.org/pep-0255/"><strong>PEP 255</strong></a> - 简单生成器</p>
+<p>在 Python 中加入生成器和 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#yield"><code>yield</code></a> 语句的提议。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://peps.python.org/pep-0342/"><strong>PEP 342</strong></a> - 通过增强型生成器实现协程</p>
+<p>增强生成器 API 和语法的提议，使其可以被用作简单的协程。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://peps.python.org/pep-0380/"><strong>PEP 380</strong></a> - 委托给子生成器的语法</p>
+<p>引入 <code>yield_from</code> 语法的提议，以方便地委托给子生成器。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://peps.python.org/pep-0525/"><strong>PEP 525</strong></a> - 异步生成器</p>
+<p>通过给协程函数加入生成器功能对 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0492/"><strong>PEP 492</strong></a> 进行扩展的提议。</p>
+</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://docs.python.org/3/reference/expressions.html#grammar-token-python-grammar-yield_expression">6. Expressions — Python 3.12.0 documentation</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python?page=1&tab=scoredesc#tab-top">iterator - What does the “yield” keyword do in Python? - Stack Overflow</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33751566/article/details/92288708">python生成器-CSDN博客</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
                 
               </div>
             
@@ -407,8 +453,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>怎样系统地学习CS61A——以CS61A（Fa22）为例</div>
-      <div>https://www.updating.top/105803162ef3/</div>
+      <div>CS61A-hw05_Yield关键词的应用</div>
+      <div>https://www.updating.top/CS61A-hw05-Yield</div>
     </div>
     <div class="license-meta">
       
@@ -420,7 +466,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年7月14日</div>
+          <div>2023年8月1日</div>
         </div>
       
       
@@ -452,9 +498,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/7602f12d5a2d/" title="虚拟的山河大学与真实的教育困境">
+                      <a href="/Special-Domain-for-Your-University" title="如何给你的大学官网整一个「奇怪」的域名">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">虚拟的山河大学与真实的教育困境</span>
+                        <span class="hidden-mobile">如何给你的大学官网整一个「奇怪」的域名</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -462,8 +508,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/37172163c189/" title="CS61A-lab03-Q6_ChurchNumeral丘奇数">
-                        <span class="hidden-mobile">CS61A-lab03-Q6_ChurchNumeral丘奇数</span>
+                      <a href="/TheRoadNotTaken" title="科幻-异星歧途(TheRoadNotTaken)">
+                        <span class="hidden-mobile">科幻-异星歧途(TheRoadNotTaken)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

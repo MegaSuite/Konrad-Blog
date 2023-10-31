@@ -20,26 +20,26 @@
   <meta name="author" content="Konrad Gerrens">
   <meta name="keywords" content="">
   
-    <meta name="description" content="欧拉筛法的实际应用">
+    <meta name="description" content="how to use &#39;yield&#39; keyword in Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【数论】欧拉筛法-埃拉托斯特尼筛法">
-<meta property="og:url" content="https://www.updating.top/Euler-Eratosthenes-Sieve">
+<meta property="og:title" content="CS61A-hw05_Yield关键词的应用">
+<meta property="og:url" content="https://www.updating.top/CS61A-hw05-Yield/">
 <meta property="og:site_name" content="Ethereal State">
-<meta property="og:description" content="欧拉筛法的实际应用">
+<meta property="og:description" content="how to use &#39;yield&#39; keyword in Python">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309192017040.png">
-<meta property="article:published_time" content="2023-09-19T12:13:08.000Z">
-<meta property="article:modified_time" content="2023-10-31T02:58:50.151Z">
+<meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307091514452.png">
+<meta property="article:published_time" content="2023-08-01T09:48:36.000Z">
+<meta property="article:modified_time" content="2023-10-31T03:07:11.111Z">
 <meta property="article:author" content="Konrad Gerrens">
-<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309192017040.png">
+<meta name="twitter:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307091514452.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>【数论】欧拉筛法-埃拉托斯特尼筛法 - Ethereal State</title>
+  <title>CS61A-hw05_Yield关键词的应用 - Ethereal State</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -220,7 +220,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【数论】欧拉筛法-埃拉托斯特尼筛法"></span>
+            <span id="subtitle" data-typed-text="CS61A-hw05_Yield关键词的应用"></span>
           
         </div>
 
@@ -231,8 +231,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-19 20:13" pubdate>
-          2023年9月19日 晚上
+        <time datetime="2023-08-01 17:48" pubdate>
+          2023年8月1日 下午
         </time>
       </span>
     
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          3.1k 字
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          21 分钟
+          26 分钟
         
       </span>
     
@@ -300,7 +300,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">【数论】欧拉筛法-埃拉托斯特尼筛法</h1>
+            <h1 style="display: none">CS61A-hw05_Yield关键词的应用</h1>
             
               <p class="note note-info">
                 
@@ -313,117 +313,95 @@
             
               <div class="markdown-body">
                 
-                <h1 id="欧拉筛法"><a href="#欧拉筛法" class="headerlink" title="欧拉筛法"></a>欧拉筛法</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote>
-<p>筛法就是求出小于等于<code>n</code>的所有素数的方法，找到一个素数后，就将它的倍数标记为合数，也就是把它的倍数“筛掉”。如果一个数没有被比它小的素数“筛掉”，那它就是素数。</p>
+                <h1 id="CS61A-hw05-Yield关键词的应用"><a href="#CS61A-hw05-Yield关键词的应用" class="headerlink" title="CS61A-hw05_Yield关键词的应用"></a>CS61A-hw05_Yield关键词的应用</h1><blockquote>
+<p> 为了理解<code>yield</code>的原理，我们必须首先理解生成器和迭代器的原理。</p>
 </blockquote>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><div class="code-wrapper"><pre><code class="hljs c"><span class="hljs-type">bool</span> isprime[MAXN]; <span class="hljs-comment">// isprime[i]标记`i`是否是素数的数组</span>
-<span class="hljs-type">int</span> prime[MAXN]; <span class="hljs-comment">// 目前的素数列表</span>
-<span class="hljs-type">int</span> n; <span class="hljs-comment">// 筛选上限</span>
-<span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>; <span class="hljs-comment">// 已经筛出的素数数量</span>
+<h2 id="迭代器（Iterables）"><a href="#迭代器（Iterables）" class="headerlink" title="迭代器（Iterables）"></a>迭代器（Iterables）</h2><p>创建一个列表，我们可以依次读取列表中的元素，这种依次读取输出元素的行为称为迭代，被读取的对象称为迭代器。</p>
+<div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-meta">&gt;&gt;&gt; </span>lst = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> lst:
+<span class="hljs-meta">... </span>   <span class="hljs-built_in">print</span>(i)
+<span class="hljs-number">1</span>
+<span class="hljs-number">2</span>
+<span class="hljs-number">3</span></code></pre></div>
 
-<span class="hljs-type">void</span> <span class="hljs-title function_">euler</span><span class="hljs-params">()</span>
-&#123;
-    <span class="hljs-built_in">memset</span>(isprime, <span class="hljs-literal">true</span>, <span class="hljs-keyword">sizeof</span>(isprime)); <span class="hljs-comment">//先全部标记为素数</span>
-    isprime[<span class="hljs-number">1</span>] = <span class="hljs-literal">false</span>; <span class="hljs-comment">//已知，1不是素数</span>
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) <span class="hljs-comment">// i从2循环到n（外层循环）</span>
-    &#123;
-        <span class="hljs-keyword">if</span>(isprime[i])<span class="hljs-comment">//isprime[i] == 1</span>
-            prime[++cnt] = i;
-        <span class="hljs-comment">// 如果i没有被前面的数筛掉，则i是素数，此处prime[0]元素并未被使用，符合直觉</span>
-        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= cnt &amp;&amp; i * prime[j] &lt;= n; j++)
-        <span class="hljs-comment">// 使用j循环枚举现在已经筛出的素数,以筛掉i的素数倍，即i的prime[j]倍</span>
-        &#123;
-            isprime[i * prime[j]] = <span class="hljs-literal">false</span>;
-            <span class="hljs-comment">// 倍数标记为合数，也就是i用prime[j]把i * prime[j]筛掉了</span>
-            <span class="hljs-keyword">if</span>(i % prime[j] == <span class="hljs-number">0</span>) 
-                <span class="hljs-keyword">break</span>;
-            <span class="hljs-comment">// 如果i整除prime[j]，退出循环，这样可以保证线性的时间复杂度</span>
-        &#125;
-    &#125;
-&#125;</code></pre></div>
+<p>也可以通过列表推导式创建列表（迭代器）。</p>
+<div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-meta">&gt;&gt;&gt; </span>lst = [x*x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>)]<span class="hljs-comment">#········@1</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> lst:
+<span class="hljs-meta">... </span>   <span class="hljs-built_in">print</span>(i)
+<span class="hljs-number">0</span>
+<span class="hljs-number">1</span>
+<span class="hljs-number">4</span></code></pre></div>
 
-<p>假设要筛出<code>n</code>以内的素数。我们先把所有数标记为素数。枚举<code>i</code>从<code>2</code>到<code>n</code>，所以因为<code>i</code>是从小到大的，如果<code>i</code>没有被比它小的数标记为合数，那<code>i</code>就是素数（任意合数的因数一定比它本身小，若<code>i</code>没有被前面的数筛掉，那么它就没有比自己小的因数，当然它就是素数），加入素数列表。</p>
-<p>现在用<code>i</code>来筛后面的数，枚举已经筛出来的素数<code>prime[j]</code>（<code>j∈[1,cnt]</code>），标记<code>i * prime[j]</code>为合数（<code>i ≥ 2，prime[j] ≥ 2</code>，它们的乘积一定为合数），当<code>i</code>是<code>prime[j]</code>的倍数时退出循环，<code>i++</code>。</p>
-<h2 id="正确性证明"><a href="#正确性证明" class="headerlink" title="正确性证明"></a>正确性证明</h2><p>假设我们要筛掉合数<code>a</code>，且<code>a</code>的最小质因数为<code>P1</code>，令<code>a = P1 * b</code> ,那么显然<code>b &lt; a</code>，<code>b</code>先被外层循环碰到。现在<code>b</code>要筛掉它的倍数。</p>
-<p>因为<code>P1</code>是<code>a</code>的最小质因数，所以<code>b</code>的最小质因数必不小于<code>P1</code>，这样就保证<code>b</code>筛掉<code>a</code>前不会在<code>if(i % prime[j] == 0) break;</code>处跳出循环。</p>
-<p>即使<code>b</code>的最小质因数等于<code>P1</code>，也会先筛掉<code>a</code>后再退出循环。这样就保证了每个合数都会被筛掉。</p>
-<h2 id="时间复杂度证明"><a href="#时间复杂度证明" class="headerlink" title="时间复杂度证明"></a>时间复杂度证明</h2><p>欧拉筛法的时间、空间复杂度为<code>Θ(n)</code>。</p>
-<p>空间复杂度是显然的，下面证明时间复杂度为线性。</p>
-<p>我们的核心就是要证明一个合数只会被筛掉一次，即标记<code>isprime[n]=1</code>一次。首先，对于<code>a = P1 * b</code>，<code>b</code>当然只会筛掉<code>a</code>一次，因为我们从小到大枚举<code>prime[j]</code>，也就是说<code>b * prime[j]</code>递增，因此不可能遇到<code>a</code>两次。会不会有其他的数筛掉<code>a</code>呢？假设<code>a</code>又被<code>c</code>筛掉了，其中<code>a = Px * c</code>，<code>Px</code>就是<code>c</code>用来筛掉<code>a</code>的<code>prime[j]</code>。</p>
+<p>一切可以通过<code>for...in...</code>进行迭代的对象都可以成为迭代器。迭代器的特征是将所需元素储存起来，以供读取，但当数据量很大时，使用迭代器产生数据则不是一个明智的选择，比如将上述代码<code>@1</code>行中<code>range(3)</code>里的数字改为极其庞大的数字，在<code>@1</code>行代码运行之后，程序便生成一个极占内存的大列表<code>lst</code>，但我们只是想输出一些数，没有必要使一个如此简单的行为消耗那么多资源，由此，我们就需要生成器的帮助。</p>
+<h2 id="生成器（Generators）"><a href="#生成器（Generators）" class="headerlink" title="生成器（Generators）"></a>生成器（Generators）</h2><p>生成器可以认为是迭代器的一种，不过只能依次迭代使用一次，不能重复迭代。生成器的特点是不储存生成值，即用即产，动态生成。</p>
+<div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-meta">&gt;&gt;&gt; </span>gen = (x*x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>))<span class="hljs-comment">#yield_atom</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> gen:
+<span class="hljs-meta">... </span>   <span class="hljs-built_in">print</span>(i)
+<span class="hljs-number">0</span>
+<span class="hljs-number">1</span>
+<span class="hljs-number">4</span></code></pre></div>
+
+<p>可见，生成器推导式与列表推导式的差距只在<code>()</code>和<code>[]</code>上，而且生成器对象只能迭代一次（继续迭代会抛出<code>StopIteration</code>错误）。</p>
+<h2 id="Yield"><a href="#Yield" class="headerlink" title="Yield"></a>Yield</h2><p><code>yield</code> 表达式的使用类似于<code>return</code>（详细用法参见<strong>Official Definition</strong>章节），区别在<code>yield</code>会使函数变为生成器函数。</p>
+<div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">def</span> <span class="hljs-title function_">create_gen</span>():
+<span class="hljs-meta">... </span>   lst = <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>)
+<span class="hljs-meta">... </span>   <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> lst:
+<span class="hljs-meta">... </span>       <span class="hljs-keyword">yield</span> i*i
+...
+<span class="hljs-meta">&gt;&gt;&gt; </span>gen = create_gen() <span class="hljs-comment"># 创建生成器</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(gen) <span class="hljs-comment"># gen是一个生成器对象</span>
+&lt;generator <span class="hljs-built_in">object</span> create_gen at <span class="hljs-number">0xb7555c34</span>&gt;
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> gen:
+<span class="hljs-meta">... </span>    <span class="hljs-built_in">print</span>(i)
+<span class="hljs-number">0</span>
+<span class="hljs-number">1</span>
+<span class="hljs-number">4</span></code></pre></div>
+
+<p>生成器在产生只需要生成一次的输出序列时有很大的优势。迭代（比如<code>for</code>)第一次调用从函数创建的生成器对象时，它将从开头运行函数中的代码，直到到达<code>yield</code>，然后返回循环的第一个值。之后，每个后续调用都将运行在函数中编写的循环的另一次迭代，并返回下一个值，生成器函数体内的代码以<code>yield</code>语句所在处分界，某次循环开始时，函数会从上一次<code>yield</code>停止处开始运行（即运行<code>yield</code>的下一行），直到生成器被判定为空（<code>StopIteration</code>)。</p>
+<h2 id="Official-Definition-1"><a href="#Official-Definition-1" class="headerlink" title="Official Definition[1]"></a>Official Definition<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[6. Expressions — Python 3.12.0 documentation](https://docs.python.org/3/reference/expressions.html#grammar-token-python-grammar-yield_expression)">[1]</span></a></sup></h2><p><em><strong>6.2.9. Yield expressions</strong></em></p>
+<div class="code-wrapper"><pre><code class="hljs python">yield_atom       ::=  <span class="hljs-string">&quot;(&quot;</span> yield_expression <span class="hljs-string">&quot;)&quot;</span><span class="hljs-comment">#使用&quot;()&quot;包裹生成器推导式,产生生成器</span>
+yield_expression ::=  <span class="hljs-string">&quot;yield&quot;</span> [expression_list | <span class="hljs-string">&quot;from&quot;</span> expression]<span class="hljs-comment">#作为表达式在函数体中使用</span></code></pre></div>
+
+<p>yield 表达式在定义 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/glossary.html#term-generator">generator</a> 函数或 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/glossary.html#term-asynchronous-generator">asynchronous generator</a> 函数时才会用到因此只能在函数定义的内部使用。 在一个函数体内使用 yield 表达式会使这个函数变成一个生成器函数，而在一个 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#async-def"><code>async def</code></a> 函数的内部使用它则会让这个协程函数变成一个异步生成器函数。 例如:</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">gen</span>():  <span class="hljs-comment"># defines a generator function</span>
+    <span class="hljs-keyword">yield</span> <span class="hljs-number">123</span>
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">agen</span>(): <span class="hljs-comment"># defines an asynchronous generator function</span>
+    <span class="hljs-keyword">yield</span> <span class="hljs-number">123</span></code></pre></div>
+
+<p>由于它们会对外层作用域造成附带影响，<code>yield</code> 表达式不被允许作为用于实现推导式和生成器表达式的隐式定义作用域的一部分。</p>
+<blockquote>
+<p><em>在 3.8 版更改:</em> 禁止在实现推导式和生成器表达式的隐式嵌套作用域中使用 yield 表达式。</p>
+</blockquote>
+<p>下面是对生成器函数的描述，异步生成器函数会在 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#asynchronous-generator-functions">异步生成器函数</a> 一节中单独介绍。</p>
+<p>当一个生成器函数被调用时，它返回一个名为生成器的迭代器。 然后这个生成器将控制生成器函数的执行。 执行过程会在这个生成器的某个方法被调用时开始。 这时，函数会执行到第一个 yield 表达式，在这里它将再次被挂起，向生成器的调用方返回 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#grammar-token-python-grammar-expression_list"><code>expression_list</code></a> 的值，或者如果 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#grammar-token-python-grammar-expression_list"><code>expression_list</code></a> 被省略则返回 <code>None</code>。 这里所谓的挂起，就是说所有局部状态都会被保留下来，包括局部变量的当前绑定、指令指针、内部求值栈和任何异常处理等等。 当通过调用生成器的某个方法恢复执行时，这个函数的运行就与 yield 表达式只是一个外部调用的情况完全一样。 恢复之后 yield 表达式的值取决于恢复执行所调用的方法。 如果是用 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.__next__"><code>__next__()</code></a> (通常是通过 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#for"><code>for</code></a> 或 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/functions.html#next"><code>next()</code></a> 内置函数) 则结果为 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/constants.html#None"><code>None</code></a>。 在其他情况下，如果是用 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.send"><code>send()</code></a>，则结果将为传给该方法的值。</p>
+<p>所有这些使生成器函数与协程非常相似；它们 yield 多次，它们具有多个入口点，并且它们的执行可以被挂起。唯一的区别是生成器函数不能控制在它在 yield 后交给哪里继续执行；控制权总是转移到生成器的调用者。</p>
+<p>在 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#try"><code>try</code></a> 结构中的任何位置都允许yield表达式。如果生成器在(因为引用计数到零或是因为被垃圾回收)销毁之前没有恢复执行，将调用生成器-迭代器的 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.close"><code>close()</code></a> 方法. close 方法允许任何挂起的 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#finally"><code>finally</code></a> 子句执行。</p>
+<p>当使用 <code>yield from &lt;expr&gt;</code> 时，所提供的表达式必须是一个可迭代对象。 迭代该可迭代对象所产生的值会被直接传递给当前生成器方法的调用者。 任何通过 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.send"><code>send()</code></a> 传入的值以及任何通过 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.throw"><code>throw()</code></a> 传入的异常如果有适当的方法则会被传给下层迭代器。 如果不是这种情况，那么 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.send"><code>send()</code></a> 将引发 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/exceptions.html#AttributeError"><code>AttributeError</code></a> 或 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/exceptions.html#TypeError"><code>TypeError</code></a>，而 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/expressions.html?highlight=yield#generator.throw"><code>throw()</code></a> 将立即引发所转入的异常。</p>
+<p>当下层迭代器完成时，被引发的 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/exceptions.html#StopIteration"><code>StopIteration</code></a> 实例的 <code>value</code> 属性会成为 yield 表达式的值。 它可以在引发 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/exceptions.html#StopIteration"><code>StopIteration</code></a> 时被显式地设置，也可以在子迭代器是一个生成器时自动地设置（通过从子生成器返回一个值）。</p>
+<blockquote>
+<p><em>在 3.3 版更改:</em> 添加 <code>yield from &lt;expr&gt;</code> 以委托控制流给一个子迭代器。</p>
+</blockquote>
+<p>当yield表达式是赋值语句右侧的唯一表达式时，括号可以省略。</p>
+<p>参见</p>
 <ul>
-<li>若<code>c &gt; b</code>，则<code>Px &lt; P1</code>，与<code>P1</code>是<code>a</code>最小的质因数矛盾，假设不成立；</li>
-<li>若<code>c &lt; b</code>，则<code>Px &gt; P1</code>，这意味着<code>P1</code>是<code>c</code>的质因数。那么<code>c</code>从小到大筛掉它的素数倍，在筛到<code>P1 * c</code>时就<code>break</code>了，所以根本轮不到<code>a</code>。</li>
+<li><p><a target="_blank" rel="noopener" href="https://peps.python.org/pep-0255/"><strong>PEP 255</strong></a> - 简单生成器</p>
+<p>在 Python 中加入生成器和 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#yield"><code>yield</code></a> 语句的提议。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://peps.python.org/pep-0342/"><strong>PEP 342</strong></a> - 通过增强型生成器实现协程</p>
+<p>增强生成器 API 和语法的提议，使其可以被用作简单的协程。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://peps.python.org/pep-0380/"><strong>PEP 380</strong></a> - 委托给子生成器的语法</p>
+<p>引入 <code>yield_from</code> 语法的提议，以方便地委托给子生成器。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://peps.python.org/pep-0525/"><strong>PEP 525</strong></a> - 异步生成器</p>
+<p>通过给协程函数加入生成器功能对 <a target="_blank" rel="noopener" href="https://peps.python.org/pep-0492/"><strong>PEP 492</strong></a> 进行扩展的提议。</p>
+</li>
 </ul>
-<p>综上所述，每个数都只会被筛掉一次，再加上外层的<code>i</code>的循环是线性复杂度，总的时间复杂度是线性的。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><div class="note note-success">
-            <p>来自：头歌-Python大数据与人工智能实践</p>
-          </div>
-
-<blockquote>
-<p> 计算并输出指定范围内的所有素数。</p>
-<p>第一行输入正整数<code>n</code>，表示测试样例组数，接下来输入<code>n</code>行，每行输入两个正整数<code>a</code>和<code>b</code>，要求输出<code>a</code>和<code>b</code>之间（包括<code>a</code>和<code>b</code>）所有的素数，保证<code>a&lt;b</code>，且<code>b</code>不超过<code>10^7</code></p>
-</blockquote>
-<blockquote>
-<p>测试输入：</p>
-</blockquote>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-number">2</span>
-<span class="hljs-number">30</span>,<span class="hljs-number">100</span>
-<span class="hljs-number">999670</span>,<span class="hljs-number">1000000</span>
-<span class="hljs-number">123</span></code></pre></div>
-
-<blockquote>
-<p>预期输出：</p>
-</blockquote>
-<div class="code-wrapper"><pre><code class="hljs python">[<span class="hljs-number">31</span>, <span class="hljs-number">37</span>, <span class="hljs-number">41</span>, <span class="hljs-number">43</span>, <span class="hljs-number">47</span>, <span class="hljs-number">53</span>, <span class="hljs-number">59</span>, <span class="hljs-number">61</span>, <span class="hljs-number">67</span>, <span class="hljs-number">71</span>, <span class="hljs-number">73</span>, <span class="hljs-number">79</span>, <span class="hljs-number">83</span>, <span class="hljs-number">89</span>, <span class="hljs-number">97</span>]
-[<span class="hljs-number">999671</span>, <span class="hljs-number">999683</span>, <span class="hljs-number">999721</span>, <span class="hljs-number">999727</span>, <span class="hljs-number">999749</span>, <span class="hljs-number">999763</span>, <span class="hljs-number">999769</span>, <span class="hljs-number">999773</span>, <span class="hljs-number">999809</span>, <span class="hljs-number">999853</span>, <span class="hljs-number">999863</span>, <span class="hljs-number">999883</span>, <span class="hljs-number">999907</span>, <span class="hljs-number">999917</span>, <span class="hljs-number">999931</span>, <span class="hljs-number">999953</span>, <span class="hljs-number">999959</span>, <span class="hljs-number">999961</span>, <span class="hljs-number">999979</span>, <span class="hljs-number">999983</span>]
-<span class="hljs-number">12</span></code></pre></div>
-
-<blockquote>
-<p>CODE:</p>
-</blockquote>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>():
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">solve</span>(<span class="hljs-params">self, l, r</span>):
-        <span class="hljs-string">&#x27;&#x27;&#x27;</span>
-<span class="hljs-string">        :type l, r: int</span>
-<span class="hljs-string">        :rtype : list</span>
-<span class="hljs-string">        &#x27;&#x27;&#x27;</span>
-        <span class="hljs-comment">#请在此添加代码，实现求得[l, r]范围内的所有素数，并将其返回</span>
-        <span class="hljs-comment">#********** Begin *********#</span>
-        <span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> sqrt
-        <span class="hljs-comment">#通过素数表判断整数是不是素数</span>
-        <span class="hljs-keyword">def</span> <span class="hljs-title function_">is_prime</span>(<span class="hljs-params">x</span>):
-            <span class="hljs-keyword">if</span> x == <span class="hljs-number">1</span>:
-                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-            <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> prime_table:
-                <span class="hljs-keyword">if</span> num * num &gt; x:
-                    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
-                <span class="hljs-keyword">if</span> x % num  == <span class="hljs-number">0</span>:
-                    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-        <span class="hljs-comment">#欧拉筛法</span>
-        <span class="hljs-keyword">def</span> <span class="hljs-title function_">ouler</span>(<span class="hljs-params">x</span>):
-            vis = [<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(x+<span class="hljs-number">1</span>)]
-            prime_table = []
-            ln = <span class="hljs-number">0</span>
-            <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, x+<span class="hljs-number">1</span>):
-                <span class="hljs-keyword">if</span> vis[num] == <span class="hljs-number">0</span>:
-                    prime_table.append(num)
-                    ln += <span class="hljs-number">1</span>
-                <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(ln):
-                    <span class="hljs-keyword">if</span> num * prime_table[j] &gt; x:
-                        <span class="hljs-keyword">break</span>
-                    vis[num * prime_table[j]] = <span class="hljs-number">1</span>
-                    <span class="hljs-keyword">if</span> num % prime_table[j] == <span class="hljs-number">0</span>:
-                        <span class="hljs-keyword">break</span>
-            <span class="hljs-keyword">return</span> prime_table
-        prime_table = ouler(<span class="hljs-number">10000</span>)
-        ans = []
-        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l, r+<span class="hljs-number">1</span>):
-            <span class="hljs-keyword">if</span> is_prime(num):
-                ans.append(num)
-        <span class="hljs-keyword">return</span> ans
-        <span class="hljs-comment">#********** End *********#</span></code></pre></div>
-
-<h1 id="埃拉托斯特尼筛法"><a href="#埃拉托斯特尼筛法" class="headerlink" title="埃拉托斯特尼筛法"></a>埃拉托斯特尼筛法</h1>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://docs.python.org/3/reference/expressions.html#grammar-token-python-grammar-yield_expression">6. Expressions — Python 3.12.0 documentation</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python?page=1&tab=scoredesc#tab-top">iterator - What does the “yield” keyword do in Python? - Stack Overflow</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33751566/article/details/92288708">python生成器-CSDN博客</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
                 
               </div>
             
@@ -446,7 +424,7 @@
   
     <span>></span>
     
-  <a href="/categories/Major/Algorithm/" class="category-chain-item">Algorithm</a>
+  <a href="/categories/Major/CS61A/" class="category-chain-item">CS61A</a>
   
   
 
@@ -463,7 +441,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Algorithm/">#Algorithm</a>
+        <a href="/tags/CS61A/">#CS61A</a>
       
     </div>
   
@@ -475,8 +453,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【数论】欧拉筛法-埃拉托斯特尼筛法</div>
-      <div>https://www.updating.top/Euler-Eratosthenes-Sieve</div>
+      <div>CS61A-hw05_Yield关键词的应用</div>
+      <div>https://www.updating.top/CS61A-hw05-Yield/</div>
     </div>
     <div class="license-meta">
       
@@ -488,7 +466,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月19日</div>
+          <div>2023年8月1日</div>
         </div>
       
       
@@ -520,9 +498,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/privatebin-by-docker" title="通过privatebin和docker搭建在线剪贴板">
+                      <a href="/Special-Domain-for-Your-University/" title="如何给你的大学官网整一个「奇怪」的域名">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">通过privatebin和docker搭建在线剪贴板</span>
+                        <span class="hidden-mobile">如何给你的大学官网整一个「奇怪」的域名</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -530,8 +508,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/XBOX-Live-Error-Windows11" title="在Win11上，XBOX Live无法连接的解决方案">
-                        <span class="hidden-mobile">在Win11上，XBOX Live无法连接的解决方案</span>
+                      <a href="/TheRoadNotTaken/" title="科幻-异星歧途(TheRoadNotTaken)">
+                        <span class="hidden-mobile">科幻-异星歧途(TheRoadNotTaken)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

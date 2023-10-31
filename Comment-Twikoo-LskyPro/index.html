@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310261652395.png">
 <meta property="article:published_time" content="2023-10-26T08:49:57.000Z">
-<meta property="article:modified_time" content="2023-10-31T05:56:55.690Z">
+<meta property="article:modified_time" content="2023-10-31T06:50:24.227Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary_large_image">
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.2k 字
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          1 分钟
+          11 分钟
         
       </span>
     
@@ -313,7 +313,73 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="使用Twikoo和LskyPro搭建完善的私有评论系统"><a href="#使用Twikoo和LskyPro搭建完善的私有评论系统" class="headerlink" title="使用Twikoo和LskyPro搭建完善的私有评论系统"></a>使用Twikoo和LskyPro搭建完善的私有评论系统</h1><blockquote>
+<p>教程包含以下部分：</p>
+<ul>
+<li>Twikoo搭建</li>
+<li>Twikoo嵌入Hexo-Fluid</li>
+<li>LskyPro-Twikoo配置</li>
+</ul>
+</blockquote>
+<h2 id="基于Docker搭建Twikoo"><a href="#基于Docker搭建Twikoo" class="headerlink" title="基于Docker搭建Twikoo"></a>基于Docker搭建Twikoo</h2><h3 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h3><div class="code-wrapper"><pre><code class="hljs bash">docker run -d \
+	--name twikoo \
+	-e TWIKOO_THROTTLE=1000 \
+	-p 34322:8080 \
+	-v /home/konrad/twikoo/data/:/app/data \
+	-d imaegoo/twikoo</code></pre></div>
+
+<div class="note note-success">
+            <p>注意在<strong>服务商控制台</strong>安全组里放行相应端口，<strong>不要</strong>用宝塔放行，大部分不生效。</p>
+          </div>
+
+<blockquote>
+<p>#-p 外部映射端口任意选择，<strong>不冲突</strong>即可，内部暴露端口不建议改，根据镜像作者的说明来，有的镜像更改会出问题。</p>
+<p>由于Docker的内部端口是独立的，所以内部暴露端口不需要考虑冲突问题，也就是冒号后面的端口可以在不同容器间重复，比如有很多容器的暴露端口都是<code>8080</code>。</p>
+<p>外部映射端口，也就是冒号前面的端口是不能重复的，因为这是宿主机的端口，每个端口都是唯一的，不能复用。</p>
+<p>#-v 配置data所在目录，根据自己服务器环境更改</p>
+<p>#–name 根据需要更改</p>
+</blockquote>
+<blockquote>
+<p>访问相应<code>ip:port</code>网址访问页面，如<code>123.123.122.111:34322</code></p>
+</blockquote>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310311411665.png" srcset="/img/loading.gif" lazyload alt="success"></p>
+<h3 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h3><p>根据<code>Twikoo</code>官方文档的阐述，我们必须要通过绑定域名的方式来进行<code>https</code>加密，笔者实测，使用<code>ip:port</code>的常规访问方式是不生效的，所以，这次的域名配置将是必选。</p>
+<p>去域名注册商或DNS提供商处添加<code>A</code>型解析，解析到当前服务器。</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310311415873.png" srcset="/img/loading.gif" lazyload alt="dns"></p>
+<p>然后是熟悉的宝塔添加网站，证书，并配置反代的过程。</p>
+<blockquote>
+<p>以下示意图引用自博主另一篇文章，端口不对应，注意更改</p>
+</blockquote>
+<p>当然，添加网站和<code>SSL</code>证书申请是必要的前期工作。</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310271934061.png" srcset="/img/loading.gif" lazyload alt="添加网站"></p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310271934224.png" srcset="/img/loading.gif" lazyload alt="申请证书"></p>
+<p>开启反向代理，代理到本地相应端口。</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310271934112.png" srcset="/img/loading.gif" lazyload alt="settings"></p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310271934964.png" srcset="/img/loading.gif" lazyload alt="reproxy"></p>
+<p>域名绑定成功之后，我们就可以通过访问域名看到刚才同样的成功信息。</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310311420815.png" srcset="/img/loading.gif" lazyload alt="success"></p>
+<h2 id="Hexo-Fluid启用Twikoo"><a href="#Hexo-Fluid启用Twikoo" class="headerlink" title="Hexo-Fluid启用Twikoo"></a>Hexo-Fluid启用Twikoo</h2><p>在<code>_config.fluid.yml</code>进行配置</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310311425398.png" srcset="/img/loading.gif" lazyload alt="set"></p>
+<p>下滑，填入<code>envID</code>，即所绑定的域名</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310311427568.png" srcset="/img/loading.gif" lazyload alt="bond"></p>
+<p>保存生成之后，就可以看到页面底部的评论系统。</p>
+<p>点击齿轮可以进入设置</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310311428334.png" srcset="/img/loading.gif" lazyload alt="Comment System"></p>
+<h2 id="接入LskyPro"><a href="#接入LskyPro" class="headerlink" title="接入LskyPro"></a>接入LskyPro</h2><p>LskyPro图床的搭建，请查看</p>
+<a href="/Pichost-aliyunoss-lskypro/" title="基于LskyPro和阿里云对象存储搭建私有图床">基于LskyPro和阿里云对象存储搭建私有图床</a>
+
+<h3 id="token获取"><a href="#token获取" class="headerlink" title="token获取"></a>token获取</h3><div class="code-wrapper"><pre><code class="hljs bash">curl -X POST -F <span class="hljs-string">&quot;email=your_email@address&quot;</span> -F <span class="hljs-string">&quot;password=your_passwd&quot;</span> https://your.domain/api/v1/tokens</code></pre></div>
+
+<p>将上述信息替换成你自己的，运行代码即可获得以数字开头的<code>token</code>，如<code>1|fafdafdadfasfadf</code></p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>进入<code>Twikoo管理面板</code>-&gt;<code>配置管理</code>-&gt;<code>插件</code></p>
+<p>填入私有图床网址和<code>token</code>，保存即可。</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310311436236.png" srcset="/img/loading.gif" lazyload alt="pichost"></p>
+<hr>
+<p>到此为止，你的博客已经拥有了一套完整的评论系统。</p>
+<p>↓↓↓你也可以在下面尝试一下↓↓↓↓</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://twikoo.js.org/backend.html#%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2-docker">云函数部署 | Twikoo 文档</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://github.com/lsky-org/lsky-pro/discussions/357">lsky-org&#x2F;lsky-pro · Discussion #357 (github.com)</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
                 
               </div>
             

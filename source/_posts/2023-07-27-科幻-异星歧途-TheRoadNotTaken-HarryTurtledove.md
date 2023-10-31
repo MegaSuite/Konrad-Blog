@@ -1,12 +1,13 @@
 ---
 title: 科幻-异星歧途(TheRoadNotTaken)
 date: 2023-07-27 20:07:40
+permalink: TheRoadNotTaken
 tags: 
 - Daily
 categories:
 - Daily
-excerpt: By Harry Turtledove
 index_img: https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307272039046.jpg
+excerpt: By Harry Turtledove
 ---
 
 <h2 align='center'>异星歧途(The Road Not Taken) </h2>

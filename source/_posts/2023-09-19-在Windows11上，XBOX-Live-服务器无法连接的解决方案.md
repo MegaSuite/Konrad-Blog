@@ -1,6 +1,7 @@
 ---
 title: 在Win11上，XBOX Live无法连接的解决方案
 date: 2023-09-19 15:58:44
+permalink: XBOX-Live-Error-Windows11
 tags:
 - Game
 - XBOX

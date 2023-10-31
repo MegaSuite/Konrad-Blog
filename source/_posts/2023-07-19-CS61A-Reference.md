@@ -1,6 +1,7 @@
 ---
 title: CS61A-Reference
 date: 2023-07-19 17:18:41
+permalink: CS61A-Reference
 tags: 
 - CS61A
 categories:

@@ -1,6 +1,7 @@
 ---
 title: 通过privatebin和docker搭建在线剪贴板
 date: 2023-10-23 14:08:18
+permalink: privatebin-by-docker
 tags:
 - Docker
 categories:

@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>搭建自有流媒体解锁检测机器人</title>
+    <link href="/media-unlock-bot"/>
+    <url>/media-unlock-bot</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>Major</category>
+      
+      <category>Proxies</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VPS</tag>
+      
+      <tag>Proxy</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>基于LskyPro和阿里云对象存储搭建私有图床</title>
     <link href="/Pichost-aliyunoss-lskypro/"/>
     <url>/Pichost-aliyunoss-lskypro/</url>

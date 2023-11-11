@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311101902907.png">
 <meta property="article:published_time" content="2023-11-10T10:56:50.000Z">
-<meta property="article:modified_time" content="2023-11-10T14:22:07.682Z">
+<meta property="article:modified_time" content="2023-11-11T11:13:39.251Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="VPS">
 <meta property="article:tag" content="Proxy">
@@ -244,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          9.2k 字
         
       </span>
     
@@ -255,7 +255,7 @@
         
         
         
-          1 分钟
+          77 分钟
         
       </span>
     
@@ -306,7 +306,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月10日 晚上
+                    本文最后更新于：2023年11月11日 晚上
                   
                 
               </p>
@@ -314,7 +314,217 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="搭建自有流媒体解锁检测机器人"><a href="#搭建自有流媒体解锁检测机器人" class="headerlink" title="搭建自有流媒体解锁检测机器人"></a>搭建自有流媒体解锁检测机器人</h1><h2 id="变量获取"><a href="#变量获取" class="headerlink" title="变量获取"></a>变量获取</h2><h3 id="User-id"><a href="#User-id" class="headerlink" title="User_id"></a>User_id</h3><p>随便转发一条你自己发的消息给这个bot</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://t.me/getUserID_Robot">https://t.me/getUserID_Robot</a></p>
+</blockquote>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311111853394.png" srcset="/img/loading.gif" lazyload alt="user id"></p>
+<p>实测，直接发消息不行，只能转发。</p>
+<h3 id="API-id-API-hash"><a href="#API-id-API-hash" class="headerlink" title="API_id &amp; API_hash"></a>API_id &amp; API_hash</h3><p>登录<strong>Telegram</strong>应用管理页面 </p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://my.telegram.org/">https://my.telegram.org/</a></p>
+</blockquote>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311111842528.png" srcset="/img/loading.gif" lazyload alt="login"></p>
+<p>填写手机号，记得加区号，如<code>+86</code>，之后<code>Telegram</code>客户端会收到验证码（注意不是发短信）。</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311111844733.png" srcset="/img/loading.gif" lazyload alt="auth code"></p>
+<p>登录后，点击<code>API development tools</code>并填写表格。其中<code>App title</code>和<code>Short name</code>可以随意填写,<code>Platform</code>选择你的开发平台，<code>Description</code>是对你的应用的简短描述。</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311111845455.png" srcset="/img/loading.gif" lazyload alt="dev tools"></p>
+<p>提交表格后，你将获得一个<code>App api_id</code>和<code>App api_hash</code>。这就是你的 <code>API ID </code>和<code> API Hash</code>，复制备用。</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311111846792.png" srcset="/img/loading.gif" lazyload alt="ID &amp; hash"></p>
+<h3 id="bot-token"><a href="#bot-token" class="headerlink" title="bot_token"></a>bot_token</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://t.me/BotFather">https://t.me/BotFather</a></p>
+</blockquote>
+<p>从<code>BotFather</code>创建一个机器人，获得该机器人的<code>bot_token</code>，如：<code>bot_token = &quot;123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11&quot;</code></p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311111912033.png" srcset="/img/loading.gif" lazyload alt="newbot"></p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311111858395.png" srcset="/img/loading.gif" lazyload alt="bot_token"></p>
+<h2 id="后端-FullTClash"><a href="#后端-FullTClash" class="headerlink" title="后端-FullTClash"></a>后端-FullTClash</h2><blockquote>
+<p>后端依旧基于Docker搭建</p>
+</blockquote>
+<p>运行以下代码：</p>
+<div class="code-wrapper"><pre><code class="hljs bash">docker run -d \
+-e ADMINID=&#123;&#123;user_id&#125;&#125; \
+-e APIID=&#123;&#123;api_id&#125;&#125; \
+-e APIHASH=&#123;&#123;api_hash&#125;&#125; \
+-e BOTTOKEN=&#123;&#123;bot_token&#125;&#125; \
+weleven11/fulltclash</code></pre></div>
+
+<p>可选参数：</p>
+<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># CORE:测速使用的CPU核心数。可选，默认1</span>
+<span class="hljs-comment"># PROXY:TG代理。可选，socks5协议，格式为 host:端口:用户名:密码 ，用户名密码可不填。</span>
+<span class="hljs-comment"># THREAD:测速使用线程数。可选，默认4</span>
+
+-e CORE=4 \
+-e THREAD=1 \
+-e PROXY=127.0.0.1:7891 \</code></pre></div>
+
+<p>或者使用配置文件映射：</p>
+<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># `/path/to/config.yaml` 替换为你自己的配置文件路径，配置文件内容见后文。</span>
+
+docker run -d \
+-v /path/to/config.yaml:/app/resources/config.yaml \
+weleven11/fulltclash</code></pre></div>
+
+<hr>
+<p>目前机器人已经搭建完成了，去试一试吧。</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311111901309.png" srcset="/img/loading.gif" lazyload alt="bot"></p>
+<h2 id="config-yaml"><a href="#config-yaml" class="headerlink" title="config.yaml"></a>config.yaml</h2><blockquote>
+<p>若选择使用配置文件映射，请修改并上传此文件到相应位置，具体内容请参见官方文档<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[配置说明 - FullTclash 文档](https://fulltclash.gitbook.io/fulltclash-doc/wen-dang/pei-zhi-shuo-ming)">[1]</span></a></sup></p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs yaml"><span class="hljs-comment"># 注意，yaml配置文件对缩进敏感，请不要强迫症删掉#号之间的空格。</span>
+<span class="hljs-attr">admin:</span>
+<span class="hljs-bullet">-</span> <span class="hljs-number">12345678</span> <span class="hljs-comment">#管理员，此处写你的id或用户名，必须配置该项，否则程序会自动退出</span>
+<span class="hljs-attr">bot:</span>
+ <span class="hljs-attr">api_id:</span> <span class="hljs-number">123456</span> <span class="hljs-comment"># Telegram的api_id</span>
+ <span class="hljs-attr">api_hash:</span> <span class="hljs-string">ABCDEFG</span> <span class="hljs-comment"># Telegram的api_hash</span>
+ <span class="hljs-attr">bot_token:</span> <span class="hljs-number">123456</span><span class="hljs-string">:ABCDEFG</span> <span class="hljs-comment">#bot的token</span>
+<span class="hljs-comment"># ====================以上为必填项，否则无法启动成功========================</span>
+<span class="hljs-comment"># proxy: host:端口:用户名:密码 #socks5代理，用户名和密码为可选配置，已和下面的proxy单独分离，请勿混用</span>
+<span class="hljs-comment"># strictmode: false # 严格模式，代表测试的时侯，bot内联按钮只有发起测试的主人才能按，否则所有用户用户权限都可以按。默认false，目前未适配，敬请期待。</span>
+<span class="hljs-comment"># scripttext: &quot;⏳联通性测试进行中...&quot;  # 解锁脚本测试进度条自定义文本</span>
+<span class="hljs-comment"># analyzetext: &quot;⏳节点测试拓扑进行中...&quot;  # 拓扑测试进度条自定义文本</span>
+<span class="hljs-comment"># speedtext: &quot;⏳速度测试进行中...&quot;  # 速度测试进度条自定义文本</span>
+<span class="hljs-comment"># bar: &quot;=&quot; #进度条自定义文本</span>
+<span class="hljs-comment"># bleft: &quot;[&quot; #左括号自定义文本</span>
+<span class="hljs-comment"># bright: &quot;]&quot; #右括号自定义文本</span>
+<span class="hljs-comment"># bspace: &quot;  &quot; #空格自定义文本，默认为2个</span>
+<span class="hljs-comment"># command: [&#x27;mycommand1&#x27;, &#x27;mycommand2&#x27;] #自定义指令，用于适配权限回调。高级用法，不会无需配置。</span>
+<span class="hljs-comment">#以下是fulltclash的buildtoken，可以用默认的，但是安全性得不到保障，具体原因详见文档</span>
+<span class="hljs-comment">#buildtoken: c7004ded9db897e538405c67e50e0ef0c3dbad717e67a92d02f6ebcfd1022a5ad1d2c4419541f538ff623051759ec000d2f426e03f9709a6608570c5b9141a6b</span>
+<span class="hljs-comment">#clash:</span>
+<span class="hljs-comment"># path: &#x27;./bin/fulltclash-linux-amd64&#x27; # 代理客户端的路径，默认为 ./bin/ 下。不会弄不要动这里，用默认的即可。本仓库默认仅提供win-amd64与linux-amd64两种(意味着如果为这两种架构，这里不用改。)，其他架构需要自行编译。</span>
+<span class="hljs-comment"># allow-caching: false  #是否缓存测试过程产生的订阅，若否，则测试完成后会自动删除测试订阅，以免造成空间浪费。（此配置暂不生效）</span>
+<span class="hljs-comment"># core: 4 # 核心数，数量越多测试速度越快，但代价是内存会大量占用(每个核心大概10M)，自己的机子多少内存自己平衡。默认值为1.</span>
+<span class="hljs-comment"># auto-start: false # bot启动时顺带启动,若为false则需要在 bot上输入/clash start 手动启动，默认false</span>
+<span class="hljs-comment"># startup: 1124 #起始端口。表示从此端口开始往下数占用数量，比如核心数为4，就会占用[1124,1126,1128,1130]共4个端口，遇到端口占用时可配置此项。推荐10000以上作为初始端口</span>
+<span class="hljs-comment"># branch: origin #clash内核上游分支，仅有两个有效值: [origin, meta], meta分支支持更多协议，比如vless、tuic等，但是使用上较为不可控，默认为origin原生内核。</span>
+<span class="hljs-comment">#proxy: &quot;host:端口&quot; # http配置代理(非socks5)，括号内可选用于下载获取订阅链接，订阅链接国内打不开可尝试开启（可选配置）,本机提供的代理可以这样填: &#x27;127.0.0.1:7890&#x27;</span>
+<span class="hljs-comment">#如果要http代理要验证，配置格式为: proxy: &quot;用户名:密码@host:端口&quot; 比如: user1:112233@127.0.0.1:7890</span>
+<span class="hljs-comment">#geoip-api: &quot;ip-api.com&quot; # GEOIP 测试api，取二级域名,目前支持 ip-api.com ip.sb ipleak.net ipdata.co ipapi.co 五种，其中 ipdata 需要配置下面的geoip-key</span>
+<span class="hljs-comment">#geoip-key: xxxxxxx #ipdata 的 apikey，如果使用其他api则无需填写</span>
+<span class="hljs-comment">#subconvertor: #订阅转换(此配置主要开发者已无心维护，能用但不稳定)</span>
+<span class="hljs-comment"># enable: true #是否启用</span>
+<span class="hljs-comment"># host: &#x27;127.0.0.1:25500&#x27; #域名或者ip加端口</span>
+<span class="hljs-comment"># remoteconfig: &quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini&quot; #远程配置</span>
+<span class="hljs-comment">#pingurl: http://www.gstatic.com/generate_204  #自定义延迟测试URL</span>
+<span class="hljs-comment">#netflixurl: &quot;https://www.netflix.com/title/80113701&quot;  #自定义奈飞非自制剧检测网页，注意在更换此链接时请确保是非自制的链接。</span>
+<span class="hljs-comment">#speedfile:  #自定义测速文件，可以添加多个诸如以下格式或者[https://1.com, https://2.com]</span>
+<span class="hljs-comment">#- https://dl.google.com/dl/android/studio/install/3.4.1.0/android-studio-ide-183.5522156-windows.exe</span>
+<span class="hljs-comment">#- https://dl.google.com/dl/android/studio/install/3.4.1.0/android-studio-ide-183.5522156-windows.exe</span>
+<span class="hljs-comment">#speednodes: 300 # 测速节点数量限制，超过将不会进行测速</span>
+<span class="hljs-comment">#speedthread: 4 #测速线程</span>
+<span class="hljs-comment">#nospeed: true #禁用测速，开启后将无法测速。</span>
+<span class="hljs-comment">#speed_end_colors_switch: false #速度测试渐变色模式，默认关闭</span>
+<span class="hljs-comment">#end_colors_switch: false #联通性测试渐变色模式，默认关闭</span>
+<span class="hljs-comment">#ipstack: true #开启ipv4，ipv6双栈检测。默认关闭(false)，开启后可以检测节点是否支持ipv4和ipv6，代价是检测时间会延长。</span>
+<span class="hljs-comment">#localip: false  #本地ip数据库(MaxMind格式) ,请将asn数据库与city数据库放入&quot;/resources/databases&quot;文件夹</span>
+<span class="hljs-comment">#dasn: &quot;GeoLite2-ASN.mmdb&quot; #ASN数据库名称，用于获取AS编号</span>
+<span class="hljs-comment">#dorg: &quot;GeoLite2-ASN.mmdb&quot; #org数据库mingc，用于获取组织名称</span>
+<span class="hljs-comment">#dcity: &quot;GeoLite2-City.mmdb&quot; #city数据库名称，用于获取地区代码</span>
+<span class="hljs-comment">#speedconfig: #测速相关配置</span>
+<span class="hljs-comment"># interval: 10 #每个节点的测速时长</span>
+<span class="hljs-comment">#entrance:  #入口显示配置</span>
+<span class="hljs-comment"># switch: &quot;ip&quot; #设置为ip将显示入口ip段，设置为cluster将显示簇，默认设置为ip，PS:这里的簇为入口域名绑定的ip地址数量</span>
+<span class="hljs-comment">#user: 12345678 #用户列表，/grant 命令授权的目标会保存在这。推荐使用bot进行授权，而非手动配置。（可选配置）</span>
+<span class="hljs-comment">#emoji: #emoji可选配置</span>
+<span class="hljs-comment"># enable: true #是否启用,默认启用。若否，则在输出图片时emoji将无法正常显示。关闭该项可解决部分图片生成失败的问题。（可选配置）</span>
+<span class="hljs-comment"># emoji-source: &#x27;TwemojiLocalSource&#x27; #emoji表情源。默认值为TwemojiLocalSource。分为web源与本地源。可配置的值参考 ./libs/emoji_custom/__all__ 里面的成员变量。目前本地源仅支持: TwemojiLocalSource</span>
+<span class="hljs-comment">#font: &#x27;./resources/苹方黑体-准-简.ttf&#x27; #自定义字体，这里填字体的路径</span>
+<span class="hljs-comment">#slaveconfig:</span>
+<span class="hljs-comment">#  default-slave: # 默认后端配置。</span>
+<span class="hljs-comment">#    comment: &quot;本地测试后端&quot; # 默认测试后端的备注。</span>
+<span class="hljs-comment">#    username: &quot;local&quot; # 默认测试后端的ID，此项请勿修改，会影响本地后端的运行。</span>
+<span class="hljs-comment">#userconfig: #用户权限组相关配置</span>
+<span class="hljs-comment">#  rule: #测试时的默认规则,3.6.0加入</span>
+<span class="hljs-comment">#    &quot;规则名&quot;:</span>
+<span class="hljs-comment">#      enable: true #是否启用激活该规则</span>
+<span class="hljs-comment">#      slaveid: local  #slaveid的有效值参照配置里的 slaveconfig下的所有键。</span>
+<span class="hljs-comment">#      script: [&quot;Netflix&quot;, &quot;Youtube&quot;, &quot;Disney+&quot;, &quot;维基百科&quot;] #script的有效值参照连通性测试绘图结果中显示的名称（大小写敏感）。</span>
+<span class="hljs-comment">#      sort: &quot;HTTP升序&quot;</span>
+<span class="hljs-comment"># 查看你的机器人的所有可用测试项的python变量:</span>
+<span class="hljs-comment"># from utils.cleaner import addon</span>
+<span class="hljs-comment"># print(addon.global_test_item)</span>
+
+<span class="hljs-comment">#----------------------------   以下为绘图相关配置   --------------------------------#</span>
+
+<span class="hljs-comment">#image:</span>
+<span class="hljs-comment"># title: &#x27;FullTclash&#x27; # 绘图时的标题</span>
+<span class="hljs-comment"># 以下是颜色配置，其中speed是速度相关,name为颜色名字，value为颜色值，目前仅支持十六进制，label是颜色对应的速度区间（单位MB）,不用动，只需改value值，其他项是为了做区分。</span>
+<span class="hljs-comment"># color:</span>
+<span class="hljs-comment">#  speed: # 刚刚好有七个颜色，多一个少一个可能会有奇怪的效果。注意缩进。如果不想有太多颜色，可以两个颜色取同样的颜色值。</span>
+<span class="hljs-comment">#   - &#123; label: 0, name: &#x27;云水&#x27;, value: &#x27;#B4C3D0&#x27;, alpha: 255, end_color: &#x27;#B4C3D0&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; label: 1, name: &#x27;晴山&#x27;, value: &#x27;#91AEC4&#x27;, alpha: 255, end_color: &#x27;#91AEC4&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; label: 5, name: &#x27;秋波&#x27;, value: &#x27;#8BB8CB&#x27;, alpha: 255, end_color: &#x27;#8BB8CB&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; label: 10, name: &#x27;天韵&#x27;, value: &#x27;#5796B3&#x27;, alpha: 255, end_color: &#x27;#5796B3&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; label: 20, name: &#x27;鸢尾&#x27;, value: &#x27;#1988AE&#x27;, alpha: 255, end_color: &#x27;#1988AE&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; label: 60, name: &#x27;甸子&#x27;, value: &#x27;#238BBC&#x27;, alpha: 255, end_color: &#x27;#238BBC&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; label: 100, name: &#x27;景泰&#x27;, value: &#x27;#2A73AC&#x27;, alpha: 255, end_color: &#x27;#2A73AC&#x27; &#125;</span>
+<span class="hljs-comment">#  delay: #延迟单位: ms</span>
+<span class="hljs-comment">#   - &#123; label: 1, name: &#x27;云水&#x27;, value: &#x27;#B4C3D0&#x27;, alpha: 255, end_color: &#x27;#B4C3D0&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; label: 100, name: &#x27;晴山&#x27;, value: &#x27;#91AEC4&#x27;, alpha: 255, end_color: &#x27;#91AEC4&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; label: 200, name: &#x27;秋波&#x27;, value: &#x27;#8BB8CB&#x27;, alpha: 255, end_color: &#x27;#8BB8CB&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; label: 300, name: &#x27;天韵&#x27;, value: &#x27;#5796B3&#x27;, alpha: 255, end_color: &#x27;#5796B3&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; label: 500, name: &#x27;鸢尾&#x27;, value: &#x27;#1988AE&#x27;, alpha: 255, end_color: &#x27;#1988AE&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; label: 1000, name: &#x27;甸子&#x27;, value: &#x27;#238BBC&#x27;, alpha: 255, end_color: &#x27;#238BBC&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; label: 2000, name: &#x27;景泰&#x27;, value: &#x27;#2A73AC&#x27;, alpha: 255, end_color: &#x27;#2A73AC&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; label: 99999, name: &#x27;景泰&#x27;, value: &#x27;#8d8b8e&#x27;, alpha: 255 &#125;  #第八个为超时，label无用</span>
+<span class="hljs-comment">#  out_color: #topo图用于分辨出口的颜色</span>
+<span class="hljs-comment">#   - &#123; name: &#x27;云水&#x27;, value: &#x27;#B4C3D0&#x27;, alpha: 255, end_color: &#x27;#B4C3D0&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; name: &#x27;晴山&#x27;, value: &#x27;#91AEC4&#x27;, alpha: 255, end_color: &#x27;#91AEC4&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; name: &#x27;秋波&#x27;, value: &#x27;#8BB8CB&#x27;, alpha: 255, end_color: &#x27;#8BB8CB&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; name: &#x27;天韵&#x27;, value: &#x27;#5796B3&#x27;, alpha: 255, end_color: &#x27;#5796B3&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; name: &#x27;鸢尾&#x27;, value: &#x27;#1988AE&#x27;, alpha: 255, end_color: &#x27;#1988AE&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; name: &#x27;甸子&#x27;, value: &#x27;#238BBC&#x27;, alpha: 255, end_color: &#x27;#238BBC&#x27; &#125;</span>
+<span class="hljs-comment">#   - &#123; name: &#x27;景泰&#x27;, value: &#x27;#2A73AC&#x27;, alpha: 255, end_color: &#x27;#2A73AC&#x27; &#125;</span>
+<span class="hljs-comment">#  &quot;yes&quot;: &#x27;#bee47e&#x27; #解锁色块的颜色，注意不要去掉双引号</span>
+<span class="hljs-comment">#  &quot;yesalpha&quot;: 255 #解锁颜色块透明度</span>
+<span class="hljs-comment">#  &quot;yesend&quot;: &#x27;#bee47e&#x27; #解锁色块的渐变结束颜色，注意不要去掉双引号</span>
+<span class="hljs-comment">#  &quot;no&quot;: &#x27;#ee6b73&#x27; #失败色块的颜色，注意不要去掉双引号</span>
+<span class="hljs-comment">#  &quot;noalpha&quot;: 255 #失败颜色块透明度</span>
+<span class="hljs-comment">#  &quot;noend&quot;: &#x27;#ee6b73&#x27; #失败色块的渐变结束颜色，注意不要去掉双引号</span>
+<span class="hljs-comment">#  na: &#x27;#8d8b8e&#x27; #N/A色块的颜色</span>
+<span class="hljs-comment">#  naalpha: 255  #N/A颜色块透明度</span>
+<span class="hljs-comment">#  naend: &#x27;#8d8b8e&#x27; #N/A色块的渐变结束颜色</span>
+<span class="hljs-comment">#  wait: &#x27;#dcc7e1&#x27; #待解锁色块的颜色</span>
+<span class="hljs-comment">#  waitalpha: 255  #待解锁色块的颜色</span>
+<span class="hljs-comment">#  waitend: &#x27;#dcc7e1&#x27; #待解锁色块的渐变结束颜色</span>
+<span class="hljs-comment">#  iprisk: #IP风险色块颜色,名称后面加alpha为颜色块透明度属性</span>
+<span class="hljs-comment">#   low: &#x27;#ffffff&#x27;</span>
+<span class="hljs-comment">#   lowalpha: 255</span>
+<span class="hljs-comment">#   lowend: &#x27;#ffffff&#x27;</span>
+<span class="hljs-comment">#   medium: &#x27;#ffffff&#x27;</span>
+<span class="hljs-comment">#   mediumalpha: 255</span>
+<span class="hljs-comment">#   mediumend: &#x27;#ffffff&#x27;</span>
+<span class="hljs-comment">#   high: &#x27;#ffffff&#x27;</span>
+<span class="hljs-comment">#   highalpha: 255</span>
+<span class="hljs-comment">#   hightend: &#x27;#ffffff&#x27; </span>
+<span class="hljs-comment">#   veryhigh: &#x27;#ffffff&#x27;</span>
+<span class="hljs-comment">#   veryhighalpha: 255</span>
+<span class="hljs-comment">#   veryhighend: &#x27;#ffffff&#x27;</span>
+<span class="hljs-comment">#  warn: &#x27;#fcc43c&#x27; #警告色块，一般为黄色或橙色</span>
+<span class="hljs-comment">#  warnalpha: 255  #警告颜色块透明度</span>
+<span class="hljs-comment">#  warnend: &#x27;#fcc43c&#x27; #警告渐变结束色块</span>
+<span class="hljs-comment"># watermark: #水印</span>
+<span class="hljs-comment">#  enable: true #是否启用</span>
+<span class="hljs-comment">#  text: &#x27;只是一个水印&#x27; #水印文本</span>
+<span class="hljs-comment">#  color: &#x27;#000000&#x27; #颜色值</span>
+<span class="hljs-comment">#  alpha: 16 # 透明度, 可用范围(0-255)</span>
+<span class="hljs-comment">#  font_size: 64 #字体大小</span>
+<span class="hljs-comment">#  angle: -16.0 #旋转角度</span>
+<span class="hljs-comment">#  row_spacing: 0 #行距</span>
+<span class="hljs-comment">#  start_y: 0 #纵坐标起始位置</span>
+<span class="hljs-comment"># background: #背景颜色</span>
+<span class="hljs-comment">#  backgrounds: &#x27;#ffffff&#x27; #联通性测试背景色</span>
+<span class="hljs-comment">#  ins: &#x27;#ffffff&#x27; #拓扑测试入口topo背景色</span>
+<span class="hljs-comment">#  outs: &#x27;#ffffff&#x27; #拓扑测试出口topo背景色</span>
+<span class="hljs-comment">#  speedtest: &#x27;#ffffff&#x27; #速度测试</span>
+<span class="hljs-comment">#  speedtitle: &#x27;#EAEAEA&#x27; #速度测试标题栏颜色</span>
+<span class="hljs-comment">#  testtitle: &#x27;#EAEAEA&#x27; #联通性测试标题栏颜色</span>
+<span class="hljs-comment">#  topotitle: &#x27;#EAEAEA&#x27; #拓扑测试标题栏颜色</span></code></pre></div>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://fulltclash.gitbook.io/fulltclash-doc/wen-dang/pei-zhi-shuo-ming">配置说明 - FullTclash 文档</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://github.com/AirportR/FullTclash">AirportR&#x2F;FullTclash</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://github.com/We1eVen/fulltclash-docker">We1eVen&#x2F;fulltclash-docker</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
                 
               </div>
             

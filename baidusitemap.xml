@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.updating.top//CS61A-lab03-Q5/</loc>
+    <loc>https://www.updating.top//HUST-military-theory/</loc>
+    <lastmod>2023-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.updating.top//HUST-physics-exps/</loc>
+    <lastmod>2023-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.updating.top//CS61A-lab03-ChurchNumeral/</loc>
+    <lastmod>2023-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.updating.top//CS61A-How-to-Learn/</loc>
+    <lastmod>2023-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.updating.top//ShanHe-University-Review/</loc>
     <lastmod>2023-11-11</lastmod>
   </url>
   <url>
     <loc>https://www.updating.top//CS61A-Reference/</loc>
+    <lastmod>2023-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.updating.top//CS61A-lab03-Q5/</loc>
     <lastmod>2023-11-11</lastmod>
   </url>
   <url>
@@ -66,26 +86,6 @@
   </url>
   <url>
     <loc>https://www.updating.top//hexo-start/</loc>
-    <lastmod>2023-11-11</lastmod>
-  </url>
-  <url>
-    <loc>https://www.updating.top//HUST-physics-exps/</loc>
-    <lastmod>2023-11-11</lastmod>
-  </url>
-  <url>
-    <loc>https://www.updating.top//CS61A-lab03-ChurchNumeral/</loc>
-    <lastmod>2023-11-11</lastmod>
-  </url>
-  <url>
-    <loc>https://www.updating.top//HUST-military-theory/</loc>
-    <lastmod>2023-11-11</lastmod>
-  </url>
-  <url>
-    <loc>https://www.updating.top//CS61A-How-to-Learn/</loc>
-    <lastmod>2023-11-11</lastmod>
-  </url>
-  <url>
-    <loc>https://www.updating.top//ShanHe-University-Review/</loc>
     <lastmod>2023-11-11</lastmod>
   </url>
 </urlset> 

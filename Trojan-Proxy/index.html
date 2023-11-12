@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310231415554.jpg">
 <meta property="article:published_time" content="2023-10-23T06:09:29.000Z">
-<meta property="article:modified_time" content="2023-11-12T09:54:32.110Z">
+<meta property="article:modified_time" content="2023-11-12T10:00:04.734Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="Trojan">
 <meta property="article:tag" content="VPS">
@@ -310,7 +310,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月12日 下午
+                    本文最后更新于：2023年11月12日 晚上
                   
                 
               </p>
@@ -320,11 +320,7 @@
                 
                 <h1 id="海外VPS使用Trojan协议搭建代理"><a href="#海外VPS使用Trojan协议搭建代理" class="headerlink" title="海外VPS使用Trojan协议搭建代理"></a>海外VPS使用Trojan协议搭建代理</h1><h2 id="使用自动脚本"><a href="#使用自动脚本" class="headerlink" title="使用自动脚本"></a>使用自动脚本</h2><p>安装前需要将任意域名解析到此VPS，如<code>proxy.sakiison.icu</code>，可以使用二级域名三级域名。</p>
 <p>在root用户权限下运行下列脚本：</p>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment">#安装/更新</span>
-<span class="hljs-built_in">source</span> &lt;(curl -sL https://git.io/trojan-install)
-
-<span class="hljs-comment">#卸载</span>
-<span class="hljs-built_in">source</span> &lt;(curl -sL https://git.io/trojan-install) --remove</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="comment">#安装/更新</span></span><br><span class="line"><span class="built_in">source</span> &lt;(curl -sL https://git.io/trojan-install)</span><br><span class="line"></span><br><span class="line"><span class="comment">#卸载</span></span><br><span class="line"><span class="built_in">source</span> &lt;(curl -sL https://git.io/trojan-install) --remove</span><br></pre></div></figure></td></tr></table></figure>
 
 <p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311102051643.png" srcset="/img/loading.gif" lazyload alt="installing"></p>
 <p>使用<code>trojan</code>协议需要申请证书，个人常用的是第一种和第四种，新手建议使用第一种，有效期3个月可自动续签；第四种下文讲解。</p>
@@ -714,6 +710,10 @@
   });
 </script>
 
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
 
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 

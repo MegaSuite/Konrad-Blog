@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310261058310.png">
 <meta property="article:published_time" content="2023-10-23T06:10:40.000Z">
-<meta property="article:modified_time" content="2023-11-12T09:54:32.110Z">
+<meta property="article:modified_time" content="2023-11-12T10:00:04.734Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="VPS">
 <meta property="article:tag" content="Proxy">
@@ -309,7 +309,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月12日 下午
+                    本文最后更新于：2023年11月12日 晚上
                   
                 
               </p>
@@ -328,13 +328,7 @@
 <li>前端 sub-web</li>
 </ul>
 </blockquote>
-<h2 id="后端搭建"><a href="#后端搭建" class="headerlink" title="后端搭建"></a>后端搭建</h2><div class="code-wrapper"><pre><code class="hljs bash">docker run -d \
-	--restart=always \
-	--name subconverter \
-	-p 34324:25500 \
-	tindy2013/subconverter:latest
-	
-<span class="hljs-comment">#-p 外部映射端口自选，与下方同步即可</span></code></pre></div>
+<h2 id="后端搭建"><a href="#后端搭建" class="headerlink" title="后端搭建"></a>后端搭建</h2><figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">docker run -d \</span><br><span class="line">	--restart=always \</span><br><span class="line">	--name subconverter \</span><br><span class="line">	-p 34324:25500 \</span><br><span class="line">	tindy2013/subconverter:latest</span><br><span class="line">	</span><br><span class="line"><span class="comment">#-p 外部映射端口自选，与下方同步即可</span></span><br></pre></div></figure></td></tr></table></figure>
 
 <div class="note note-success">
             <p>注意在<strong>服务商控制台</strong>安全组里放行相应端口，<strong>不要</strong>用宝塔放行，大部分不生效。</p>
@@ -349,8 +343,7 @@
 <p>使用<code>docker ps</code>查看运行中的容器。</p>
 <p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310271931496.png" srcset="/img/loading.gif" lazyload alt="container"></p>
 <p>运行之后，使用以下命令查看状态</p>
-<div class="code-wrapper"><pre><code class="hljs bash">curl http://localhost:34324/version
-<span class="hljs-comment"># 如果出现`subconverter vx.x.x backend`字样，表明运行成功</span></code></pre></div>
+<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">curl http://localhost:34324/version</span><br><span class="line"><span class="comment"># 如果出现`subconverter vx.x.x backend`字样，表明运行成功</span></span><br></pre></div></figure></td></tr></table></figure>
 
 <p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310271930936.png" srcset="/img/loading.gif" lazyload alt="success"></p>
 <p>根据需要为后端绑定域名，配置反代（可选，可以直接用<code>ip:port</code>访问）</p>
@@ -365,165 +358,17 @@
 <p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310271934112.png" srcset="/img/loading.gif" lazyload alt="settings"></p>
 <p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310271934964.png" srcset="/img/loading.gif" lazyload alt="reproxy"></p>
 <h2 id="前端搭建"><a href="#前端搭建" class="headerlink" title="前端搭建"></a>前端搭建</h2><p>使用<code>docker</code>运行前端需要更改文件后自行构建镜像。</p>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># Clone项目到本地 </span>
-git <span class="hljs-built_in">clone</span> https://github.com/CareyWang/sub-web.git
-<span class="hljs-built_in">cd</span> sub-web</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="comment"># Clone项目到本地 </span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/CareyWang/sub-web.git</span><br><span class="line"><span class="built_in">cd</span> sub-web </span><br></pre></div></figure></td></tr></table></figure>
 
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑.env配置文件(也可搭配其他文件编辑器，如VScode)</span>
-vi .<span class="hljs-built_in">env</span></code></pre></div>
+<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="comment"># 编辑.env配置文件(也可搭配其他文件编辑器，如VScode)</span></span><br><span class="line">vi .<span class="built_in">env</span> </span><br></pre></div></figure></td></tr></table></figure>
 
 <p>进入<code>.env</code></p>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 没有其他需求就只改`API后端`就行。</span>
+<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="comment"># 没有其他需求就只改`API后端`就行。</span></span><br><span class="line"></span><br><span class="line">VUE_APP_PROJECT = <span class="string">&quot;https://github.com/CareyWang/sub-web&quot;</span></span><br><span class="line"></span><br><span class="line">VUE_APP_BOT_LINK = <span class="string">&quot;https://t.me/subconverter_discuss&quot;</span></span><br><span class="line"></span><br><span class="line">VUE_APP_BACKEND_RELEASE = <span class="string">&quot;https://github.com/tindy2013/subconverter/actions&quot;</span></span><br><span class="line"></span><br><span class="line">VUE_APP_SUBCONVERTER_REMOTE_CONFIG = <span class="string">&quot;https://raw.githubusercontent.com/tindy2013/subconverter/master/base/config/example_external_config.ini&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># API 后端，填写自己绑定的域名，或者`ip:port`</span></span><br><span class="line">VUE_APP_SUBCONVERTER_DEFAULT_BACKEND = <span class="string">&quot;https://sub.wisedrifter.top&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 短链接后端（可选）</span></span><br><span class="line">VUE_APP_MYURLS_API = <span class="string">&quot;https://suo.yt/short&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文本托管后端</span></span><br><span class="line">VUE_APP_CONFIG_UPLOAD_API = <span class="string">&quot;https://oss.wcc.best/upload&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 页面配置</span></span><br><span class="line">VUE_APP_USE_STORAGE = <span class="literal">true</span> </span><br><span class="line">VUE_APP_CACHE_TTL = 86400</span><br></pre></div></figure></td></tr></table></figure>
 
-VUE_APP_PROJECT = <span class="hljs-string">&quot;https://github.com/CareyWang/sub-web&quot;</span>
-
-VUE_APP_BOT_LINK = <span class="hljs-string">&quot;https://t.me/subconverter_discuss&quot;</span>
-
-VUE_APP_BACKEND_RELEASE = <span class="hljs-string">&quot;https://github.com/tindy2013/subconverter/actions&quot;</span>
-
-VUE_APP_SUBCONVERTER_REMOTE_CONFIG = <span class="hljs-string">&quot;https://raw.githubusercontent.com/tindy2013/subconverter/master/base/config/example_external_config.ini&quot;</span>
-
-<span class="hljs-comment"># API 后端，填写自己绑定的域名，或者`ip:port`</span>
-VUE_APP_SUBCONVERTER_DEFAULT_BACKEND = <span class="hljs-string">&quot;https://sub.wisedrifter.top&quot;</span>
-
-<span class="hljs-comment"># 短链接后端（可选）</span>
-VUE_APP_MYURLS_API = <span class="hljs-string">&quot;https://suo.yt/short&quot;</span>
-
-<span class="hljs-comment"># 文本托管后端</span>
-VUE_APP_CONFIG_UPLOAD_API = <span class="hljs-string">&quot;https://oss.wcc.best/upload&quot;</span>
-
-<span class="hljs-comment"># 页面配置</span>
-VUE_APP_USE_STORAGE = <span class="hljs-literal">true</span> 
-VUE_APP_CACHE_TTL = 86400</code></pre></div>
-
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑subconverter.vue</span>
-<span class="hljs-built_in">cd</span> src/views 
-vi Subconverter.vue</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="comment"># 编辑subconverter.vue</span></span><br><span class="line"><span class="built_in">cd</span> src/views </span><br><span class="line">vi Subconverter.vue  </span><br></pre></div></figure></td></tr></table></figure>
 
 <p>进入<code>subconverter.vue</code></p>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 修改下列内容</span>
-
-<span class="hljs-comment"># 修改后端，填你刚才搭建的后端，注意后面的`/sub?`</span>
-backendOptions: [&#123; value: <span class="hljs-string">&quot;https://sub.wisedrifter.top/sub?&quot;</span> &#125;],
-
-<span class="hljs-comment"># 修改远程配置，第一个为博主自己写的配置，包含`Disney+`,`Netflix`,`Prime Video`,`OneDrive`等常用分流</span>
-remoteConfig: [
-          &#123;
-            label: <span class="hljs-string">&quot;universal&quot;</span>,
-            options: [
-              &#123;
-                label:<span class="hljs-string">&quot;Konrad自用分流，（Github：MegaSuite）&quot;</span>,
-                value:
-                <span class="hljs-string">&quot;https://raw.githubusercontent.com/MegaSuite/Clash-Configs/main/Policy/ClashGeneral.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Online 默认版 分组比较全 (与Github同步)&quot;</span>,
-                value:
-                  <span class="hljs-string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Online_AdblockPlus 更多去广告 (与Github同步)&quot;</span>,
-                value:
-                  <span class="hljs-string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_AdblockPlus.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Online_NoAuto 无自动测速 (与Github同步)&quot;</span>,
-                value:
-                  <span class="hljs-string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_NoAuto.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Online_NoReject 无广告拦截规则 (与Github同步)&quot;</span>,
-                value:
-                  <span class="hljs-string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_NoReject.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Online_Mini 精简版 (与Github同步)&quot;</span>,
-                value:
-                  <span class="hljs-string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Online_Mini_AdblockPlus.ini 精简版 更多去广告 (与Github同步)&quot;</span>,
-                value:
-                  <span class="hljs-string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_AdblockPlus.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Online_Mini_NoAuto.ini 精简版 不带自动测速 (与Github同步)&quot;</span>,
-                value:
-                  <span class="hljs-string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_NoAuto.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Online_Mini_Fallback.ini 精简版 带故障转移 (与Github同步)&quot;</span>,
-                value:
-                  <span class="hljs-string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_Fallback.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Online_Mini_MultiMode.ini 精简版 自动测速、故障转移、负载均衡 (与Github同步)&quot;</span>,
-                value:
-                  <span class="hljs-string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_MultiMode.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Online_Full 全分组 重度用户使用 (与Github同步)&quot;</span>,
-                value:
-                  <span class="hljs-string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Online_Full_NoAuto.ini 全分组 无自动测速 重度用户使用 (与Github同步)&quot;</span>,
-                value:
-                  <span class="hljs-string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_NoAuto.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Online_Full_AdblockPlus 全分组 重度用户使用 更多去广告 (与Github同步)&quot;</span>,
-                value:
-                  <span class="hljs-string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_AdblockPlus.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Online_Full_Netflix 全分组 重度用户使用 奈飞全量 (与Github同步)&quot;</span>,
-                value:
-                  <span class="hljs-string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_Netflix.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR 本地 默认版 分组比较全&quot;</span>,
-                value: <span class="hljs-string">&quot;config/ACL4SSR.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Mini 本地 精简版&quot;</span>,
-                value: <span class="hljs-string">&quot;config/ACL4SSR_Mini.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Mini_NoAuto.ini 本地 精简版+无自动测速&quot;</span>,
-                value: <span class="hljs-string">&quot;config/ACL4SSR_Mini_NoAuto.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_Mini_Fallback.ini 本地 精简版+fallback&quot;</span>,
-                value: <span class="hljs-string">&quot;config/ACL4SSR_Mini_Fallback.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_BackCN 本地 回国&quot;</span>,
-                value: <span class="hljs-string">&quot;config/ACL4SSR_BackCN.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_NoApple 本地 无苹果分流&quot;</span>,
-                value: <span class="hljs-string">&quot;config/ACL4SSR_NoApple.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_NoAuto 本地 无自动测速 &quot;</span>,
-                value: <span class="hljs-string">&quot;config/ACL4SSR_NoAuto.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_NoAuto_NoApple 本地 无自动测速&amp;无苹果分流&quot;</span>,
-                value: <span class="hljs-string">&quot;config/ACL4SSR_NoAuto_NoApple.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_NoMicrosoft 本地 无微软分流&quot;</span>,
-                value: <span class="hljs-string">&quot;config/ACL4SSR_NoMicrosoft.ini&quot;</span>
-              &#125;,
-              &#123;
-                label: <span class="hljs-string">&quot;ACL4SSR_WithGFW 本地 GFW列表&quot;</span>,
-                value: <span class="hljs-string">&quot;config/ACL4SSR_WithGFW.ini&quot;</span>
-              &#125;
-            ]
-          &#125;,
-        ]</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="comment"># 修改下列内容</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后端，填你刚才搭建的后端，注意后面的`/sub?`</span></span><br><span class="line">backendOptions: [&#123; value: <span class="string">&quot;https://sub.wisedrifter.top/sub?&quot;</span> &#125;],</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改远程配置，第一个为博主自己写的配置，包含`Disney+`,`Netflix`,`Prime Video`,`OneDrive`等常用分流</span></span><br><span class="line">remoteConfig: [</span><br><span class="line">          &#123;</span><br><span class="line">            label: <span class="string">&quot;universal&quot;</span>,</span><br><span class="line">            options: [</span><br><span class="line">              &#123;</span><br><span class="line">                label:<span class="string">&quot;Konrad自用分流，（Github：MegaSuite）&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                <span class="string">&quot;https://raw.githubusercontent.com/MegaSuite/Clash-Configs/main/Policy/ClashGeneral.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Online 默认版 分组比较全 (与Github同步)&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                  <span class="string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Online_AdblockPlus 更多去广告 (与Github同步)&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                  <span class="string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_AdblockPlus.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Online_NoAuto 无自动测速 (与Github同步)&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                  <span class="string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_NoAuto.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Online_NoReject 无广告拦截规则 (与Github同步)&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                  <span class="string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_NoReject.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Online_Mini 精简版 (与Github同步)&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                  <span class="string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Online_Mini_AdblockPlus.ini 精简版 更多去广告 (与Github同步)&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                  <span class="string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_AdblockPlus.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Online_Mini_NoAuto.ini 精简版 不带自动测速 (与Github同步)&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                  <span class="string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_NoAuto.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Online_Mini_Fallback.ini 精简版 带故障转移 (与Github同步)&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                  <span class="string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_Fallback.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Online_Mini_MultiMode.ini 精简版 自动测速、故障转移、负载均衡 (与Github同步)&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                  <span class="string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_MultiMode.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Online_Full 全分组 重度用户使用 (与Github同步)&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                  <span class="string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Online_Full_NoAuto.ini 全分组 无自动测速 重度用户使用 (与Github同步)&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                  <span class="string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_NoAuto.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Online_Full_AdblockPlus 全分组 重度用户使用 更多去广告 (与Github同步)&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                  <span class="string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_AdblockPlus.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Online_Full_Netflix 全分组 重度用户使用 奈飞全量 (与Github同步)&quot;</span>,</span><br><span class="line">                value:</span><br><span class="line">                  <span class="string">&quot;https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_Netflix.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR 本地 默认版 分组比较全&quot;</span>,</span><br><span class="line">                value: <span class="string">&quot;config/ACL4SSR.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Mini 本地 精简版&quot;</span>,</span><br><span class="line">                value: <span class="string">&quot;config/ACL4SSR_Mini.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Mini_NoAuto.ini 本地 精简版+无自动测速&quot;</span>,</span><br><span class="line">                value: <span class="string">&quot;config/ACL4SSR_Mini_NoAuto.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_Mini_Fallback.ini 本地 精简版+fallback&quot;</span>,</span><br><span class="line">                value: <span class="string">&quot;config/ACL4SSR_Mini_Fallback.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_BackCN 本地 回国&quot;</span>,</span><br><span class="line">                value: <span class="string">&quot;config/ACL4SSR_BackCN.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_NoApple 本地 无苹果分流&quot;</span>,</span><br><span class="line">                value: <span class="string">&quot;config/ACL4SSR_NoApple.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_NoAuto 本地 无自动测速 &quot;</span>,</span><br><span class="line">                value: <span class="string">&quot;config/ACL4SSR_NoAuto.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_NoAuto_NoApple 本地 无自动测速&amp;无苹果分流&quot;</span>,</span><br><span class="line">                value: <span class="string">&quot;config/ACL4SSR_NoAuto_NoApple.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_NoMicrosoft 本地 无微软分流&quot;</span>,</span><br><span class="line">                value: <span class="string">&quot;config/ACL4SSR_NoMicrosoft.ini&quot;</span></span><br><span class="line">              &#125;,</span><br><span class="line">              &#123;</span><br><span class="line">                label: <span class="string">&quot;ACL4SSR_WithGFW 本地 GFW列表&quot;</span>,</span><br><span class="line">                value: <span class="string">&quot;config/ACL4SSR_WithGFW.ini&quot;</span></span><br><span class="line">              &#125;</span><br><span class="line">            ]</span><br><span class="line">          &#125;,</span><br><span class="line">        ]</span><br></pre></div></figure></td></tr></table></figure>
 
 <p>代码结构如下：</p>
 <p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310271947399.png" srcset="/img/loading.gif" lazyload alt="subconverter.vue"></p>
@@ -533,16 +378,7 @@ remoteConfig: [
 <p>冒号前的<code>sub-web</code>是目前存放前端的文件夹名</p>
 <p>构建命令需要在前端文件夹内执行，否则会提醒<code>找不到Dockerfile</code></p>
 </blockquote>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment">#构建镜像</span>
-docker build -t sub-web:latest .  
-<span class="hljs-comment">#查看镜像是否构建成功,有同名镜像即为成功</span>
-docker images
-<span class="hljs-comment">#部署服务 </span>
-docker run -d \
-	-p 34325:80 \
-	--restart always \
-	--name subweb \
-	sub-web:latest</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="comment">#构建镜像</span></span><br><span class="line">docker build -t sub-web:latest .  </span><br><span class="line"><span class="comment">#查看镜像是否构建成功,有同名镜像即为成功</span></span><br><span class="line">docker images</span><br><span class="line"><span class="comment">#部署服务 </span></span><br><span class="line">docker run -d \</span><br><span class="line">	-p 34325:80 \</span><br><span class="line">	--restart always \</span><br><span class="line">	--name subweb \</span><br><span class="line">	sub-web:latest</span><br></pre></div></figure></td></tr></table></figure>
 
 <p>执行<code>docker ps</code>查看状态</p>
 <p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310271957970.png" srcset="/img/loading.gif" lazyload alt="sub-web"></p>
@@ -906,6 +742,10 @@ docker run -d \
   });
 </script>
 
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
 
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 

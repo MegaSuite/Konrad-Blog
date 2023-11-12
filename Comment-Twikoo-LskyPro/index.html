@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202310261652395.png">
 <meta property="article:published_time" content="2023-10-26T08:49:57.000Z">
-<meta property="article:modified_time" content="2023-11-12T09:54:32.114Z">
+<meta property="article:modified_time" content="2023-11-12T10:00:04.734Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary_large_image">
@@ -308,7 +308,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月12日 下午
+                    本文最后更新于：2023年11月12日 晚上
                   
                 
               </p>
@@ -324,12 +324,7 @@
 <li>LskyPro-Twikoo配置</li>
 </ul>
 </blockquote>
-<h2 id="基于Docker搭建Twikoo"><a href="#基于Docker搭建Twikoo" class="headerlink" title="基于Docker搭建Twikoo"></a>基于Docker搭建Twikoo</h2><h3 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h3><div class="code-wrapper"><pre><code class="hljs bash">docker run -d \
-	--name twikoo \
-	-e TWIKOO_THROTTLE=1000 \
-	-p 34322:8080 \
-	-v /home/konrad/twikoo/data/:/app/data \
-	-d imaegoo/twikoo</code></pre></div>
+<h2 id="基于Docker搭建Twikoo"><a href="#基于Docker搭建Twikoo" class="headerlink" title="基于Docker搭建Twikoo"></a>基于Docker搭建Twikoo</h2><h3 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h3><figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">docker run -d \</span><br><span class="line">	--name twikoo \</span><br><span class="line">	-e TWIKOO_THROTTLE=1000 \</span><br><span class="line">	-p 34322:8080 \</span><br><span class="line">	-v /home/konrad/twikoo/data/:/app/data \</span><br><span class="line">	-d imaegoo/twikoo</span><br></pre></div></figure></td></tr></table></figure>
 
 <div class="note note-success">
             <p>注意在<strong>服务商控制台</strong>安全组里放行相应端口，<strong>不要</strong>用宝塔放行，大部分不生效。</p>
@@ -371,7 +366,7 @@
 <h2 id="接入LskyPro"><a href="#接入LskyPro" class="headerlink" title="接入LskyPro"></a>接入LskyPro</h2><p>LskyPro图床的搭建，请查看</p>
 <a href="/Pichost-aliyunoss-lskypro/" title="基于LskyPro和阿里云对象存储搭建私有图床">基于LskyPro和阿里云对象存储搭建私有图床</a>
 
-<h3 id="token获取"><a href="#token获取" class="headerlink" title="token获取"></a>token获取</h3><div class="code-wrapper"><pre><code class="hljs bash">curl -X POST -F <span class="hljs-string">&quot;email=your_email@address&quot;</span> -F <span class="hljs-string">&quot;password=your_passwd&quot;</span> https://your.domain/api/v1/tokens</code></pre></div>
+<h3 id="token获取"><a href="#token获取" class="headerlink" title="token获取"></a>token获取</h3><figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">curl -X POST -F <span class="string">&quot;email=your_email@address&quot;</span> -F <span class="string">&quot;password=your_passwd&quot;</span> https://your.domain/api/v1/tokens</span><br></pre></div></figure></td></tr></table></figure>
 
 <p>将上述信息替换成你自己的，运行代码即可获得以数字开头的<code>token</code>，如<code>1|fafdafdadfasfadf</code></p>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>进入<code>Twikoo管理面板</code>-&gt;<code>配置管理</code>-&gt;<code>插件</code></p>
@@ -724,6 +719,10 @@
   });
 </script>
 
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
 
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 

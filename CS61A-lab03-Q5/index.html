@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307091514452.png">
 <meta property="article:published_time" content="2023-07-26T07:51:39.000Z">
-<meta property="article:modified_time" content="2023-11-12T09:54:32.110Z">
+<meta property="article:modified_time" content="2023-11-12T10:00:04.734Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary_large_image">
@@ -308,7 +308,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月12日 下午
+                    本文最后更新于：2023年11月12日 晚上
                   
                 
               </p>
@@ -321,98 +321,17 @@
 <p>Review the Disc 01 <code>is_prime</code> problem for a reminder about prime numbers.</p>
 <p>You can also choose to do the no lambda version, which is the same problem, just with defining functions with def instead of lambda.</p>
 </blockquote>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">div_by_primes_under</span>(<span class="hljs-params">n</span>):
-    <span class="hljs-string">&quot;&quot;&quot;</span>
-<span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under(10)(11)</span>
-<span class="hljs-string">    False</span>
-<span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under(10)(121)</span>
-<span class="hljs-string">    False</span>
-<span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under(10)(12)</span>
-<span class="hljs-string">    True</span>
-<span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under(5)(1)</span>
-<span class="hljs-string">    False</span>
-<span class="hljs-string">    &quot;&quot;&quot;</span>
-    checker = <span class="hljs-keyword">lambda</span> x: <span class="hljs-literal">False</span>
-    i = <span class="hljs-number">2</span>
-    <span class="hljs-keyword">while</span> i &lt; n:
-        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> checker(i):
-            checker = (<span class="hljs-keyword">lambda</span> f, i: <span class="hljs-keyword">lambda</span> x: x % i == <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> f(x))(checker,i)
-        i = i + <span class="hljs-number">1</span>
-    <span class="hljs-keyword">return</span> checker
-
-
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">div_by_primes_under_no_lambda</span>(<span class="hljs-params">n</span>):
-    <span class="hljs-string">&quot;&quot;&quot;</span>
-<span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(10)(11)</span>
-<span class="hljs-string">    False</span>
-<span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(10)(121)</span>
-<span class="hljs-string">    False</span>
-<span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(10)(12)</span>
-<span class="hljs-string">    True</span>
-<span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(5)(1)</span>
-<span class="hljs-string">    False</span>
-<span class="hljs-string">    &quot;&quot;&quot;</span>
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">checker</span>(<span class="hljs-params">x</span>):
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-    i = <span class="hljs-number">2</span>
-    <span class="hljs-keyword">while</span> i &lt; n:
-        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> checker(i):
-            <span class="hljs-keyword">def</span> <span class="hljs-title function_">outer</span>(<span class="hljs-params">f,i</span>):
-                <span class="hljs-keyword">def</span> <span class="hljs-title function_">inner</span>(<span class="hljs-params">x</span>):
-                    <span class="hljs-keyword">return</span> x % i == <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> f(x)
-                <span class="hljs-keyword">return</span> inner
-            checker = outer(checker, i)
-        i = i + <span class="hljs-number">1</span>
-    <span class="hljs-keyword">return</span> checker</code></pre></div>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h2><figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">div_by_primes_under</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; div_by_primes_under(10)(11)</span></span><br><span class="line"><span class="string">    False</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; div_by_primes_under(10)(121)</span></span><br><span class="line"><span class="string">    False</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; div_by_primes_under(10)(12)</span></span><br><span class="line"><span class="string">    True</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; div_by_primes_under(5)(1)</span></span><br><span class="line"><span class="string">    False</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    checker = <span class="keyword">lambda</span> x: <span class="literal">False</span></span><br><span class="line">    i = <span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; n:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> checker(i):</span><br><span class="line">            checker = (<span class="keyword">lambda</span> f, i: <span class="keyword">lambda</span> x: x % i == <span class="number">0</span> <span class="keyword">or</span> f(x))(checker,i)</span><br><span class="line">        i = i + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> checker</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">div_by_primes_under_no_lambda</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(10)(11)</span></span><br><span class="line"><span class="string">    False</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(10)(121)</span></span><br><span class="line"><span class="string">    False</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(10)(12)</span></span><br><span class="line"><span class="string">    True</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(5)(1)</span></span><br><span class="line"><span class="string">    False</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">checker</span>(<span class="params">x</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    i = <span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; n:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> checker(i):</span><br><span class="line">            <span class="keyword">def</span> <span class="title function_">outer</span>(<span class="params">f,i</span>):</span><br><span class="line">                <span class="keyword">def</span> <span class="title function_">inner</span>(<span class="params">x</span>):</span><br><span class="line">                    <span class="keyword">return</span> x % i == <span class="number">0</span> <span class="keyword">or</span> f(x)</span><br><span class="line">                <span class="keyword">return</span> inner</span><br><span class="line">            checker = outer(checker, i)</span><br><span class="line">        i = i + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> checker</span><br></pre></div></figure></td></tr></table></figure>
 
 <h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis:"></a>Analysis:</h2><blockquote>
 <p>核心理论依据：如果一个数不能整除以比它小的任何素数，那么这个数就是素数。<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[5种你不知道的素数的判断方法](https://zhuanlan.zhihu.com/p/104314640)">[1]</span></a></sup></p>
 </blockquote>
 <p>要求<code>checker</code>函数实现的功能就是判断<code>k</code>是否能整除以任何一个从<code>2</code>到<code>n</code>的素数，当然也就能同时实现判断一个数是否是素数。</p>
 <p>根据一般想法，我们可以在<code>div_by_primes_under_no_lambda</code>函数里面定义一个<code>normal_checker</code>函数，使它对<code>i</code>从<code>2</code>到<code>n</code>逐个进行判断：满足<code>i</code>是素数且<code>x % i == 0</code>即可。示例如下：<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="[I Heard You Liked Functions... (CS61A作业笔记) ](https://zhuanlan.zhihu.com/p/621748545)">[2]</span></a></sup></p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">is_prime</span>(<span class="hljs-params">x</span>):
-    <span class="hljs-string">&#x27;&#x27;&#x27;Prime Number Judge&#x27;&#x27;&#x27;</span>
-    i = <span class="hljs-number">2</span>
-    <span class="hljs-keyword">while</span> i * i &lt; x:
-        <span class="hljs-keyword">if</span> x % i == <span class="hljs-number">0</span>:
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-        i += <span class="hljs-number">1</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
-
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">div_by_primes_under_no_lambda</span>(<span class="hljs-params">n</span>):
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">normal_checker</span>(<span class="hljs-params">x</span>):
-        i = <span class="hljs-number">2</span>
-        <span class="hljs-keyword">while</span> i &lt;= n:
-            <span class="hljs-keyword">if</span> is_prime(i) <span class="hljs-keyword">and</span> x % i == <span class="hljs-number">0</span>:
-                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
-            i += <span class="hljs-number">1</span>
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-    <span class="hljs-keyword">return</span> normal_checker</code></pre></div>
+<figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">is_prime</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;Prime Number Judge&#x27;&#x27;&#x27;</span></span><br><span class="line">    i = <span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> i * i &lt; x:</span><br><span class="line">        <span class="keyword">if</span> x % i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">div_by_primes_under_no_lambda</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">normal_checker</span>(<span class="params">x</span>):</span><br><span class="line">        i = <span class="number">2</span></span><br><span class="line">        <span class="keyword">while</span> i &lt;= n:</span><br><span class="line">            <span class="keyword">if</span> is_prime(i) <span class="keyword">and</span> x % i == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> normal_checker</span><br></pre></div></figure></td></tr></table></figure>
 
 <p>理解此种一般做法之后，再来对官网给出的答案进行分析：</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">div_by_primes_under_no_lambda</span>(<span class="hljs-params">n</span>):
-    <span class="hljs-string">&quot;&quot;&quot;</span>
-<span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(10)(11)</span>
-<span class="hljs-string">    False</span>
-<span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(10)(121)</span>
-<span class="hljs-string">    False</span>
-<span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(10)(12)</span>
-<span class="hljs-string">    True</span>
-<span class="hljs-string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(5)(1)</span>
-<span class="hljs-string">    False</span>
-<span class="hljs-string">    &quot;&quot;&quot;</span>
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">checker</span>(<span class="hljs-params">x</span>):
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-    i = <span class="hljs-number">2</span>
-    <span class="hljs-keyword">while</span> i &lt; n:
-        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> checker(i):
-            <span class="hljs-keyword">def</span> <span class="hljs-title function_">outer</span>(<span class="hljs-params">f,i</span>):
-                <span class="hljs-keyword">def</span> <span class="hljs-title function_">inner</span>(<span class="hljs-params">x</span>):
-                    <span class="hljs-keyword">return</span> x % i == <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> f(x)
-                <span class="hljs-keyword">return</span> inner
-            checker = outer(checker, i)
-        i = i + <span class="hljs-number">1</span>
-    <span class="hljs-keyword">return</span> checker</code></pre></div>
+<figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">div_by_primes_under_no_lambda</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(10)(11)</span></span><br><span class="line"><span class="string">    False</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(10)(121)</span></span><br><span class="line"><span class="string">    False</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(10)(12)</span></span><br><span class="line"><span class="string">    True</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; div_by_primes_under_no_lambda(5)(1)</span></span><br><span class="line"><span class="string">    False</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">checker</span>(<span class="params">x</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    i = <span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; n:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> checker(i):</span><br><span class="line">            <span class="keyword">def</span> <span class="title function_">outer</span>(<span class="params">f,i</span>):</span><br><span class="line">                <span class="keyword">def</span> <span class="title function_">inner</span>(<span class="params">x</span>):</span><br><span class="line">                    <span class="keyword">return</span> x % i == <span class="number">0</span> <span class="keyword">or</span> f(x)</span><br><span class="line">                <span class="keyword">return</span> inner</span><br><span class="line">            checker = outer(checker, i)</span><br><span class="line">        i = i + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> checker</span><br></pre></div></figure></td></tr></table></figure>
 
 <p><code>i</code>的初始值为2，是素数，此时<code>check(2)</code>的值为<code>False</code>，直接进入<code>while</code>循环，<code>if</code>条件满足，定义嵌套函数<code>outer</code>和<code>inner</code>，接着<code>checker</code>函数被更新为<code>outer(checker, i)</code>的返回值，即<code>return x % 2 == 0 or False</code>，现在<code>checker</code>函数就能判断一个数是否能整除<code>2</code>。</p>
 <p><code>i</code>更新为<code>3</code>后，进入下一次循环，此时<code>if</code>语句中的<code>checker</code>函数返回值依旧是<code>return x % 2 == 0 or False</code>，刚好能判断3能否整除以任何一个比他小的任何素数(也就是2)，判断出3是素数。<code>if</code>条件满足，更新<code>checker</code>函数，使之能判断<code>x</code>是否能整除以素数<code>3</code>。注意，此时的<code>checker</code>函数返回值为<code>return x % 3 == 0 or f(x)</code>，这里的<code>f(x)</code>是<code>i=2</code>时的<code>checker</code>函数，也就等价于<code>return x % 3 == 0 or False</code>，也就是说，此时<code>checker</code>的返回语句等价于<code>return x % 3 == 0 or x % 2 == 0 or False</code>。</p>
@@ -769,6 +688,10 @@
   });
 </script>
 
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
 
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 

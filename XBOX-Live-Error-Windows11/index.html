@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191601314.png">
 <meta property="article:published_time" content="2023-09-19T07:58:44.000Z">
-<meta property="article:modified_time" content="2023-11-12T09:54:32.110Z">
+<meta property="article:modified_time" content="2023-11-12T10:00:04.734Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="Game">
 <meta property="article:tag" content="XBOX">
@@ -309,7 +309,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月12日 下午
+                    本文最后更新于：2023年11月12日 晚上
                   
                 
               </p>
@@ -325,7 +325,7 @@
 <blockquote>
 <p>由于<code>Windows11</code>去除了<code>XBOX网络</code>选项，我们需要通过这行命令来查看链接状态。</p>
 </blockquote>
-<div class="code-wrapper"><pre><code class="hljs bash">netsh interface Teredo show state</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">netsh interface Teredo show state</span><br></pre></div></figure></td></tr></table></figure>
 
 <p>2、学会使用管理员模式运行命令行工具，这里使用<code>Windows11</code>自带的终端。开始菜单中搜索得到终端之后，右键<code>用管理员身份运行</code>。</p>
 <p>我们将在这里进行命令行输入。</p>
@@ -334,17 +334,7 @@
 <ul>
 <li>新建一个文本文档，比如<code>a.txt</code>，将下面的代码粘贴进去。</li>
 </ul>
-<div class="code-wrapper"><pre><code class="hljs bash">@<span class="hljs-built_in">echo</span> off
-
-<span class="hljs-built_in">pushd</span> <span class="hljs-string">&quot;%~dp0&quot;</span>
-
-<span class="hljs-built_in">dir</span> /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txt
-
-<span class="hljs-built_in">dir</span> /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txt
-
-<span class="hljs-keyword">for</span> /f %%i <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;findstr /i . List.txt 2^&gt;nul&#x27;</span>) <span class="hljs-keyword">do</span> dism /online /norestart /add-package:<span class="hljs-string">&quot;C:\Windows\servicing\Packages\%%i&quot;</span>
-
-pause</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"></span><br><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">dir</span> /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">dir</span> /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txt</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . List.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /add-package:<span class="string">&quot;C:\Windows\servicing\Packages\%%i&quot;</span></span><br><span class="line"></span><br><span class="line">pause</span><br></pre></div></figure></td></tr></table></figure>
 
 <ul>
 <li><p>保存文档，修改文件名为<code>a.cmd</code>，右键<code>-&gt;</code>以管理员身份运行</p>
@@ -363,32 +353,10 @@ pause</code></pre></div>
 <p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309191622804.png" srcset="/img/loading.gif" lazyload alt="组策略编辑器"></p>
 <p>管理员权限运行终端，在其中运行以下命令：</p>
 <p>【建议一条一条来】</p>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 启用windows防火墙</span>
-netsh advfirewall <span class="hljs-built_in">set</span> allprofiles state on
-<span class="hljs-comment"># 修复注册表：</span>
-reg add HKLMSystemCurrentControlSetServicesTcpip6Parameters /v DisabledComponents /t REG_DWORD /d 0x0
-<span class="hljs-comment"># 禁用Teredo功能：</span>
-netsh interface Teredo <span class="hljs-built_in">set</span> state <span class="hljs-built_in">disable</span>
-<span class="hljs-comment"># 还原teredo状态：</span>
-netsh interface Teredo <span class="hljs-built_in">set</span> state servername=default
-<span class="hljs-comment"># 检测teredo状态：</span>
-netsh interface Teredo show state
-<span class="hljs-comment"># 设置客户端类型：</span>
-netsh interface Teredo <span class="hljs-built_in">set</span> state <span class="hljs-built_in">type</span>=enterpriseclient
-<span class="hljs-comment"># 查看teredo情况，状态异常为disable，正常为dormant / qualified</span></code></pre></div>
+<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="comment"># 启用windows防火墙</span></span><br><span class="line">netsh advfirewall <span class="built_in">set</span> allprofiles state on</span><br><span class="line"><span class="comment"># 修复注册表：</span></span><br><span class="line">reg add HKLMSystemCurrentControlSetServicesTcpip6Parameters /v DisabledComponents /t REG_DWORD /d 0x0</span><br><span class="line"><span class="comment"># 禁用Teredo功能：</span></span><br><span class="line">netsh interface Teredo <span class="built_in">set</span> state <span class="built_in">disable</span></span><br><span class="line"><span class="comment"># 还原teredo状态：</span></span><br><span class="line">netsh interface Teredo <span class="built_in">set</span> state servername=default</span><br><span class="line"><span class="comment"># 检测teredo状态：</span></span><br><span class="line">netsh interface Teredo show state</span><br><span class="line"><span class="comment"># 设置客户端类型：</span></span><br><span class="line">netsh interface Teredo <span class="built_in">set</span> state <span class="built_in">type</span>=enterpriseclient</span><br><span class="line"><span class="comment"># 查看teredo情况，状态异常为disable，正常为dormant / qualified</span></span><br></pre></div></figure></td></tr></table></figure>
 
 <p>如果服务器无法连接，可以命令行运行下列任意一条命令更改<code>Teredo</code>服务器，之后运行<code>netsh interface Teredo show state</code>检测，多尝试几次</p>
-<div class="code-wrapper"><pre><code class="hljs bash">netsh interface teredo <span class="hljs-built_in">set</span> state server=win1901.ipv6.microsoft.com
-<span class="hljs-comment"># or</span>
-netsh interface teredo <span class="hljs-built_in">set</span> state server=win10.ipv6.microsoft.com
-
-<span class="hljs-comment"># 可尝试的服务器</span>
-teredo2.remlab.net
-teredo.iks-jena.de
-win10.ipv6.microsoft.com
-win1901.ipv6.microsoft.com
-teredo.ipv6.microsoft.com
-teredo.trex.fi</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">netsh interface teredo <span class="built_in">set</span> state server=win1901.ipv6.microsoft.com</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line">netsh interface teredo <span class="built_in">set</span> state server=win10.ipv6.microsoft.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可尝试的服务器</span></span><br><span class="line">teredo2.remlab.net</span><br><span class="line">teredo.iks-jena.de</span><br><span class="line">win10.ipv6.microsoft.com</span><br><span class="line">win1901.ipv6.microsoft.com</span><br><span class="line">teredo.ipv6.microsoft.com</span><br><span class="line">teredo.trex.fi</span><br></pre></div></figure></td></tr></table></figure>
 
 <blockquote>
 <p>以上命令行也可以通过直接在“组策略编辑器”中编辑实现</p>
@@ -763,6 +731,10 @@ teredo.trex.fi</code></pre></div>
   });
 </script>
 
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
 
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 

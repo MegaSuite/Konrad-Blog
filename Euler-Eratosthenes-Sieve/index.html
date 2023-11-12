@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202309192017040.png">
 <meta property="article:published_time" content="2023-09-19T12:13:08.000Z">
-<meta property="article:modified_time" content="2023-11-12T08:33:06.781Z">
+<meta property="article:modified_time" content="2023-11-12T08:51:07.333Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary_large_image">
@@ -246,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          2.5k 字
         
       </span>
     
@@ -257,7 +257,7 @@
         
         
         
-          21 分钟
+          22 分钟
         
       </span>
     
@@ -319,31 +319,7 @@
                 <h1 id="欧拉筛法"><a href="#欧拉筛法" class="headerlink" title="欧拉筛法"></a>欧拉筛法</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote>
 <p>筛法就是求出小于等于<code>n</code>的所有素数的方法，找到一个素数后，就将它的倍数标记为合数，也就是把它的倍数“筛掉”。如果一个数没有被比它小的素数“筛掉”，那它就是素数。</p>
 </blockquote>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><div class="code-wrapper"><pre><code class="hljs c"><span class="hljs-type">bool</span> isprime[MAXN]; <span class="hljs-comment">// isprime[i]标记`i`是否是素数的数组</span>
-<span class="hljs-type">int</span> prime[MAXN]; <span class="hljs-comment">// 目前的素数列表</span>
-<span class="hljs-type">int</span> n; <span class="hljs-comment">// 筛选上限</span>
-<span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>; <span class="hljs-comment">// 已经筛出的素数数量</span>
-
-<span class="hljs-type">void</span> <span class="hljs-title function_">euler</span><span class="hljs-params">()</span>
-&#123;
-    <span class="hljs-built_in">memset</span>(isprime, <span class="hljs-literal">true</span>, <span class="hljs-keyword">sizeof</span>(isprime)); <span class="hljs-comment">//先全部标记为素数</span>
-    isprime[<span class="hljs-number">1</span>] = <span class="hljs-literal">false</span>; <span class="hljs-comment">//已知，1不是素数</span>
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) <span class="hljs-comment">// i从2循环到n（外层循环）</span>
-    &#123;
-        <span class="hljs-keyword">if</span>(isprime[i])<span class="hljs-comment">//isprime[i] == 1</span>
-            prime[++cnt] = i;
-        <span class="hljs-comment">// 如果i没有被前面的数筛掉，则i是素数，此处prime[0]元素并未被使用，符合直觉</span>
-        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= cnt &amp;&amp; i * prime[j] &lt;= n; j++)
-        <span class="hljs-comment">// 使用j循环枚举现在已经筛出的素数,以筛掉i的素数倍，即i的prime[j]倍</span>
-        &#123;
-            isprime[i * prime[j]] = <span class="hljs-literal">false</span>;
-            <span class="hljs-comment">// 倍数标记为合数，也就是i用prime[j]把i * prime[j]筛掉了</span>
-            <span class="hljs-keyword">if</span>(i % prime[j] == <span class="hljs-number">0</span>) 
-                <span class="hljs-keyword">break</span>;
-            <span class="hljs-comment">// 如果i整除prime[j]，退出循环，这样可以保证线性的时间复杂度</span>
-        &#125;
-    &#125;
-&#125;</code></pre></div>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><figure class="highlight c"><table><tr><td class="gutter"><figure><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></figure></td><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="type">bool</span> isprime[MAXN]; <span class="comment">// isprime[i]标记`i`是否是素数的数组</span></span><br><span class="line"><span class="type">int</span> prime[MAXN]; <span class="comment">// 目前的素数列表</span></span><br><span class="line"><span class="type">int</span> n; <span class="comment">// 筛选上限</span></span><br><span class="line"><span class="type">int</span> cnt = <span class="number">0</span>; <span class="comment">// 已经筛出的素数数量</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">euler</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">memset</span>(isprime, <span class="literal">true</span>, <span class="keyword">sizeof</span>(isprime)); <span class="comment">//先全部标记为素数</span></span><br><span class="line">    isprime[<span class="number">1</span>] = <span class="literal">false</span>; <span class="comment">//已知，1不是素数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++) <span class="comment">// i从2循环到n（外层循环）</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(isprime[i])<span class="comment">//isprime[i] == 1</span></span><br><span class="line">            prime[++cnt] = i;</span><br><span class="line">        <span class="comment">// 如果i没有被前面的数筛掉，则i是素数，此处prime[0]元素并未被使用，符合直觉</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= cnt &amp;&amp; i * prime[j] &lt;= n; j++)</span><br><span class="line">        <span class="comment">// 使用j循环枚举现在已经筛出的素数,以筛掉i的素数倍，即i的prime[j]倍</span></span><br><span class="line">        &#123;</span><br><span class="line">            isprime[i * prime[j]] = <span class="literal">false</span>;</span><br><span class="line">            <span class="comment">// 倍数标记为合数，也就是i用prime[j]把i * prime[j]筛掉了</span></span><br><span class="line">            <span class="keyword">if</span>(i % prime[j] == <span class="number">0</span>) </span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="comment">// 如果i整除prime[j]，退出循环，这样可以保证线性的时间复杂度</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></div></figure></td></tr></table></figure>
 
 <p>假设要筛出<code>n</code>以内的素数。我们先把所有数标记为素数。枚举<code>i</code>从<code>2</code>到<code>n</code>，所以因为<code>i</code>是从小到大的，如果<code>i</code>没有被比它小的数标记为合数，那<code>i</code>就是素数（任意合数的因数一定比它本身小，若<code>i</code>没有被前面的数筛掉，那么它就没有比自己小的因数，当然它就是素数），加入素数列表。</p>
 <p>现在用<code>i</code>来筛后面的数，枚举已经筛出来的素数<code>prime[j]</code>（<code>j∈[1,cnt]</code>），标记<code>i * prime[j]</code>为合数（<code>i ≥ 2，prime[j] ≥ 2</code>，它们的乘积一定为合数），当<code>i</code>是<code>prime[j]</code>的倍数时退出循环，<code>i++</code>。</p>
@@ -369,62 +345,17 @@
 <blockquote>
 <p>测试输入：</p>
 </blockquote>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-number">2</span>
-<span class="hljs-number">30</span>,<span class="hljs-number">100</span>
-<span class="hljs-number">999670</span>,<span class="hljs-number">1000000</span>
-<span class="hljs-number">123</span></code></pre></div>
+<figure class="highlight python"><table><tr><td class="gutter"><figure><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></figure></td><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">30</span>,<span class="number">100</span></span><br><span class="line"><span class="number">999670</span>,<span class="number">1000000</span></span><br><span class="line"><span class="number">123</span></span><br></pre></div></figure></td></tr></table></figure>
 
 <blockquote>
 <p>预期输出：</p>
 </blockquote>
-<div class="code-wrapper"><pre><code class="hljs python">[<span class="hljs-number">31</span>, <span class="hljs-number">37</span>, <span class="hljs-number">41</span>, <span class="hljs-number">43</span>, <span class="hljs-number">47</span>, <span class="hljs-number">53</span>, <span class="hljs-number">59</span>, <span class="hljs-number">61</span>, <span class="hljs-number">67</span>, <span class="hljs-number">71</span>, <span class="hljs-number">73</span>, <span class="hljs-number">79</span>, <span class="hljs-number">83</span>, <span class="hljs-number">89</span>, <span class="hljs-number">97</span>]
-[<span class="hljs-number">999671</span>, <span class="hljs-number">999683</span>, <span class="hljs-number">999721</span>, <span class="hljs-number">999727</span>, <span class="hljs-number">999749</span>, <span class="hljs-number">999763</span>, <span class="hljs-number">999769</span>, <span class="hljs-number">999773</span>, <span class="hljs-number">999809</span>, <span class="hljs-number">999853</span>, <span class="hljs-number">999863</span>, <span class="hljs-number">999883</span>, <span class="hljs-number">999907</span>, <span class="hljs-number">999917</span>, <span class="hljs-number">999931</span>, <span class="hljs-number">999953</span>, <span class="hljs-number">999959</span>, <span class="hljs-number">999961</span>, <span class="hljs-number">999979</span>, <span class="hljs-number">999983</span>]
-<span class="hljs-number">12</span></code></pre></div>
+<figure class="highlight python"><table><tr><td class="gutter"><figure><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></figure></td><td class="code"><figure><div class="code-wrapper"><pre><span class="line">[<span class="number">31</span>, <span class="number">37</span>, <span class="number">41</span>, <span class="number">43</span>, <span class="number">47</span>, <span class="number">53</span>, <span class="number">59</span>, <span class="number">61</span>, <span class="number">67</span>, <span class="number">71</span>, <span class="number">73</span>, <span class="number">79</span>, <span class="number">83</span>, <span class="number">89</span>, <span class="number">97</span>]</span><br><span class="line">[<span class="number">999671</span>, <span class="number">999683</span>, <span class="number">999721</span>, <span class="number">999727</span>, <span class="number">999749</span>, <span class="number">999763</span>, <span class="number">999769</span>, <span class="number">999773</span>, <span class="number">999809</span>, <span class="number">999853</span>, <span class="number">999863</span>, <span class="number">999883</span>, <span class="number">999907</span>, <span class="number">999917</span>, <span class="number">999931</span>, <span class="number">999953</span>, <span class="number">999959</span>, <span class="number">999961</span>, <span class="number">999979</span>, <span class="number">999983</span>]</span><br><span class="line"><span class="number">12</span></span><br></pre></div></figure></td></tr></table></figure>
 
 <blockquote>
 <p>CODE:</p>
 </blockquote>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>():
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">solve</span>(<span class="hljs-params">self, l, r</span>):
-        <span class="hljs-string">&#x27;&#x27;&#x27;</span>
-<span class="hljs-string">        :type l, r: int</span>
-<span class="hljs-string">        :rtype : list</span>
-<span class="hljs-string">        &#x27;&#x27;&#x27;</span>
-        <span class="hljs-comment">#请在此添加代码，实现求得[l, r]范围内的所有素数，并将其返回</span>
-        <span class="hljs-comment">#********** Begin *********#</span>
-        <span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> sqrt
-        <span class="hljs-comment">#通过素数表判断整数是不是素数</span>
-        <span class="hljs-keyword">def</span> <span class="hljs-title function_">is_prime</span>(<span class="hljs-params">x</span>):
-            <span class="hljs-keyword">if</span> x == <span class="hljs-number">1</span>:
-                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-            <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> prime_table:
-                <span class="hljs-keyword">if</span> num * num &gt; x:
-                    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
-                <span class="hljs-keyword">if</span> x % num  == <span class="hljs-number">0</span>:
-                    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
-        <span class="hljs-comment">#欧拉筛法</span>
-        <span class="hljs-keyword">def</span> <span class="hljs-title function_">ouler</span>(<span class="hljs-params">x</span>):
-            vis = [<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(x+<span class="hljs-number">1</span>)]
-            prime_table = []
-            ln = <span class="hljs-number">0</span>
-            <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, x+<span class="hljs-number">1</span>):
-                <span class="hljs-keyword">if</span> vis[num] == <span class="hljs-number">0</span>:
-                    prime_table.append(num)
-                    ln += <span class="hljs-number">1</span>
-                <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(ln):
-                    <span class="hljs-keyword">if</span> num * prime_table[j] &gt; x:
-                        <span class="hljs-keyword">break</span>
-                    vis[num * prime_table[j]] = <span class="hljs-number">1</span>
-                    <span class="hljs-keyword">if</span> num % prime_table[j] == <span class="hljs-number">0</span>:
-                        <span class="hljs-keyword">break</span>
-            <span class="hljs-keyword">return</span> prime_table
-        prime_table = ouler(<span class="hljs-number">10000</span>)
-        ans = []
-        <span class="hljs-keyword">for</span> num <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(l, r+<span class="hljs-number">1</span>):
-            <span class="hljs-keyword">if</span> is_prime(num):
-                ans.append(num)
-        <span class="hljs-keyword">return</span> ans
-        <span class="hljs-comment">#********** End *********#</span></code></pre></div>
+<figure class="highlight python"><table><tr><td class="gutter"><figure><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></figure></td><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>():</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">solve</span>(<span class="params">self, l, r</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        :type l, r: int</span></span><br><span class="line"><span class="string">        :rtype : list</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="comment">#请在此添加代码，实现求得[l, r]范围内的所有素数，并将其返回</span></span><br><span class="line">        <span class="comment">#********** Begin *********#</span></span><br><span class="line">        <span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line">        <span class="comment">#通过素数表判断整数是不是素数</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">is_prime</span>(<span class="params">x</span>):</span><br><span class="line">            <span class="keyword">if</span> x == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">for</span> num <span class="keyword">in</span> prime_table:</span><br><span class="line">                <span class="keyword">if</span> num * num &gt; x:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">                <span class="keyword">if</span> x % num  == <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="comment">#欧拉筛法</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">ouler</span>(<span class="params">x</span>):</span><br><span class="line">            vis = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(x+<span class="number">1</span>)]</span><br><span class="line">            prime_table = []</span><br><span class="line">            ln = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> num <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, x+<span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> vis[num] == <span class="number">0</span>:</span><br><span class="line">                    prime_table.append(num)</span><br><span class="line">                    ln += <span class="number">1</span></span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(ln):</span><br><span class="line">                    <span class="keyword">if</span> num * prime_table[j] &gt; x:</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                    vis[num * prime_table[j]] = <span class="number">1</span></span><br><span class="line">                    <span class="keyword">if</span> num % prime_table[j] == <span class="number">0</span>:</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">return</span> prime_table</span><br><span class="line">        prime_table = ouler(<span class="number">10000</span>)</span><br><span class="line">        ans = []</span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> <span class="built_in">range</span>(l, r+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> is_prime(num):</span><br><span class="line">                ans.append(num)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line">        <span class="comment">#********** End *********#</span></span><br></pre></div></figure></td></tr></table></figure>
 
 <h1 id="埃拉托斯特尼筛法"><a href="#埃拉托斯特尼筛法" class="headerlink" title="埃拉托斯特尼筛法"></a>埃拉托斯特尼筛法</h1>
                 

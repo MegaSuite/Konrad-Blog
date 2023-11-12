@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307091514452.png">
 <meta property="article:published_time" content="2023-07-09T07:09:34.000Z">
-<meta property="article:modified_time" content="2023-11-12T10:00:04.734Z">
+<meta property="article:modified_time" content="2023-11-12T10:17:31.208Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="CS61A">
 <meta name="twitter:card" content="summary_large_image">
@@ -320,27 +320,98 @@
 <p>The logician <code>Alonzo Church</code> invented a system of representing non-negative integers entirely using functions. The purpose was to show that functions are sufficient to describe all of number theory: if we have functions, we do not need to assume that numbers exist, but instead we can invent them.</p>
 <p>Your goal in this problem is to rediscover this representation known as <code>Church numerals</code>. <code>Church numerals</code> are a way to represent non-negative integers via repeated function application. Specifically, church numerals ( such as <code>zero</code>, <code>one</code>, and <code>two</code> below ) are <em>functions</em> that take in a function <code>f</code> and return a new function which, when called, repeats <code>f</code> a number of times on some argument <code>x</code>. Here are the definitions of <code>zero</code>, as well as a <code>successor</code> function, which takes in a church numeral <code>n</code> as an argument and returns a function that represents the church numeral one higher than <code>n</code>:</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">zero</span>(<span class="params">f</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: x</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">successor</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> f: <span class="keyword">lambda</span> x: f(n(f)(x))</span><br></pre></div></figure></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">zero</span>(<span class="hljs-params">f</span>):
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> x: x
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">successor</span>(<span class="hljs-params">n</span>):
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> f: <span class="hljs-keyword">lambda</span> x: f(n(f)(x))</code></pre></div>
 
 <blockquote>
 <p>First, define functions <code>one</code> and <code>two</code> such that they have the same behavior as <code>successor(zero)</code> and <code>successsor(successor(zero))</code> respectively, but <em>do not call <code>successor</code> in your implementation</em>.</p>
 <p>Next, implement a function <code>church_to_int</code> that converts a church numeral argument to a regular Python integer.</p>
 <p>Finally, implement functions <code>add_church</code>, <code>mul_church</code>, and <code>pow_church</code> that perform addition, multiplication, and exponentiation on church numerals.</p>
 </blockquote>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">one</span>(<span class="params">f</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Church numeral 1: same as successor(zero)&quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;*** YOUR CODE HERE ***&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: f(x)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">two</span>(<span class="params">f</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Church numeral 2: same as successor(successor(zero))&quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;*** YOUR CODE HERE ***&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x:f(f(x))</span><br><span class="line"></span><br><span class="line">three = successor(two)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">church_to_int</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Convert the Church numeral n to a Python integer.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; church_to_int(zero)</span></span><br><span class="line"><span class="string">    0</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; church_to_int(one)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; church_to_int(two)</span></span><br><span class="line"><span class="string">    2</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; church_to_int(three)</span></span><br><span class="line"><span class="string">    3</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;*** YOUR CODE HERE ***&quot;</span></span><br><span class="line">    <span class="keyword">return</span> n(<span class="keyword">lambda</span> x: x+<span class="number">1</span>)(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add_church</span>(<span class="params">m, n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the Church numeral for m + n, for Church numerals m and n.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; church_to_int(add_church(two, three))</span></span><br><span class="line"><span class="string">    5</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;*** YOUR CODE HERE ***&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> f: <span class="keyword">lambda</span> x: m(f)(n(f)(x))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">mul_church</span>(<span class="params">m, n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the Church numeral for m * n, for Church numerals m and n.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; four = successor(three)</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; church_to_int(mul_church(two, three))</span></span><br><span class="line"><span class="string">    6</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; church_to_int(mul_church(three, four))</span></span><br><span class="line"><span class="string">    12</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;*** YOUR CODE HERE ***&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> f: m(n(f))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pow_church</span>(<span class="params">m, n</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Return the Church numeral m ** n, for Church numerals m and n.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; church_to_int(pow_church(two, three))</span></span><br><span class="line"><span class="string">    8</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; church_to_int(pow_church(three, two))</span></span><br><span class="line"><span class="string">    9</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="string">&quot;*** YOUR CODE HERE ***&quot;</span></span><br><span class="line">    <span class="keyword">return</span> n(m)</span><br></pre></div></figure></td></tr></table></figure>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">one</span>(<span class="hljs-params">f</span>):
+    <span class="hljs-string">&quot;&quot;&quot;Church numeral 1: same as successor(zero)&quot;&quot;&quot;</span>
+    <span class="hljs-string">&quot;*** YOUR CODE HERE ***&quot;</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> x: f(x)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">two</span>(<span class="hljs-params">f</span>):
+    <span class="hljs-string">&quot;&quot;&quot;Church numeral 2: same as successor(successor(zero))&quot;&quot;&quot;</span>
+    <span class="hljs-string">&quot;*** YOUR CODE HERE ***&quot;</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> x:f(f(x))
+
+three = successor(two)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">church_to_int</span>(<span class="hljs-params">n</span>):
+    <span class="hljs-string">&quot;&quot;&quot;Convert the Church numeral n to a Python integer.</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">    &gt;&gt;&gt; church_to_int(zero)</span>
+<span class="hljs-string">    0</span>
+<span class="hljs-string">    &gt;&gt;&gt; church_to_int(one)</span>
+<span class="hljs-string">    1</span>
+<span class="hljs-string">    &gt;&gt;&gt; church_to_int(two)</span>
+<span class="hljs-string">    2</span>
+<span class="hljs-string">    &gt;&gt;&gt; church_to_int(three)</span>
+<span class="hljs-string">    3</span>
+<span class="hljs-string">    &quot;&quot;&quot;</span>
+    <span class="hljs-string">&quot;*** YOUR CODE HERE ***&quot;</span>
+    <span class="hljs-keyword">return</span> n(<span class="hljs-keyword">lambda</span> x: x+<span class="hljs-number">1</span>)(<span class="hljs-number">0</span>)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">add_church</span>(<span class="hljs-params">m, n</span>):
+    <span class="hljs-string">&quot;&quot;&quot;Return the Church numeral for m + n, for Church numerals m and n.</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">    &gt;&gt;&gt; church_to_int(add_church(two, three))</span>
+<span class="hljs-string">    5</span>
+<span class="hljs-string">    &quot;&quot;&quot;</span>
+    <span class="hljs-string">&quot;*** YOUR CODE HERE ***&quot;</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> f: <span class="hljs-keyword">lambda</span> x: m(f)(n(f)(x))
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">mul_church</span>(<span class="hljs-params">m, n</span>):
+    <span class="hljs-string">&quot;&quot;&quot;Return the Church numeral for m * n, for Church numerals m and n.</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">    &gt;&gt;&gt; four = successor(three)</span>
+<span class="hljs-string">    &gt;&gt;&gt; church_to_int(mul_church(two, three))</span>
+<span class="hljs-string">    6</span>
+<span class="hljs-string">    &gt;&gt;&gt; church_to_int(mul_church(three, four))</span>
+<span class="hljs-string">    12</span>
+<span class="hljs-string">    &quot;&quot;&quot;</span>
+    <span class="hljs-string">&quot;*** YOUR CODE HERE ***&quot;</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> f: m(n(f))
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">pow_church</span>(<span class="hljs-params">m, n</span>):
+    <span class="hljs-string">&quot;&quot;&quot;Return the Church numeral m ** n, for Church numerals m and n.</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">    &gt;&gt;&gt; church_to_int(pow_church(two, three))</span>
+<span class="hljs-string">    8</span>
+<span class="hljs-string">    &gt;&gt;&gt; church_to_int(pow_church(three, two))</span>
+<span class="hljs-string">    9</span>
+<span class="hljs-string">    &quot;&quot;&quot;</span>
+    <span class="hljs-string">&quot;*** YOUR CODE HERE ***&quot;</span>
+    <span class="hljs-keyword">return</span> n(m)</code></pre></div>
 
 <h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><p>根据我们对<code>zero</code>和<code>successor</code>两个函数的观察，<code>zero</code>就相当于自然数<code>0</code>的定义，而<code>successor</code>实际上相当于一个递增函数。</p>
 <p>我们要做的，就是以这个<code>0</code>的定义为起点，定义出所有自然数以及他们的基础运算。</p>
 <p>题目中提到，函数<code>one</code>的行为应该和<code>successor(zero)</code>的行为一致，也就是说：</p>
-<figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">one = successor(zero)</span><br><span class="line">two = successor(one) = successor(successor(zero))</span><br></pre></div></figure></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python">one = successor(zero)
+two = successor(one) = successor(successor(zero))</code></pre></div>
 
 
 
 <p>观察<code>successor</code>，可以仿照其结构写出<code>one</code>函数和<code>two</code>函数：</p>
-<figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">one</span>(<span class="params">f</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: f(zero(f)(x))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">two</span>(<span class="params">f</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: f(one(f)(x))</span><br></pre></div></figure></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">one</span>(<span class="hljs-params">f</span>):
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> x: f(zero(f)(x))
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">two</span>(<span class="hljs-params">f</span>):
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> x: f(one(f)(x))</code></pre></div>
 
 <p>其实，<code>zero(f)(x)</code>就是<code>x</code>，而<code>one(f)(x)</code>就是<code>f(x)</code>，所以我们也可以这样写：</p>
-<figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">one</span>(<span class="params">f</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: f(x)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">two</span>(<span class="params">f</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: f(f(x))</span><br></pre></div></figure></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">one</span>(<span class="hljs-params">f</span>):
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> x: f(x)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">two</span>(<span class="hljs-params">f</span>):
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> x: f(f(x))</code></pre></div>
 
 <p>由<code>successor</code>的定义，我们可以发现自然数<code>N</code>对应的函数<code>n</code>的定义应当为：</p>
 <blockquote>
@@ -348,18 +419,45 @@
 <p>#n个<code>f</code></p>
 </blockquote>
 <p>如果我们按照这样的定义方式，定义自然数<code>n</code>：</p>
-<figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">n</span>(<span class="params">f</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: f((n-<span class="number">1</span>)(f)(x))</span><br></pre></div></figure></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">n</span>(<span class="hljs-params">f</span>):
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> x: f((n-<span class="hljs-number">1</span>)(f)(x))</code></pre></div>
 
 
 
 <h3 id="church-to-int"><a href="#church-to-int" class="headerlink" title="church_to_int"></a><code>church_to_int</code></h3><p> <code>church_to_int</code> 本质上就是计数嵌套的 <code>f</code>有多少个。每走一层就给计数变量加一。</p>
 <p>考虑将<code> f</code> 设置为自增函数 <code>increment</code> 。这样，传入的参数值就是计数变量的初值，函数的返回值就是终值了。</p>
-<figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">two</span>(<span class="params">f</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: f(f(x))</span><br><span class="line"></span><br><span class="line">increment = <span class="keyword">lambda</span> x: x + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">church_to_int</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">return</span> n(increment)(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">e.g.</span></span><br><span class="line"><span class="string">	church_to_int(two)</span></span><br><span class="line"><span class="string">	↓</span></span><br><span class="line"><span class="string">	two(lambda x: x + 1)(0)</span></span><br><span class="line"><span class="string">	↓</span></span><br><span class="line"><span class="string">    ↓ # 构造two(f)</span></span><br><span class="line"><span class="string">	↓</span></span><br><span class="line"><span class="string">	(lambda x: x + 1)((lambda x: x + 1)(0))</span></span><br><span class="line"><span class="string">	↓</span></span><br><span class="line"><span class="string">	2</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></div></figure></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">two</span>(<span class="hljs-params">f</span>):
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> x: f(f(x))
+
+increment = <span class="hljs-keyword">lambda</span> x: x + <span class="hljs-number">1</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">church_to_int</span>(<span class="hljs-params">n</span>):
+    <span class="hljs-keyword">return</span> n(increment)(<span class="hljs-number">0</span>)
+
+<span class="hljs-string">&#x27;&#x27;&#x27;</span>
+<span class="hljs-string">e.g.</span>
+<span class="hljs-string">	church_to_int(two)</span>
+<span class="hljs-string">	↓</span>
+<span class="hljs-string">	two(lambda x: x + 1)(0)</span>
+<span class="hljs-string">	↓</span>
+<span class="hljs-string">    ↓ # 构造two(f)</span>
+<span class="hljs-string">	↓</span>
+<span class="hljs-string">	(lambda x: x + 1)((lambda x: x + 1)(0))</span>
+<span class="hljs-string">	↓</span>
+<span class="hljs-string">	2</span>
+<span class="hljs-string">&#x27;&#x27;&#x27;</span></code></pre></div>
 
 
 
 <p>事实上，有了<code>n(f)(x)</code>就是<code>n</code>的思想以后，用平常思维就可以写出答案正确的解：</p>
-<figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add_church</span>(<span class="params">m, n</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> f: <span class="keyword">lambda</span> x: n(f)(x) + m(f)(x)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">mul_church</span>(<span class="params">m, n</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> f: <span class="keyword">lambda</span> x: m(f)(x) * n(f)(x)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pow_church</span>(<span class="params">m, n</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> f: <span class="keyword">lambda</span> x: m(f)(x) ** n(f)(x)</span><br></pre></div></figure></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">add_church</span>(<span class="hljs-params">m, n</span>):
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> f: <span class="hljs-keyword">lambda</span> x: n(f)(x) + m(f)(x)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">mul_church</span>(<span class="hljs-params">m, n</span>):
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> f: <span class="hljs-keyword">lambda</span> x: m(f)(x) * n(f)(x)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">pow_church</span>(<span class="hljs-params">m, n</span>):
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> f: <span class="hljs-keyword">lambda</span> x: m(f)(x) ** n(f)(x)</code></pre></div>
 
 
 
@@ -369,21 +467,30 @@
 <p>用数学表达式为：<code>f(f(f(.....[f(f(f(x)))].....)))</code>，内部的括号为<code>n</code>层f嵌套，外层为<code>m</code>层括号嵌套。</p>
 <p>考虑计算 <code>m+n</code>，也就是把 <code>m+n</code>个<code> f</code> 套在一起。而我们知道<code>m(f)</code>可以实现 <code>m</code>次嵌套,<code>n(f)</code>可以实现 <code>n</code> 次嵌套。</p>
 <p>那么，我们在<code>n(f)</code>外面套一个<code>m(f)</code>即可：</p>
-<figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add_church</span>(<span class="params">m, n</span>):</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">lambda</span> f: <span class="keyword">lambda</span> x: m(f)(n(f)(x))</span><br></pre></div></figure></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">add_church</span>(<span class="hljs-params">m, n</span>):
+	<span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> f: <span class="hljs-keyword">lambda</span> x: m(f)(n(f)(x))</code></pre></div>
 
 
 
 <h3 id="mul-church"><a href="#mul-church" class="headerlink" title="mul_church"></a><code>mul_church</code></h3><p>计算 <code>n×m</code>也就是 <code>m</code> 个<code> n</code> 相加，我们需要先把函数<code>f</code>嵌套<code>n</code>次，再把嵌套之后得到的<code>n</code>函数值嵌套<code>m</code>次。</p>
 <p>这一次对于<code>m</code>函数而言，它的参数不再是函数<code>f</code>，而是嵌套之后的函数值<code>n</code>。</p>
 <p>换言之，即 <code>n(f)</code> 自己套自己套上 <code>m</code>次：</p>
-<figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">mul_church</span>(<span class="params">m, n</span>):</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">lambda</span> f: m(n(f))</span><br><span class="line">	<span class="string">&#x27;&#x27;&#x27;or</span></span><br><span class="line"><span class="string">    return lambda f: lambda x: m(n(f))(x)</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br></pre></div></figure></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">mul_church</span>(<span class="hljs-params">m, n</span>):
+	<span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> f: m(n(f))
+	<span class="hljs-string">&#x27;&#x27;&#x27;or</span>
+<span class="hljs-string">    return lambda f: lambda x: m(n(f))(x)</span>
+<span class="hljs-string">    &#x27;&#x27;&#x27;</span></code></pre></div>
 
 
 
 <h3 id="pow-church"><a href="#pow-church" class="headerlink" title="pow_church"></a><code>pow_church</code></h3><p><code>m(f)</code> 的功用是将 <code>m</code>个<code> f</code> 嵌套起来，那么 <code>n(m(f))</code>的功用也就是将 <code>n</code>个<code>m(f)</code>嵌套起来，即</p>
 <p align='center'><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307281702055.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
 
-<figure class="highlight python"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">pow_church</span>(<span class="params">m, n</span>):</span><br><span class="line">    <span class="keyword">return</span> n(m)</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;or</span></span><br><span class="line"><span class="string">    return lambda f: n(m)(f)</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br></pre></div></figure></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">pow_church</span>(<span class="hljs-params">m, n</span>):
+    <span class="hljs-keyword">return</span> n(m)
+    <span class="hljs-string">&#x27;&#x27;&#x27;or</span>
+<span class="hljs-string">    return lambda f: n(m)(f)</span>
+<span class="hljs-string">    &#x27;&#x27;&#x27;</span></code></pre></div>
 
 
 
@@ -748,10 +855,6 @@
   });
 </script>
 
-
-  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
-
-  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
 
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 

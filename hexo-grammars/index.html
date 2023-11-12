@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307031929239.png">
 <meta property="article:published_time" content="2023-07-03T02:04:09.000Z">
-<meta property="article:modified_time" content="2023-11-12T09:28:22.232Z">
+<meta property="article:modified_time" content="2023-11-12T09:31:22.561Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary_large_image">
@@ -317,9 +317,9 @@
               <div class="markdown-body">
                 
                 <p>最最最开始，当然是建立一个<code>.md</code>文档啦，使用以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">$ hexo n [layout] &lt;title&gt;</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo n [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
 <p>如果添加环境变量总是失败，则使用以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">$ npx hexo n [layout] &lt;title&gt;</span><br><span class="line"><span class="comment"># 作为一个程序猿，你该懂得[]里的是可选参数（我一开始也不懂），layout详见<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[Hexo](https://hexo.io/zh-cn/docs/writing)">[1]</span></a></sup>的Hexo官方注解</span></span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npx hexo n [layout] &lt;title&gt;</span><br><span class="line"><span class="comment"># 作为一个程序猿，你该懂得[]里的是可选参数（我一开始也不懂），layout详见<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[Hexo](https://hexo.io/zh-cn/docs/writing)">[1]</span></a></sup>的Hexo官方注解</span></span><br></pre></td></tr></table></figure>
 
 <p>现在，你已经拥有第一篇博客文章（的毛坯）了！</p>
 <h1 id="Hexo本身支持的特色语法-1"><a href="#Hexo本身支持的特色语法-1" class="headerlink" title="Hexo本身支持的特色语法[1]"></a>Hexo本身支持的特色语法<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[Hexo](https://hexo.io/zh-cn/docs/writing)">[1]</span></a></sup></h1><h2 id="便签"><a href="#便签" class="headerlink" title="便签"></a>便签</h2><p class="note note-success">Hexo 默认安装了 hexo-renderer-marked 和 hexo-renderer-ejs ，因此你不仅可以用 Markdown 写作，你还可以用 EJS 写作。如果你安装了 hexo-renderer-pug ，你甚至可以用 Pug 模板语言书写文章。只需要将文章的扩展名从  md  改成  ejs ，Hexo 就会使用 hexo-renderer-ejs 渲染这个文件，其他格式同理。</p>
@@ -329,40 +329,40 @@
 <p><code>&lt;p class=&quot;note note-primary&quot;&gt;标签&lt;/p&gt;</code></p>
 <p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307031816602.png" srcset="/img/loading.gif" lazyload alt="便签种类"></p>
 <h2 id="引用块Quote"><a href="#引用块Quote" class="headerlink" title="引用块Quote:"></a>引用块Quote:</h2><p>基于Markdown的区块引用：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&gt; cite</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; cite</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>cite</p>
 </blockquote>
 <p>在文章中插入引言，可包含作者、来源和标题。</p>
-<figure class="highlight css"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&#123;% <span class="selector-tag">blockquote</span> <span class="selector-attr">[author[, source]</span>] <span class="selector-attr">[link]</span> <span class="selector-attr">[source_link_title]</span> %&#125;</span><br><span class="line"><span class="attribute">content</span></span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="selector-tag">blockquote</span> <span class="selector-attr">[author[, source]</span>] <span class="selector-attr">[link]</span> <span class="selector-attr">[source_link_title]</span> %&#125;</span><br><span class="line"><span class="attribute">content</span></span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>普通的 blockquote</p>
-<figure class="highlight css"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&#123;% <span class="selector-tag">blockquote</span> %&#125;</span><br><span class="line">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="selector-tag">blockquote</span> %&#125;</span><br><span class="line">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
 </blockquote>
 
 <p><strong>引用书上的句子</strong></p>
-<figure class="highlight css"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&#123;% <span class="selector-tag">blockquote</span> David Levithan, Wide Awake %&#125;</span><br><span class="line">Do not just seek happiness for yourself. Seek happiness for <span class="attribute">all</span>. Through kindness. Through mercy.</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="selector-tag">blockquote</span> David Levithan, Wide Awake %&#125;</span><br><span class="line">Do not just seek happiness for yourself. Seek happiness for <span class="attribute">all</span>. Through kindness. Through mercy.</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
 <footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote>
 
 <p><strong>引用 Twitter</strong></p>
-<figure class="highlight css"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&#123;% <span class="selector-tag">blockquote</span> <span class="keyword">@DevDocs</span> <span class="attribute">https</span>://twitter.com/devdocs/status/<span class="number">356095192085962752</span> %&#125;</span><br><span class="line"><span class="attribute">NEW</span>: DevDocs now comes with syntax highlighting. <span class="attribute">http</span>://devdocs.io</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="selector-tag">blockquote</span> <span class="keyword">@DevDocs</span> <span class="attribute">https</span>://twitter.com/devdocs/status/<span class="number">356095192085962752</span> %&#125;</span><br><span class="line"><span class="attribute">NEW</span>: DevDocs now comes with syntax highlighting. <span class="attribute">http</span>://devdocs.io</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a target="_blank" rel="noopener" href="http://devdocs.io/">http://devdocs.io</a></p>
 <footer><strong>@DevDocs</strong><cite><a target="_blank" rel="noopener" href="https://twitter.com/devdocs/status/356095192085962752">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
 
 <p><strong>引用网络上的文章</strong></p>
-<figure class="highlight css"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&#123;% <span class="selector-tag">blockquote</span> Seth Godin http://sethgodin.typepad.com/seths_blog/<span class="number">2009</span>/<span class="number">07</span>/welcome-to-island-marketing.html Welcome to Island Marketing %&#125;</span><br><span class="line">Every interaction is both precious and an opportunity <span class="selector-tag">to</span> delight.</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;% <span class="selector-tag">blockquote</span> Seth Godin http://sethgodin.typepad.com/seths_blog/<span class="number">2009</span>/<span class="number">07</span>/welcome-to-island-marketing.html Welcome to Island Marketing %&#125;</span><br><span class="line">Every interaction is both precious and an opportunity <span class="selector-tag">to</span> delight.</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
 <footer><strong>Seth Godin</strong><cite><a target="_blank" rel="noopener" href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html">Welcome to Island Marketing</a></cite></footer></blockquote>
 
 <h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><p>引用其他文章的链接。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&#123;% post_path filename %&#125;</span><br><span class="line">&#123;% post_link filename [title] [escape] %&#125;</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% post_path filename %&#125;</span><br><span class="line">&#123;% post_link filename [title] [escape] %&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在使用此标签时可以忽略文章文件所在的路径或者文章的永久链接信息、如语言、日期。</p>
 <p>例如，在文章中使用 <code>&#123;% post_link how-to-bake-a-cake %&#125;</code> 时，只需有一个名为 <code>how-to-bake-a-cake.md</code> 的文章文件即可。即使这个文件位于站点文件夹的 <code>source/posts/2015-02-my-family-holiday</code> 目录下、或者文章的永久链接是 <code>2018/en/how-to-bake-a-cake</code>，都没有影响。</p>
@@ -370,19 +370,19 @@
 <p>默认对文章的标题和自定义标题里的特殊字符进行转义。可以使用 <code>escape</code> 选项，禁止对特殊字符进行转义。</p>
 <p>例如：</p>
 <p><strong>链接使用文章的标题</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&#123;% post_link hexo-3-8-released %&#125;</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% post_link hexo-3-8-released %&#125;</span><br></pre></td></tr></table></figure>
 
 <p><a target="_blank" rel="noopener" href="https://hexo.io/news/2018/10/19/hexo-3-8-released/">Hexo 3.8.0 Released</a></p>
 <p><strong>链接使用自定义文字</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&#123;% post_link hexo-3-8-released &#x27;通往文章的链接&#x27; %&#125;</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% post_link hexo-3-8-released &#x27;通往文章的链接&#x27; %&#125;</span><br></pre></td></tr></table></figure>
 
 <p><a target="_blank" rel="noopener" href="https://hexo.io/news/2018/10/19/hexo-3-8-released/">通往文章的链接</a></p>
 <p><strong>对标题的特殊字符进行转义</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&#123;% post_link hexo-4-released &#x27;How to use &lt;b&gt; tag in title&#x27; %&#125;</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% post_link hexo-4-released &#x27;How to use &lt;b&gt; tag in title&#x27; %&#125;</span><br></pre></td></tr></table></figure>
 
 <p><a target="_blank" rel="noopener" href="https://hexo.io/news/2019/10/14/hexo-4-released/">How to use  tag in title</a></p>
 <p><strong>禁止对标题的特殊字符进行转义</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&#123;% post_link hexo-4-released &#x27;&lt;b&gt;bold&lt;/b&gt; custom title&#x27; false %&#125;</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% post_link hexo-4-released &#x27;&lt;b&gt;bold&lt;/b&gt; custom title&#x27; false %&#125;</span><br></pre></td></tr></table></figure>
 
 <p><a target="_blank" rel="noopener" href="https://hexo.io/news/2019/10/14/hexo-4-released/"><strong>bold</strong> custom title</a></p>
 <p class='note note-success'>语法相对来说繁杂，非必要不建议使用</p>
@@ -394,24 +394,24 @@
 <p><code>code</code></p>
 <p class='note note-secondary'>```code```</p>
 
-<figure class="highlight c"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">code</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">code</span><br></pre></td></tr></table></figure>
 
 <h2 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h2><p>在文章中嵌入 Gist。</p>
-<figure class="highlight css"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&lt;script <span class="attribute">src</span>=&quot;https://gist.githubusercontent.com/MegaSuite/aaa482f9062bc94ec61f1eecef329d1d/raw/<span class="number">57</span>f8bfc04945d46e924f904bcb2ec0f1e6b3aca8/gistfile1.txt<span class="string">&quot;&gt;&lt;/script&gt;</span></span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;script <span class="attribute">src</span>=&quot;https://gist.githubusercontent.com/MegaSuite/aaa482f9062bc94ec61f1eecef329d1d/raw/<span class="number">57</span>f8bfc04945d46e924f904bcb2ec0f1e6b3aca8/gistfile1.txt<span class="string">&quot;&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
 
 <script src="https://gist.github.com/MegaSuite/aaa482f9062bc94ec61f1eecef329d1d.js"></script>
 
 <p class='note note-success'>部分网络环境下，Gist无法正常加载</p>
 
 <h2 id="iframe-2"><a href="#iframe-2" class="headerlink" title="iframe[2]"></a>iframe<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="[Hexo Theme Fluid](https://fluid-dev.com/posts/fluid-write/)">[2]</span></a></sup></h2><p>在文章中插入 iframe。</p>
-<figure class="highlight text"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&lt;iframe src=&quot;https://hexo.fluid-dev.com/&quot; width=&quot;100%&quot; height=&quot;500&quot; name=&quot;topFrame&quot; scrolling=&quot;yes&quot;  noresize=&quot;noresize&quot; frameborder=&quot;0&quot; id=&quot;topFrame&quot;&gt;&lt;/iframe&gt;</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;iframe src=&quot;https://hexo.fluid-dev.com/&quot; width=&quot;100%&quot; height=&quot;500&quot; name=&quot;topFrame&quot; scrolling=&quot;yes&quot;  noresize=&quot;noresize&quot; frameborder=&quot;0&quot; id=&quot;topFrame&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
 
 <iframe src="https://hexo.fluid-dev.com/" width="100%" height="500" name="topFrame" scrolling="yes"  noresize="noresize" frameborder="0" id="topFrame" ></iframe>
 
 <p class='note note-primary'>Fluid开发者官方博客，部分网络环境可能加载失败</p>
 
 <h2 id="Bilibili"><a href="#Bilibili" class="headerlink" title="Bilibili"></a>Bilibili</h2><p>以B站为例，去相应播放页面复制代码即可</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=53851218&amp;bvid=BV1j4411W7F7&amp;cid=94198756&amp;page=1&amp;autoplay=0&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt; &lt;/iframe&gt;</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=53851218&amp;bvid=BV1j4411W7F7&amp;cid=94198756&amp;page=1&amp;autoplay=0&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt; &lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
 
 <iframe src="//player.bilibili.com/player.html?aid=53851218&bvid=BV1j4411W7F7&cid=94198756&page=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" align="center"> </iframe>
 
@@ -429,11 +429,11 @@
 
 <hr>
 <h3 id="分类方法的分歧"><a href="#分类方法的分歧" class="headerlink" title="分类方法的分歧"></a>分类方法的分歧</h3><p>如果您有过使用 WordPress 的经验，就很容易误解 Hexo 的分类方式。WordPress 支持对一篇文章设置多个分类，而且这些分类可以是同级的，也可以是父子分类。但是 Hexo 不支持指定多个同级分类。下面的指定方法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">categories:</span><br><span class="line">  - Diary</span><br><span class="line">  - Life</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">  - Diary</span><br><span class="line">  - Life</span><br></pre></td></tr></table></figure>
 
 <p>会使分类 <code>Life</code> 成为 <code>Diary</code> 的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类。</p>
 <p>如果你需要为文章添加多个分类，可以尝试以下 list 中的方法。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><figure><div class="code-wrapper"><pre><span class="line">categories:</span><br><span class="line">- [Diary, PlayStation]</span><br><span class="line">- [Diary, Games]</span><br><span class="line">- [Life]</span><br></pre></div></figure></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- [Diary, PlayStation]</span><br><span class="line">- [Diary, Games]</span><br><span class="line">- [Life]</span><br></pre></td></tr></table></figure>
 
 <p>此时这篇文章同时包括三个分类： <code>PlayStation</code> 和 <code>Games</code> 分别都是父分类 <code>Diary</code> 的子分类，同时 <code>Life</code> 是一个没有子分类的分类。</p>
 <hr>
@@ -789,10 +789,6 @@
   });
 </script>
 
-
-  <script  src="https://lib.baomitu.com/prism/1.29.0/components/prism-core.min.js" ></script>
-
-  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
 
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 

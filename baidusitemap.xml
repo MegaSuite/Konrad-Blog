@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.updating.top//CS61A-Reference/</loc>
-    <lastmod>2023-11-12</lastmod>
-  </url>
-  <url>
-    <loc>https://www.updating.top//CS61A-lab03-Q5/</loc>
-    <lastmod>2023-11-12</lastmod>
-  </url>
-  <url>
     <loc>https://www.updating.top//TheRoadNotTaken/</loc>
     <lastmod>2023-11-12</lastmod>
   </url>
@@ -69,11 +61,11 @@
     <lastmod>2023-11-12</lastmod>
   </url>
   <url>
-    <loc>https://www.updating.top//HUST-military-theory/</loc>
+    <loc>https://www.updating.top//HUST-physics-exps/</loc>
     <lastmod>2023-11-12</lastmod>
   </url>
   <url>
-    <loc>https://www.updating.top//HUST-physics-exps/</loc>
+    <loc>https://www.updating.top//HUST-military-theory/</loc>
     <lastmod>2023-11-12</lastmod>
   </url>
   <url>
@@ -86,6 +78,14 @@
   </url>
   <url>
     <loc>https://www.updating.top//ShanHe-University-Review/</loc>
+    <lastmod>2023-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://www.updating.top//CS61A-lab03-Q5/</loc>
+    <lastmod>2023-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://www.updating.top//CS61A-Reference/</loc>
     <lastmod>2023-11-12</lastmod>
   </url>
 </urlset> 

@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307042106887.png">
 <meta property="article:published_time" content="2023-07-03T01:58:42.000Z">
-<meta property="article:modified_time" content="2023-11-12T09:31:22.561Z">
+<meta property="article:modified_time" content="2023-11-12T09:31:43.535Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary_large_image">
@@ -336,21 +336,25 @@
 </ul>
 </blockquote>
 <h2 id="使用Hexo博客及Fluid主题搭建博客基本框架"><a href="#使用Hexo博客及Fluid主题搭建博客基本框架" class="headerlink" title="使用Hexo博客及Fluid主题搭建博客基本框架"></a>使用Hexo博客及Fluid主题搭建博客基本框架</h2><h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><p>安装使用hexo之前需要先安装<code>Node.js</code>和<code>Git</code>，之后，可以通过以下命令安装hexo:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install -g hexo-cli</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">npm install -g hexo-cli</span></code></pre></div>
 <p>可以通过以下命令查看主机中是否安装了node.js和npm</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">node --version    <span class="comment">#检查是否安装了node.js</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm --version     <span class="comment">#检查是否安装了npm,npm是node.js的包管理工具</span></span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">node --version    <span class="hljs-comment">#检查是否安装了node.js</span></span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash">npm --version     <span class="hljs-comment">#检查是否安装了npm,npm是node.js的包管理工具</span></span></code></pre></div>
 
 <p>执行下列命令，Hexo将会在指定目录中新建工作区</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">hexo init &lt;folder&gt;</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> &lt;folder&gt;</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">hexo init &lt;folder&gt;</span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cd</span> &lt;folder&gt;</span>
+<span class="hljs-meta prompt_">$ </span><span class="language-bash">npm install</span></code></pre></div>
 
 <p>层级结构如下：</p>
 <p align="center"><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307231952233.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;"/></p>
 
 <p>转到工作文件夹内，建立一个<code>.md</code>文档，使用以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo n [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">$ hexo n [layout] &lt;title&gt;</code></pre></div>
 
 <p>如果添加环境变量总是失败，则使用以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npx hexo n [layout] &lt;title&gt;</span><br><span class="line"><span class="comment"># 作为一个程序猿，你该懂得[]里的是可选参数（我一开始也不懂），layout详见<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[Hexo Theme Fluid](https://fluid-dev.com/posts/fluid-write/)">[1]</span></a></sup>的Hexo官方注解</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs bash">$ npx hexo n [layout] &lt;title&gt;
+<span class="hljs-comment"># 作为一个程序猿，你该懂得[]里的是可选参数（我一开始也不懂），layout详见<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[Hexo Theme Fluid](https://fluid-dev.com/posts/fluid-write/)">[1]</span></a></sup>的Hexo官方注解</span></code></pre></div>
 
 <p>现在，你已经拥有第一篇博客文章（的毛坯）了！</p>
 <p>具体语法可以使用Markdown语法，并参照<a href="/hexo-grammars/" title="Hexo写作的基本语法">Hexo写作的基本语法</a>这篇文章</p>
@@ -375,19 +379,55 @@
 <li>想查看覆盖配置有没有生效，可以通过 <code>hexo g --debug</code> 查看命令行输出。</li>
 <li>如果想将某些配置覆盖为空，注意不要把主键删掉，不然是无法覆盖的，比如：</li>
 </ul>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">about:</span></span><br><span class="line">  <span class="attr">icons:</span>  <span class="comment"># 不要把 icon 注释掉，否则无法覆盖配置</span></span><br><span class="line">    <span class="comment"># - &#123; class: &#x27;iconfont icon-github-fill&#x27;, link: &#x27;https://github.com&#x27; &#125;</span></span><br><span class="line">    <span class="comment"># - &#123; class: &#x27;iconfont icon-wechat-fill&#x27;, qrcode: &#x27;/img/favicon.png&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">about:</span>
+  <span class="hljs-attr">icons:</span>  <span class="hljs-comment"># 不要把 icon 注释掉，否则无法覆盖配置</span>
+    <span class="hljs-comment"># - &#123; class: &#x27;iconfont icon-github-fill&#x27;, link: &#x27;https://github.com&#x27; &#125;</span>
+    <span class="hljs-comment"># - &#123; class: &#x27;iconfont icon-wechat-fill&#x27;, qrcode: &#x27;/img/favicon.png&#x27; &#125;</span></code></pre></div>
 
 <h2 id="通过Github-Actions使用Github-Pages进行半自动化部署-2"><a href="#通过Github-Actions使用Github-Pages进行半自动化部署-2" class="headerlink" title="通过Github Actions使用Github Pages进行半自动化部署[2]"></a>通过Github Actions使用Github Pages进行半自动化部署<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="[公众号：不止dotNET](https://mp.weixin.qq.com/s/jVVTHuu22MSN8dnCGQzJjQ)">[2]</span></a></sup></h2><h3 id="使用-GitHub-Action"><a href="#使用-GitHub-Action" class="headerlink" title="使用 GitHub Action"></a>使用 GitHub Action</h3><p>自己选择作为托管的仓库，建议使用<code>vscode</code>进行git推送，推送之后<code>GithubAction</code>会运行生成<code>GithubPages</code></p>
 <p>GithubAction配置具体步骤如下：</p>
 <p>1、生成 SSH Key</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;xx@xx.com&quot;# 自己的Github注册邮箱</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs shell">ssh-keygen -t rsa -C &quot;xx@xx.com&quot;# 自己的Github注册邮箱</code></pre></div>
 
 <p>生成的文件在 <code>用户名/.ssh</code> 目录中，<code>id_rsa</code> 为私钥文件，<code>id_rsa.pub</code> 为公钥文件。</p>
 <p>2、代码仓库的 Actions 页签添加 workflow，如下图：</p>
 <p align="center"><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307232108906.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" /></p>
 
 <p>3、创建的 workflow 为一个 <code>.yml</code> 文件，内容如下：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"> <span class="attr">name:</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> <span class="comment"># default branch</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">pages:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">permissions:</span></span><br><span class="line">      <span class="attr">contents:</span> <span class="string">write</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">18.</span><span class="string">x</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&quot;18.16.1&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cache</span> <span class="string">NPM</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/cache@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">node_modules</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">$&#123;&#123;</span> <span class="string">runner.OS</span> <span class="string">&#125;&#125;-npm-cache</span></span><br><span class="line">          <span class="attr">restore-keys:</span> <span class="string">|</span></span><br><span class="line"><span class="string">            $&#123;&#123; runner.OS &#125;&#125;-npm-cache</span></span><br><span class="line"><span class="string"></span>      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">Dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">github_token:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITHUB_TOKEN</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs yaml"> <span class="hljs-attr">name:</span> <span class="hljs-string">Pages</span>
+
+<span class="hljs-attr">on:</span>
+  <span class="hljs-attr">push:</span>
+    <span class="hljs-attr">branches:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">main</span> <span class="hljs-comment"># default branch</span>
+
+<span class="hljs-attr">jobs:</span>
+  <span class="hljs-attr">pages:</span>
+    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span>
+    <span class="hljs-attr">permissions:</span>
+      <span class="hljs-attr">contents:</span> <span class="hljs-string">write</span>
+    <span class="hljs-attr">steps:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v2</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Use</span> <span class="hljs-string">Node.js</span> <span class="hljs-number">18.</span><span class="hljs-string">x</span>
+        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/setup-node@v2</span>
+        <span class="hljs-attr">with:</span>
+          <span class="hljs-attr">node-version:</span> <span class="hljs-string">&quot;18.16.1&quot;</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Cache</span> <span class="hljs-string">NPM</span> <span class="hljs-string">dependencies</span>
+        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/cache@v2</span>
+        <span class="hljs-attr">with:</span>
+          <span class="hljs-attr">path:</span> <span class="hljs-string">node_modules</span>
+          <span class="hljs-attr">key:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">runner.OS</span> <span class="hljs-string">&#125;&#125;-npm-cache</span>
+          <span class="hljs-attr">restore-keys:</span> <span class="hljs-string">|</span>
+<span class="hljs-string">            $&#123;&#123; runner.OS &#125;&#125;-npm-cache</span>
+<span class="hljs-string"></span>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">Dependencies</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">npm</span> <span class="hljs-string">install</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Build</span>
+        <span class="hljs-attr">run:</span> <span class="hljs-string">npm</span> <span class="hljs-string">run</span> <span class="hljs-string">build</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span>
+        <span class="hljs-attr">uses:</span> <span class="hljs-string">peaceiris/actions-gh-pages@v3</span>
+        <span class="hljs-attr">with:</span>
+          <span class="hljs-attr">github_token:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.GITHUB_TOKEN</span> <span class="hljs-string">&#125;&#125;</span>
+          <span class="hljs-attr">publish_dir:</span> <span class="hljs-string">./public</span></code></pre></div>
 
 <blockquote>
 <p>来自<a target="_blank" rel="noopener" href="https://github.com/peaceiris/actions-gh-pages">peaceiris&#x2F;actions-gh-pages</a>无需配置gh_deploy_keys,推荐使用</p>

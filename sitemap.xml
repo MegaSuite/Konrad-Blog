@@ -2,7 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.updating.top/HUST-military-theory/</loc>
+    
+    <lastmod>2023-11-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.updating.top/HUST-physics-exps/</loc>
+    
+    <lastmod>2023-11-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.updating.top/CS61A-lab03-ChurchNumeral/</loc>
+    
+    <lastmod>2023-11-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.updating.top/CS61A-How-to-Learn/</loc>
+    
+    <lastmod>2023-11-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.updating.top/ShanHe-University-Review/</loc>
+    
+    <lastmod>2023-11-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.updating.top/CS61A-Reference/</loc>
     
     <lastmod>2023-11-12</lastmod>
     
@@ -47,15 +92,6 @@
   </url>
   
   <url>
-    <loc>https://www.updating.top/Cloudflare-Github-Proxy/</loc>
-    
-    <lastmod>2023-11-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.updating.top/QuantumultX-Config-and-Usage/</loc>
     
     <lastmod>2023-11-12</lastmod>
@@ -65,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://www.updating.top/Euler-Eratosthenes-Sieve/</loc>
+    <loc>https://www.updating.top/Cloudflare-Github-Proxy/</loc>
     
     <lastmod>2023-11-12</lastmod>
     
@@ -74,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://www.updating.top/CS61A-Reference/</loc>
+    <loc>https://www.updating.top/Euler-Eratosthenes-Sieve/</loc>
     
     <lastmod>2023-11-12</lastmod>
     
@@ -172,42 +208,6 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://www.updating.top/HUST-physics-exps/</loc>
-    
-    <lastmod>2023-11-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.updating.top/CS61A-lab03-ChurchNumeral/</loc>
-    
-    <lastmod>2023-11-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.updating.top/CS61A-How-to-Learn/</loc>
-    
-    <lastmod>2023-11-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.updating.top/HUST-military-theory/</loc>
-    
-    <lastmod>2023-11-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>https://www.updating.top/</loc>
@@ -219,6 +219,13 @@
   
   <url>
     <loc>https://www.updating.top/tags/Hexo/</loc>
+    <lastmod>2023-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.updating.top/tags/HUST/</loc>
     <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -246,7 +253,7 @@
   </url>
   
   <url>
-    <loc>https://www.updating.top/tags/HUST/</loc>
+    <loc>https://www.updating.top/tags/QuantumultX/</loc>
     <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -261,13 +268,6 @@
   
   <url>
     <loc>https://www.updating.top/tags/Cloudflare/</loc>
-    <lastmod>2023-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.updating.top/tags/QuantumultX/</loc>
     <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -339,14 +339,14 @@
   </url>
   
   <url>
-    <loc>https://www.updating.top/categories/Major/CS61A/</loc>
+    <loc>https://www.updating.top/categories/Major/Hexo/</loc>
     <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.updating.top/categories/Major/Hexo/</loc>
+    <loc>https://www.updating.top/categories/Major/CS61A/</loc>
     <lastmod>2023-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

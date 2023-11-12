@@ -26,7 +26,7 @@ excerpt: 基于Docker搭建订阅转换服务，clash也能实现分流规则自
 
 ## 后端搭建
 
-```bash
+```dockerfile
 docker run -d \
 	--restart=always \
 	--name subconverter \
@@ -270,7 +270,7 @@ remoteConfig: [
 >
 > 构建命令需要在前端文件夹内执行，否则会提醒`找不到Dockerfile`
 
-```bash
+```dockerfile
 #构建镜像
 docker build -t sub-web:latest .  
 #查看镜像是否构建成功,有同名镜像即为成功

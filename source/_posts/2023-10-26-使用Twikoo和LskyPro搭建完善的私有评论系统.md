@@ -22,7 +22,7 @@ excerpt: 使用Twikoo和LskyPro搭建自有评论，安全放心
 
 ### 启动容器
 
-```bash
+```dockerfile
 docker run -d \
 	--name twikoo \
 	-e TWIKOO_THROTTLE=1000 \
@@ -103,7 +103,7 @@ LskyPro图床的搭建，请查看
 
 ### token获取
 
-```bash
+```shell
 curl -X POST -F "email=your_email@address" -F "password=your_passwd" https://your.domain/api/v1/tokens
 ```
 

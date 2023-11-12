@@ -26,7 +26,7 @@ excerpt: 搭建属于你自己的在线剪贴板
 
 **正片开始**
 
-```bash
+```dockerfile
 docker run -d \
 	--restart="always" \
 	--name=privatebin \

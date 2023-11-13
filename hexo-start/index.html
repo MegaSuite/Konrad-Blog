@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202307042106887.png">
 <meta property="article:published_time" content="2023-07-03T01:58:42.000Z">
-<meta property="article:modified_time" content="2023-11-13T12:16:14.329Z">
+<meta property="article:modified_time" content="2023-11-13T13:17:06.803Z">
 <meta property="article:author" content="Konrad Gerrens">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary_large_image">
@@ -247,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.7k 字
+          7.7k 字
         
       </span>
     
@@ -258,7 +258,7 @@
         
         
         
-          39 分钟
+          65 分钟
         
       </span>
     
@@ -482,11 +482,61 @@
 <blockquote>
 <p>总体体验：谷歌＞必应＞＞＞百度</p>
 </blockquote>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>到此为止，你的博客已经完美地搭建啦，开始你的写作分享吧！</p>
+<h2 id="更改全局字体为霞鹜文楷体"><a href="#更改全局字体为霞鹜文楷体" class="headerlink" title="更改全局字体为霞鹜文楷体"></a>更改全局字体为霞鹜文楷体</h2><p>打开 Hexo 博客的主题文件夹下的 <code>head.ejs</code> 文件</p>
+<p><code>themes/fluid/layout/_partial/head.ejs</code></p>
+<p>在文件的<code>head</code>标签中添加如下代码，CDN引入字体：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;link rel=<span class="hljs-string">&quot;stylesheet&quot;</span> href=<span class="hljs-string">&quot;https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css&quot;</span> media=<span class="hljs-string">&quot;print&quot;</span> onload=<span class="hljs-string">&quot;this.media=&#x27;all&#x27;&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311132033886.png" srcset="/img/loading.gif" lazyload alt="head.ejs"></p>
+<p>在主题下的 <code>themes/fluid/source/css</code>，新建一个<code>CSS</code>文件<code>custom.css</code>，添加样式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">html, body, .<span class="hljs-property">markdown</span>-body, p &#123;<br>  font-<span class="hljs-attr">family</span>: <span class="hljs-string">&#x27;LXGW WenKai Screen&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311132036515.png" srcset="/img/loading.gif" lazyload alt="custom.css"></p>
+<p>在主题的配置文件 <code>_config.fluid.yml</code>中查找配置项 <code>font_family</code>，在后面填写字体名称<code>&quot;LXGW Wenkai Screen&quot;</code>，注意要给字体名称加引号。</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311132039989.png" srcset="/img/loading.gif" lazyload alt="font-family"></p>
+<p>部署即可，大功告成！</p>
+<h2 id="给博客添加随机一言"><a href="#给博客添加随机一言" class="headerlink" title="给博客添加随机一言"></a>给博客添加随机一言</h2><h3 id="首页⌈一言⌋"><a href="#首页⌈一言⌋" class="headerlink" title="首页⌈一言⌋"></a>首页⌈一言⌋</h3><p>在主题配置文件修改 <code>slogan</code> 配置的 <code>url</code> 和 <code>keys</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 首页副标题的独立设置</span><br><span class="hljs-comment"># Independent config of home page subtitle</span><br><span class="hljs-attr">slogan:</span><br><span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># 为空则按 hexo config.subtitle 显示</span><br><span class="hljs-comment"># If empty, text based on `subtitle` in hexo config</span><br><span class="hljs-attr">text:</span> <span class="hljs-string">&quot;&quot;</span><br><br><span class="hljs-comment"># 通过 API 接口作为首页副标题的内容，必须返回的是 JSON 格式，如果请求失败则按 text 字段显示，该功能必须先开启 typing 打字机功能</span><br><span class="hljs-comment"># Subtitle of the homepage through the API, must be returned a JSON. If the request fails, it will be displayed in `text` value. This feature must first enable the typing animation</span><br><span class="hljs-attr">api:</span><br><span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br><br><span class="hljs-comment"># 请求地址</span><br><span class="hljs-comment"># Request url</span><br><span class="hljs-attr">url:</span> <span class="hljs-string">&quot;https://v1.hitokoto.cn/&quot;</span><br><br><span class="hljs-comment"># 请求方法</span><br><span class="hljs-comment"># Request method</span><br><span class="hljs-comment"># Available: GET | POST | PUT</span><br><span class="hljs-attr">method:</span> <span class="hljs-string">&quot;GET&quot;</span><br><br><span class="hljs-comment"># 请求头</span><br><span class="hljs-comment"># Request headers</span><br><span class="hljs-attr">headers:</span> &#123;&#125;<br><br><span class="hljs-comment"># 从请求结果获取字符串的取值字段，最终必须是一个字符串，例如返回结果为 &#123;&quot;data&quot;: &#123;&quot;author&quot;: &quot;fluid&quot;, &quot;content&quot;: &quot;An elegant theme&quot;&#125;&#125;, 则取值字段为 [&#x27;data&#x27;, &#x27;content&#x27;]；如果返回是列表则自动选择第一项</span><br><span class="hljs-comment"># The value field of the string obtained from the response. For example, the response content is &#123;&quot;data&quot;: &#123;&quot;author&quot;: &quot;fluid&quot;, &quot;content&quot;: &quot;An elegant theme&quot;&#125;&#125;, the expected `keys: [&#x27;data&#x27;,&#x27;content&#x27;]`; if the return is a list, the first item is automatically selected</span><br><span class="hljs-attr">keys:</span> [<span class="hljs-string">&#x27;hitokoto&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311132045911.png" srcset="/img/loading.gif" lazyload alt="slogan"></p>
+<h3 id="脚注⌈一言⌋"><a href="#脚注⌈一言⌋" class="headerlink" title="脚注⌈一言⌋"></a>脚注⌈一言⌋</h3><p>在主题配置文件中，<code>footer</code>项下添加<code>content2</code>：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml">  <span class="hljs-attr">content2:</span> <span class="hljs-string">&#x27; &lt;div class=&quot;statistics&quot;&gt;</span><br><span class="hljs-string"> 	&lt;a href=&quot;https://developer.hitokoto.cn/&quot; id=&quot;hitokoto_text&quot;&gt;&lt;span style=&quot;color: #DDD;&quot;  id=&quot;hitokoto&quot;&gt;&lt;/span&gt;&lt;/a&gt;</span><br><span class="hljs-string">&lt;script src=&quot;https://v1.hitokoto.cn/?encode=js&amp;select=%23hitokoto&quot; defer&gt;&lt;/script&gt;</span><br><span class="hljs-string"> &lt;/div&gt;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311132048599.png" srcset="/img/loading.gif" lazyload alt="footer config"></p>
+<p>修改<code>themes/fluid/layout/_partials/footer.ejs</code>，添加：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;!--yiyan footer--&gt;<br>&lt;% <span class="hljs-keyword">if</span> (theme.<span class="hljs-property">footer</span>.<span class="hljs-property">content2</span>) &#123; %&gt;<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;footer-content&quot;</span>&gt;</span></span><br><span class="language-xml">    &lt;%- theme.footer.content2 %&gt;</span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;% &#125; %&gt;<br>&lt;!-- --&gt;<br></code></pre></td></tr></table></figure>
+
+<p>统一字号：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"># 修改&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">&quot;footer-inner&quot;</span>&gt;为：<br><br>&lt;div <span class="hljs-keyword">class</span>=<span class="hljs-string">&quot;footer-inner&quot;</span> style=<span class="hljs-string">&quot;font-size: 0.85rem;&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311132052068.png" srcset="/img/loading.gif" lazyload alt="footer.ejs"></p>
+<h2 id="添加RSS订阅"><a href="#添加RSS订阅" class="headerlink" title="添加RSS订阅"></a>添加RSS订阅</h2><p>首先，转到博客文件所在文件夹，安装插件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-generator-feed --save<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311132111257.png" srcset="/img/loading.gif" lazyload alt="install"></p>
+<p>在<code>_config.fluid.yaml</code>添加以下配置:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">feed:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">atom</span><br>  <span class="hljs-attr">path:</span> <span class="hljs-string">atom.xml</span><br>  <span class="hljs-attr">limit:</span> <span class="hljs-number">20</span><br>  <span class="hljs-attr">hub:</span><br>  <span class="hljs-attr">content:</span><br>  <span class="hljs-attr">content_limit:</span> <span class="hljs-number">140</span><br>  <span class="hljs-attr">content_limit_delim:</span> <span class="hljs-string">&#x27; &#x27;</span><br>  <span class="hljs-attr">order_by:</span> <span class="hljs-string">-date</span><br>  <span class="hljs-attr">icon:</span> <span class="hljs-string">icon.png</span><br>  <span class="hljs-attr">autodiscovery:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">template:</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311132057955.png" srcset="/img/loading.gif" lazyload alt="feed"></p>
+<p>部分参数解释，其它参数参见作者页面<sup id="fnref:9" class="footnote-ref"><a href="#fn:9" rel="footnote"><span class="hint--top hint--rounded" aria-label="[hexojs/hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed)">[9]</span></a></sup></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">enable：开启与否</span><br><span class="hljs-string">type：输出类型</span><br><span class="hljs-string">path：路径</span><br>	<span class="hljs-attr">type:</span> <span class="hljs-string">atom</span><br>	<span class="hljs-attr">path:</span> <span class="hljs-string">atom.xml</span><br><span class="hljs-string">或</span><br>	<span class="hljs-attr">type:</span><br>		<span class="hljs-bullet">-</span> <span class="hljs-string">atom</span><br>		<span class="hljs-string">-rss2</span><br>	<span class="hljs-attr">path:</span><br>		<span class="hljs-bullet">-</span> <span class="hljs-string">atom.xml</span><br>		<span class="hljs-bullet">-</span> <span class="hljs-string">rss2.xml</span><br><span class="hljs-string">limit：包含的文章数量，使用`0`或`false`展示所有文章</span><br><span class="hljs-string">order_by：排序依据，默认为`-date`，按日期排序</span><br></code></pre></td></tr></table></figure>
+
+<p>在关于页面添加订阅链接：</p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311132110344.png" srcset="/img/loading.gif" lazyload alt="about"></p>
+<p><img src="https://blog-pic-storage.oss-cn-shanghai.aliyuncs.com/img/202311132110275.png" srcset="/img/loading.gif" lazyload alt="show"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://fluid-dev.com/posts/fluid-write/">Hexo Theme Fluid</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/jVVTHuu22MSN8dnCGQzJjQ">公众号：不止dotNET</a>
 <a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1246053?spm=a2c6h.12873639.article-detail.39.44c5d5c5uyWEZ6&scm=20140722.ID_community@@article@@1246053._.ID_community@@article@@1246053-OR_rec-V_1-RL_community@@article@@1231108">Typora+PicGo+阿里云OSS搭建博客图床</a>
-<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://github.com/lxgw/LxgwWenKai">lxgw&#x2F;LxgwWenKai</a>
+<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://github.com/chawyehsu/lxgw-wenkai-webfont">chawyehsu&#x2F;lxgw-wenkai-webfont</a>
+<a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:6" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://penghh.fun/2023/05/07/2023-5-7-hexo_blog_font/">Hexo字体全局更改为霞鹜文楷体</a>
+<a href="#fnref:6" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:7" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://developer.hitokoto.cn/">一言开发者中心</a>
+<a href="#fnref:7" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:8" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://alec-97.github.io/posts/151223124/">往事随风</a>
+<a href="#fnref:8" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:9" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-generator-feed">hexojs&#x2F;hexo-generator-feed</a>
+<a href="#fnref:9" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:10" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://penghh.fun/2021/05/18/2021-5-18-blogupdate/">你可以用 RSS 订阅我的博客了</a>
+<a href="#fnref:10" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
                 
               </div>
             

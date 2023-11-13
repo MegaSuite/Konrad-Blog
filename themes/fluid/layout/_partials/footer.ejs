@@ -1,4 +1,12 @@
-<div class="footer-inner">
+<!-- <div class="footer-inner"> -->
+<div class="footer-inner" style="font-size: 0.85rem;">
+  <!--yiyan footer-->
+  <% if (theme.footer.content2) { %>
+    <div class="footer-content">
+      <%- theme.footer.content2 %>
+    </div>
+  <% } %>
+  <!-- -->
   <% if (theme.footer.content) { %>
     <div class="footer-content">
       <%- theme.footer.content %>
@@ -7,6 +15,7 @@
   <% if (theme.footer.statistics.enable) { %>
     <%- partial('_partials/footer/statistics.ejs') %>
   <% } %>
+
   <% if(theme.footer.beian.enable) { %>
     <!-- 备案信息 ICP for China -->
     <%- partial('_partials/footer/beian.ejs') %>

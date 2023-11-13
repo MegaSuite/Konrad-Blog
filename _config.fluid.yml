@@ -1067,7 +1067,7 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
-  icon: https://www.updating.top/img/favicon1.png
+  icon: icon.png
   autodiscovery: true
   template:
 

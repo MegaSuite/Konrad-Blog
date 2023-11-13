@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.updating.top/hexo-grammars/</loc>
+    
+    <lastmod>2023-11-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.updating.top/hexo-start/</loc>
+    
+    <lastmod>2023-11-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.updating.top/HUST-military-theory/</loc>
+    
+    <lastmod>2023-11-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.updating.top/HUST-physics-exps/</loc>
     
     <lastmod>2023-11-13</lastmod>
@@ -181,33 +208,6 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://www.updating.top/hexo-grammars/</loc>
-    
-    <lastmod>2023-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.updating.top/hexo-start/</loc>
-    
-    <lastmod>2023-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.updating.top/HUST-military-theory/</loc>
-    
-    <lastmod>2023-11-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>https://www.updating.top/</loc>
@@ -225,6 +225,13 @@
   </url>
   
   <url>
+    <loc>https://www.updating.top/tags/HUST/</loc>
+    <lastmod>2023-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.updating.top/tags/Answer/</loc>
     <lastmod>2023-11-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -233,13 +240,6 @@
   
   <url>
     <loc>https://www.updating.top/tags/CS61A/</loc>
-    <lastmod>2023-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.updating.top/tags/HUST/</loc>
     <lastmod>2023-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -339,14 +339,14 @@
   </url>
   
   <url>
-    <loc>https://www.updating.top/categories/Major/CS61A/</loc>
+    <loc>https://www.updating.top/categories/Major/Hexo/</loc>
     <lastmod>2023-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.updating.top/categories/Major/Hexo/</loc>
+    <loc>https://www.updating.top/categories/Major/CS61A/</loc>
     <lastmod>2023-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

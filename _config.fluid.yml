@@ -965,6 +965,7 @@ about:
     - { class: "iconfont icon-telegram-fill", link: "https://t.me/Konrad_Gerrens", tip: "Telegram" }
     - { class: "iconfont icon-bilibili-fill", link: "https://space.bilibili.com/321198240?spm_id_from=..0.0", tip: "BiliBili" }
     - { class: "iconfont icon-zhihu-fill", link: "https://www.zhihu.com/people/megasuite", tip: "Zhihu"}
+    - { class: "iconfont icon-rss", link: "/atom.xml", tip: "RSS" }
 
 
 #---------------------------
@@ -1044,12 +1045,32 @@ links:
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus
     type: disqus
 
-
-#sitemap
+#----------
+# sitemap
+#----------
 sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
+
+
+#----------
+# feed
+#----------
+feed:
+  enable: true
+  type: atom
+  path: atom.xml
+  limit: false
+  hub:
+  content: true
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  icon: ./img/favicon1.png
+  # icon.png
+  autodiscovery: true
+  template:
 
   
 #---------------------------

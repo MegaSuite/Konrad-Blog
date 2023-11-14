@@ -25,6 +25,7 @@ excerpt: 使用Twikoo和LskyPro搭建自有评论，安全放心
 ```dockerfile
 docker run -d \
 	--name twikoo \
+	--restart="always" \
 	-e TWIKOO_THROTTLE=1000 \
 	-p 34322:8080 \
 	-v /home/konrad/twikoo/data/:/app/data \
